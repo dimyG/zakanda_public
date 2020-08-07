@@ -42,7 +42,7 @@ assign it to the bet group of his choice. A typical use case would be to create 
 strategies and monitor the performance of each strategy individually. Your followers could choose for which bet groups 
 they will be notified and by what means.  
 
-![Desktop View](https://github.com/dimyG/zakanda_public/blob/master/static/img/readme/bet_group_types4.png) 
+![Bet group types](https://github.com/dimyG/zakanda_public/blob/master/static/img/readme/bet_group_types4.png) 
 
 ### Private bets and Premium services
 A bet group can be of one of three types: _Free_, _Private_ or _Premium_. When you bet using a free bet group, then all your 
@@ -54,7 +54,7 @@ bet group you must first become a seller, which means that you need to provide s
 do this, you will be able to attach a paid service to your premium bet group, choosing how much you want to charge for a 
 monthly subscription. You can modify the type of a bet group whenever you want.  
 
-![Desktop View](https://github.com/dimyG/zakanda_public/blob/master/static/img/readme/private_example2.png) 
+![Private bets](https://github.com/dimyG/zakanda_public/blob/master/static/img/readme/private_example2.png) 
 
 ### Performance dashboard
 Every user has a dashboard which contains a lot of valuable information about his overall performance like ROI and yield. 
@@ -66,7 +66,7 @@ For example using the Bets Status pie select the _won_ bets and then from them, 
 All other charts have been automatically filtered to describe this specific group of selected bets. This means that 
 you can extract a lot of valuable information about them, like their average return. 
 
-![Desktop View](https://github.com/dimyG/zakanda_public/blob/master/static/img/readme/dashboard3.gif") 
+![Dashboard](https://github.com/dimyG/zakanda_public/blob/master/static/img/readme/dashboard3.gif) 
 
 ### Hidden amounts
 As we already said, zakanda tries to mirror a user's bookmaker account with the use of virtual money. This feature is 
@@ -80,7 +80,7 @@ will see your balance as units and your bet amounts as percentages of that balan
 as the absolute values that they really are. This way all parties get what they want. You also have the possibility to see your 
 account the way others see it (with units and percentages) simply with the press of a button.  
  
-![Desktop View](https://github.com/dimyG/zakanda_public/blob/master/static/img/readme/cash_on_off_3_forever.gif)
+![Hidden amounts](https://github.com/dimyG/zakanda_public/blob/master/static/img/readme/cash_on_off_3_forever.gif)
 
 ## System design and deployment
 ### System design

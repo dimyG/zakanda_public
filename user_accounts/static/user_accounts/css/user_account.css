@@ -1,0 +1,20 @@
+.won_num{
+    color: #008000;
+    font-weight: bold;
+}
+.lost_num{
+    color: red;
+    font-weight: bold;
+}
+
+.users_list_wrapper td a:not(.bg_dark){
+    padding: 15px;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+.won_num{
+    color: rgb(27, 115, 27);
+}
+.lost_num{
+    color: rgb(185, 47, 47);
+}

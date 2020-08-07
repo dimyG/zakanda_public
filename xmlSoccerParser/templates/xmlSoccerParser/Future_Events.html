@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if events %}
+        <h3>Events</h3>
+        <ul class="list-group">
+        {% for event in events %}
+            <li class="list-group-item">{{ forloop.counter }} - {{ event }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No Events returned from the "get_fixtures_by_date_interval" view of the "xmlSoccerParser" app</h3>
+    {% endif %}
+
+    {% if event_infos %}
+        <h3>Event Info</h3>
+        <ul class="list-group">
+        {% for event_info in event_infos %}
+            <li class="list-group-item">{{ forloop.counter }} - {{ event_info }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No Event Info returned from the "get_fixtures_by_date_interval" view of the "xmlSoccerParser" app</h3>
+    {% endif %}
+
+    <ul class="list-group">
+            <li class="list-group-item">{{ now_in_tz_formatted }}</li>
+            <li class="list-group-item">{{ now_plus_delta_in_tz_formatted }}</li>
+    </ul>
+    {{ fixture }}
+{% endblock %}

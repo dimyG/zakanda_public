@@ -1,0 +1,32 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    {% trans "Confirm E-mail Address" %}
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body">
+
+    <div class="row">
+    <div class="col-sm-12">
+
+    {% user_display confirmation.email_address.user as user_display %}
+
+    <h5>{% blocktrans with confirmation.email_address.email as email %}You have confirmed that <a href="mailto:{{email}}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</h5>
+
+</div></div></div></div></div></div>
+
+{% endblock %}

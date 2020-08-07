@@ -1,0 +1,5 @@
+# Protect the line ending character of these files. git automatically converts lf to crlf if you use it in
+# windows. But the entrypoint files must have lf in order to be executed in the containers environment
+docker_aws_ECS/entrypoint.sh eol=lf
+docker_production/entrypoint.sh eol=lf
+docker_local/entrypoint.sh eol=lf

@@ -1,0 +1,42 @@
+.unseen{
+    opacity: 1 !important;
+}
+
+ul.timeline li:not(.nothing_new) {
+    color: white;
+    /*font-weight: lighter;*/
+}
+
+.not_seen{
+    background-color: rgba(33, 40, 46, 1) !important;
+}
+
+div.notification_activity div{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+div.notification_activity a{
+    font-size: 13px;
+}
+
+.seen{
+    background-color: rgba(31, 41, 50, 0.23) !important;
+}
+
+.timeline:before{
+    /* overrides value defined by componenets.min.css */
+    margin-left: 0;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+.timeline .list-group-item {
+    border: 1px solid #333;
+}
+.timeline:before {
+    background: transparent;
+}
+ul.timeline li:not(.nothing_new) {
+    color: #ccc;
+}

@@ -1,0 +1,68 @@
+<div class="portlet box blue-hoki">
+    <div class="portlet-title">
+        <div class="caption">
+            {{ title }}
+        </div>
+        <div class="actions">
+{#                        <a href="javascript:;" class="btn btn-default btn-sm">#}
+{#                            <i class="fa fa-pencil"></i> Edit </a>#}
+{#                        <a href="javascript:;" class="btn btn-default btn-sm">#}
+{#                            <i class="fa fa-plus"></i> Add </a>#}
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table id="{{ table_id }}" class="display responsive" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th data-priority="5">Date</th>
+                    <th data-priority="3">Number of Bets</th>
+                    <th data-priority="1" class="mobile tablet desktop">Event</th> {# never hidden #}
+                    <th data-priority="2" class="">Choice</th>
+                    <th data-priority="4">Market</th>
+                    <th data-priority="6">Avg. Odd</th>
+                    <th data-priority="7">Country</th>
+                    <th data-priority="8">Competition</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th>Date</th>
+                    <th>Number of Bets</th>
+                    <th>Event</th>
+                    <th>Choice</th>
+                    <th>Market</th>
+                    <th>Avg. Odd</th>
+                    <th>Country</th>
+                    <th>Competition</th>
+                </tr>
+            </tfoot>
+
+            <tbody>
+                {% for raw_bev in raw_bet_events %}
+                <tr>
+                    <td></td>
+                    <td class="date" data-order="{{ raw_bev.event.date|date:"YmdHi"}}">{{ raw_bev.event.date|date:"M d H:i" }}</td>
+                    <td class="bg_zak_blue_black">
+                        <a href="{% url 'bet_statistics:raw_bev_tbs' raw_bev_id=raw_bev.id %}" class="pjax_call url_param_dependent">
+                            <span class="label label-sm label-info bg_inherit color-gold">{{ raw_bev.frequency }}</span>
+                        </a>
+                    </td>
+                    <td class="bg_zak_dark">
+                        <a class="pjax_call"
+                           href="{% if raw_bev.event.status == 'Not Started' %}{% url 'games:all_markets_for_event' event_id=raw_bev.event.id %}{% else %}{% url 'games:pick_bets' %}{% endif %}">
+                        <span class="label label-sm label-info label_zak_d1">{{ raw_bev.event.home_team.generic_name }} - {{ raw_bev.event.away_team.generic_name }}</span>
+                        </a>
+                    </td>
+                    <td class="bg_zak_orange"><span class="label label-sm label-info label_zak_l1">{{ raw_bev.choice }}</span></td>
+                    <td>{{ raw_bev.market_type.abbreviation }}</td>
+                    <td>{{ raw_bev.selected_odd|floatformat:'2' }}</td>
+                    <td>{{ raw_bev.event.competition_season.competition.country.name }}</td>
+                    <td>{{ raw_bev.event.competition_season.competition }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{% load activity_tags %}
+{% load i18n %}
+
+
+{# the context variable can be anything but user (eg. target_user) since the follow url #}
+{# tag get the actor user from the "user" context variable defined by django and if you #}
+{# name the variable "user" it will ovveride the existing one and will not work properly #}
+<a class="hidden" href="{% follow_url target_user %}"></a>
+
+{% with following=request.user|is_following:target_user %}
+
+<button class="ladda-button follow_unfollow {% if following %}btn_zak_danger{% else %}btn_zak_blue_01{% endif %}" data-style="zoom-in">
+    <span class="ladda-label">
+        {% if following %}
+            {% trans "UnFollow" %}
+        {% else %}
+            {% trans "Follow" %}
+        {% endif %}
+    </span>
+</button>
+
+{% endwith %}

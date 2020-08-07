@@ -1,0 +1,121 @@
+#comments *{
+    font-size: 100%;
+}
+
+#comments h5{
+    font-weight: bold;
+}
+
+.comment a.mutedlink {
+    color: #bbbbbb;
+}
+
+.comment .mutedlink {
+    /* I added the mutedlink class to the date span */
+    color: #bbbbbb;
+    font-weight: 500;
+}
+
+.comment a{
+    color: rgba(54, 66, 79, 1);
+}
+
+#comments .comment:hover a {
+    /*color: #2196f3;*/
+    color: rgba(232,126,4,1);
+}
+
+.comment .author{
+    font-weight: 700;
+    color: rgb(34, 40, 44);
+}
+
+.comment .permalink{
+    /* hide the comments permalink */
+    display: none;
+}
+
+/* show pull right only on hover */
+/*.comment p.pull-right a{*/
+    /*display: none;*/
+/*}*/
+/*.comment:hover p.pull-right a{*/
+    /*display: initial;*/
+/*}*/
+
+
+.comment span > span > span{
+    /* a span that shows that a user is a moderator */
+    display: none;
+}
+
+.comment span.label-success{
+    /* the new label */
+    background-color: rgba(33, 40, 46, 1);
+}
+
+#comments .alert-info{
+    background-color: rgba(54, 66, 79, 1);
+    color: white;
+    text-align: center;
+}
+
+#comments input[name="preview"]{
+    display: none;
+}
+
+#comments div.id_url{
+    /* the link to a url form-group */
+    display: none;
+}
+
+.delete_comment p{
+    text-align: center;
+}
+
+.modal-content .delete_comment {
+    text-align: center;
+}
+
+.delete_comment blockquote{
+    border-left: 5px solid rgba(232,126,4,1);
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+#comments_container .portlet-body{
+    background-color: transparent !important;
+}
+.comment .well{
+    background-color: transparent !important;
+}
+.comment .author {
+    color: #c49f47 !important;
+}
+.comment form.form-horizontal.AVAST_PAM_nonloginform fieldset .col-lg-7.col-md-7 {
+    width: 100%;
+}
+.comment form.form-horizontal.AVAST_PAM_nonloginform fieldset .col-lg-offset-1.col-md-offset-1.col-lg-10.col-md-10{
+    /* the comment's textarea */
+    width: 100%;
+}
+.comment .col-lg-offset-1.col-md-offset-1.col-lg-10.col-md-10 textarea{
+    max-width: 100%;
+    min-width: 50%;
+    min-height: 50px;
+}
+/*.comment fieldset:nth-child(6){*/
+/*    !* the checkbox *!*/
+/*    text-align: end;*/
+/*}*/
+/*.comment form.form-horizontal.AVAST_PAM_nonloginform>.form-group{*/
+/*    !* the send button *!*/
+/*    float: right;*/
+/*}*/
+div.comment-tree{
+    padding: 10px;
+}
+#comments h5{
+    /*background-color: #21282e !important;*/
+    padding: 10px;
+    color: #c49f47;
+}

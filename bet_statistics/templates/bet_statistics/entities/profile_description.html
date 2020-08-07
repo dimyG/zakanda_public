@@ -1,0 +1,29 @@
+{% load i18n %}
+
+{% with target_user.profile.description as description %}
+<div class="portlet box blue-hoki {% if not description %}collapsed_md_down {% endif %}">
+<div class="portlet-title">
+    <div class="caption">
+        <i class="fa fa-rss"></i>{% trans 'Description' %}
+    </div>
+    <div class="tools">
+        <a href="javascript:;" class="{% if not description %}expand{% else %}collapse{% endif %}" data-original-title="" title=""> </a>
+    </div>
+    <div class="actions">
+    </div>
+</div>
+<div class="portlet-body {% if not description %}portlet-collapsed {% endif %}">
+    <div class="row">
+
+            <div id="profile_description_chart" class="col-sm-12" style="font-size: 13px; text-align: justify">
+                {% if description %}
+                    {{ target_user.profile.description }}
+                {% else %}
+                    {% blocktrans %}Apparently {{ target_user }} believes that it's not necessary to introduce himself. Actions speak louder than words after all...{% endblocktrans %}
+{#                    {% trans 'Apparently' %} {{ target_user }}#}
+{#                    {% trans "believes that it's not necessary to introduce himself. Actions speak louder than words afterall..." %}#}
+                {% endif %}
+            </div>
+    </div>
+</div></div>
+{% endwith %}

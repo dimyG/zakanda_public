@@ -1,0 +1,13 @@
+static files are served by the production store (S3) so there is no need to change the main.js to use
+the S3 static url or feed.js to use getstream zakanda production keys. All static files including those
+are pulled from the production store so they already have these values. Have in mind that if the google analytics
+are used in production, they will also be used here.
+
+Have in mind that any changes you make to getstream related data (for example followers) will affect the
+production zakanda getstream.
+
+there is no https in this environment so in production settings you must deactivate these
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+which means that it is not an exact production copy

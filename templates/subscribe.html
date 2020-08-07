@@ -1,0 +1,33 @@
+{% load i18n %}
+
+{% if premium_bet_groups|length <= length_limit %}
+{% for bet_group in premium_bet_groups %}
+    <div class="col-sm-12 prem_wrapper" xmlns="http://www.w3.org/1999/html">
+    {% if not bet_group.subscribed %}
+        <a href="{% url 'bet_tagging:service_list' bet_group_id=bet_group.id %}" class="pjax_call btn dark subscribe">
+{#            <span class="mt-icon" data-toggle="tooltip" data-placement="top">#}
+{#                <i class="glyphicon glyphicon-shopping-cart"></i>#}
+{#            </span>#}
+            <span>{{ bet_group.services.all.0.monthly_price|floatformat:0 }}€ / {% trans 'month' %}</span>
+        </a>
+    {% else %}
+        <a href="{% url 'bet_tagging:service_list' bet_group_id=bet_group.id %}" class="pjax_call btn dark subscribe">
+            <span class="mt-icon subscribed_color" data-toggle="tooltip" data-placement="top">
+                <i class="glyphicon glyphicon-check"></i>
+            </span>
+            <span class="subscribed_color">{% trans 'Subscribed' %}</span>
+        </a>
+    {% endif %}
+        </div>
+{% endfor %}
+
+{% else %}
+    <div class="col-sm-12">
+        <a href="{% url 'bet_tagging:bet_tags_list' target_user_id=target_user.id %}" class="pjax_call btn dark subscribe">
+{#            <span class="mt-icon" data-toggle="tooltip" data-placement="top">#}
+{#                <i class="glyphicon glyphicon-shopping-cart"></i>#}
+{#            </span>#}
+            <span>{{ premium_bet_groups|length }} {% trans 'Services' %}</span>
+        </a>
+    </div>
+{% endif %}

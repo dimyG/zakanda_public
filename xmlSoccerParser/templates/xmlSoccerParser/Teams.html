@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{#    {% if xml_teams %}#}
+{#        <ul class="list-group">#}
+{#        {% for xml_team in xml_teams %}#}
+{#            <li class="list-group-item">{{ forloop.counter }} - {{ xml_team }}</li>#}
+{#        {% endfor %}#}
+{#        </ul>#}
+{#    {% else %}#}
+{#        <h3>No xml_teams returned from the "get_all_teams_by_league_and_season" view of the "xmlSoccerParser" app</h3>#}
+{#    {% endif %}#}
+
+    {% if not xml_teams %}
+        <h3>No Response from the xmlSoccer API</h3>
+    {% else %}
+        <h3>xmlSoccer API response</h3>
+{#        only the querysets have the count method#}
+        <h3>There are {{ xml_teams|length }} entries in the response</h3>
+        <h4>{{ xml_teams }}</h4>
+    {% endif %}
+
+
+    {% if teams %}
+        <h3> {{ teams.count }} Created Teams</h3>
+        <ul class="list-group">
+        {% for team in teams %}
+            <li class="list-group-item">{{ forloop.counter }} - {{ team }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No Teams returned from the "get_all_teams_by_league_and_season" view of the "xmlSoccerParser" app</h3>
+    {% endif %}
+
+    {% if team_info_list %}
+        <h3>Created Team Info</h3>
+        <ul class="list-group">
+        {% for team_info in team_info_list %}
+            <li class="list-group-item">{{ forloop.counter }} - {{ team_info }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No Team Info returned from the "get_all_teams_by_league_and_season" view of the "xmlSoccerParser" app</h3>
+    {% endif %}
+
+{% endblock %}

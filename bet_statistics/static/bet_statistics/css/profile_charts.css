@@ -1,0 +1,312 @@
+/* Charts*/
+
+.dc-table-group .dc-table-label{
+    padding-bottom: 0;
+    padding-top: 1px;
+}
+.black{
+    /* labels */
+    color: #000000;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+}
+
+td.dc_tb_col{
+    /*background-color: rgba(169, 169, 169, 0.34);*/
+}
+
+#dc-data-count{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nested_parent .portlet:not(.bordered){
+    border: none !important;
+    margin-bottom: 0 !important;
+}
+
+.text-stat{
+    /* overriding metronic components.css for overview_values */
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+.text-stat .label{
+    white-space: normal !important;
+}
+
+#other_indicators_chart .text-stat .title, #other_indicators_chart .text-stat .value{
+    /*background-color: #3182bd;*/
+    /*color: white;*/
+    background-color: #3c3c3c;
+    color: #ccccccc5;
+    font-weight: 500;
+    font-size: 11px !important;
+}
+/*.text-stat .value{*/
+/*    background-color: #3182bd;*/
+/*}*/
+
+.won{
+    background-color: #008000 !important;
+}
+.lost{
+    background-color: rgba(214, 39, 40, 1) !important;
+}
+
+.overview_values h3{
+    margin-top: 0 !important;
+}
+.overview_values .portlet-body span{
+    display: block !important;
+}
+
+div.dc-chart hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dc-chart tr, .dc-chart td {
+    font-size: 11px !important;
+}
+
+.dc-chart th {
+    font-size: 12px !important;
+}
+
+.dc-chart{
+    /* so the svg of the charts are centered inside the parent div */
+    text-align: center;
+}
+
+div.numbers_row{
+    margin-top: 6px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+}
+
+span.chart-title{
+    /*font-family: 'Ubuntu';*/
+    font-size: 1.15em;
+    margin-bottom: 0.5em;
+}
+
+h3.dc_number{
+    margin: 1px;
+}
+
+div.dc_numbers_section{
+    padding: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+span.dc-chart{
+    /* for keeping the text inside its parent by splitting the text in more than one lines*/
+    /*white-space: normal;*/
+}
+
+#recent_form_chart{
+    font-size: 10px !important;
+}
+#recent_form_chart tr{
+    /* display rows horizontally */
+    float: left !important;
+}
+#recent_form_chart tbody {color: #ffffff}
+/*#recent_form_chart thead {display: block; float: left;}*/
+#recent_form_chart th, #recent_form_chart td, #recent_form_chart tbody{
+    border: none !important;
+ }
+
+/*#tb_status_wrapper div{*/
+    /*margin-bottom: 10px;*/
+/*}*/
+
+div.dc-chart{
+    /* So the reset text is centered inside the div */
+    /*text-align: center;*/
+}
+
+span.number-display{
+    /* on filtering the number of bets was becoming empty string and the span height was changing affecting */
+    /* the whole layout. To overcome this I set a min height to all number spans */
+    min-height: 14px;
+}
+
+td.dc-table-column span.bev_status {
+    font-size: smaller !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+#bev_dc_table_paging_top, #bev_dc_table_paging_bottom{
+    float: right;
+    padding-right: 20px;
+    margin-bottom: 10px;
+}
+
+.bev_dc_table_group_wrapper{
+    padding-top: 5px;
+}
+
+#bev_dc_table>tbody:nth-child(even){
+    /*background-color: #dfebf4;*/
+    /*background-color: rgb(196, 200, 204);*/
+    background-color: #f9f6ed;
+}
+#bev_dc_table>tbody:nth-child(even) table.parent_tb{
+    /*background-color: #dfebf4;*/
+    /*background-color: rgb(196, 200, 204);*/
+    background-color: #f9f6ed;
+}
+#bev_dc_table>tbody:nth-child(odd){
+    background-color: #f4e9c3;
+}
+#bev_dc_table>tbody:nth-child(odd) table.parent_tb{
+    background-color: #f4e9c3;
+}
+
+.dc-table-group table.parent_tb{
+    margin-bottom: 0;
+}
+.dc-table-group table.parent_tb span.tb_group_status{
+    margin-left: 2px;
+}
+
+/*div.chart_filters_wrapper > div{*/
+    /*position: relative;*/
+    /*padding-top: 5px;*/
+    /*padding-bottom: 5px;*/
+/*}*/
+
+div.filters_wrapper{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div.filter_label{
+    text-align: left;
+    width: 38%;
+}
+
+/*div.filter_reset{*/
+    /*float: right;*/
+/*}*/
+
+/* for bet group select */
+/*div.bet_groups_filter{*/
+    /*display: inline;*/
+/*}*/
+span.select2{
+    /*width: auto !important;*/
+    width: 100% !important;
+    min-width: 150px !important;
+}
+
+div.filtered_bets div.row{
+    display: flex;
+}
+
+div.filtered_bets #dc-data-count div{
+    float: left;
+    height:100%;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+.filtered_bets span {
+    color: #ccccccc2;
+}
+.filtered_bets .filter-count{
+    color: #bd9945;
+    font-weight: bold;
+    /*background-color: #967d3f;*/
+}
+.filtered_bets span.separator{
+    padding-left: 0;
+    padding-right: 0;
+}
+.filtered_bets span.total-count{
+    /*padding-left: 0;*/
+}
+.filtered_bets div.filter_numbers{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.filtered_bets div.filter_reset{
+    padding-top: 5px !important;
+}
+.filtered_bets div.filter_reset a{
+    border-radius: 15% !important;
+    margin-left: 40px;
+}
+
+a.reset {
+    color: #d47406;
+}
+a.reset:hover{
+    color: #c49f47;
+}
+
+.bev_pies_wrapper tr td {
+    /* overwriting dark theme default */
+    background-color: transparent;
+}
+
+.bev_pies_wrapper span.chart-title{
+    background-color: transparent;
+    color: #c49f47;
+    font-weight: bold;
+}
+
+.dc-chart .bev_dc_table_group_wrapper table.parent_tb{
+    /*background-color: #333 !important;*/
+    background-color: transparent !important;
+}
+
+
+#bev_dc_table_paging_top input:hover, #bev_dc_table_paging_bottom input:hover{
+    background-color: #323942 !important;
+    border-color: rgba(54, 66, 79, 1) !important;
+}
+#bev_dc_table_paging_top input:active, #bev_dc_table_paging_bottom input:active{
+    background-color: #323942 !important;
+    border-color: transparent !important;
+}
+#bev_dc_table_paging_top input:focus, #bev_dc_table_paging_bottom input:focus{
+    /*background-color: #333 !important;*/
+    border-color: rgba(54, 66, 79, 1) !important;
+}
+
+.filters_wrapper .filter_label{
+    color: #ccccccc2;
+    background-color: #55555545;
+    border: 1px solid #333;
+    border-right: 0;
+}
+.filters_wrapper .filter_reset{
+    background-color: #55555545;
+    border: 1px solid #333;
+    border-left: 0;
+}
+
+#dc-data-count{
+    background-color: #55555545;
+}
+
+.won{
+    background-color: rgb(34, 76, 34) !important;  /* rgba(0, 128, 0, 0.33) !important; */
+}
+.lost{
+    background-color: rgb(123, 31, 31) !important;  /* background-color: rgba(229, 0, 0, 0.4) !important; */
+}
+
+#bev_dc_table>tbody:nth-child(even){
+    background-color: transparent;
+}
+#bev_dc_table>tbody:nth-child(odd){
+    background-color: transparent;
+}

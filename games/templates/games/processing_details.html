@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block processing_details %}
+    <h3>Processing details</h3>
+
+    <h3>Open Events</h3>
+    {% if open_events %}
+        {% for open_event in open_events %}
+            <h4>Event : {{ open_event }} : Has been processed successfully</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No open events were processed!</h4>
+    {% endif %}
+
+    <h3>Updated Selected events</h3>
+    {% if updated_selected_events %}
+        {% for updated_selected_event in updated_selected_events %}
+            <h4>Selected Event : {{ updated_selected_event }} : Has been updated successfully</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No selected events were updated!</h4>
+    {% endif %}
+
+    <h3>Open User Bets</h3>
+    {% if open_user_bets %}
+        {% for open_user_bet in open_user_bets %}
+            <h4>Bet : {{ open_user_bet }} has been processed successfully</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No bets were processed!</h4>
+    {% endif %}
+
+{% endblock %}

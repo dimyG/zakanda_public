@@ -1,0 +1,20 @@
+{#{% load staticfiles %}#}
+
+<div class="modal fade" id="bet_tags_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+{#        <img src="{% static 'img/bg_grey_05.jpg' %}" id="modal_bg" alt="">#}
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Define Bet Details</h4>
+      </div>
+      <div class="modal-body">{# This content is loaded with ajax when the link is clicked #}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn_zak_dark_01" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn_zak_dark_01" id="bet_tags_select_ok">OK</button>
+      </div>
+
+    </div>
+  </div>
+</div>

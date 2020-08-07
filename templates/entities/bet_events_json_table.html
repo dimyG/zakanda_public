@@ -1,0 +1,128 @@
+{% extends parent %}
+{% load staticfiles %}
+
+{# it has no body data since it will be populated with ajax data #}
+
+{% block content %}
+    <div class="col-sm-12 loading_wrapper">
+        {# <img class="img-responsive center-block" src="{% static 'img/preloader_girl_01.gif' %}" alt="Loading..."/>#}
+        {% include 'entities/balls.svg' %}
+    </div>
+
+    <div id="bet_events_tabs_wrapper" class="hidden">
+
+        <div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-feed"></i>Bet Events
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+        <div class="portlet-body">
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#open_bet_events" role="tab" data-toggle="tab">Open Bet Events</a></li>
+            <li role="presentation"><a href="#closed_bet_events" role="tab" data-toggle="tab">Closed Bet Events</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane active" id="open_bet_events">
+            <table id="open_bet_events_table" class="display responsive" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Date</th>
+                        <th data-priority="1">Event</th>
+                        <th data-priority="2">Selection</th>
+                        <th>Market</th>
+                        <th data-priority="3">Status</th>
+                        <th>Result</th>
+                        <th>Bet</th>
+                        <th>Amount</th>
+                        <th>Round</th>
+                        <th>Competition</th>
+                        <th>Country</th>
+                        <th>Season</th>
+                    </tr>
+                </thead>
+{#                <tbody>#}
+{#                    <tr class="odd center-text">#}
+{#                        <td valign="top" colspan="8" class="dataTables_empty"><hr><label class="label label-warning">There are no bets...</label><hr></td>#}
+{#                    </tr>#}
+{#                </tbody>#}
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Selection</th>
+                        <th>Market</th>
+                        <th>Status</th>
+                        <th>Result</th>
+                        <th>Bet</th>
+                        <th>Amount</th>
+                        <th>Round</th>
+                        <th>Competition</th>
+                        <th>Country</th>
+                        <th>Season</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="closed_bet_events">
+            <table id="closed_bet_events_table" class="display responsive" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th></th> {# control #}
+                        <th></th> {# counter #}
+                        <th>Date</th>
+                        <th data-priority="1">Event</th>
+                        <th data-priority="2">Selection</th>
+                        <th>Market</th>
+                        <th data-priority="3">Status</th>
+                        <th>Result</th>
+                        <th>Bet</th>
+                        <th>Amount</th>
+                        <th>Round</th>
+                        <th>Competition</th>
+                        <th>Country</th>
+                        <th>Season</th>
+                    </tr>
+                </thead>
+{#                <tbody>#}
+{#                    <tr class="odd center-text">#}
+{#                        <td valign="top" colspan="8" class="dataTables_empty"><label class="label label-warning">There are no bets...</label></td>#}
+{#                    </tr>#}
+{#                </tbody>#}
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Selection</th>
+                        <th>Market</th>
+                        <th>Status</th>
+                        <th>Result</th>
+                        <th>Bet</th>
+                        <th>Amount</th>
+                        <th>Round</th>
+                        <th>Competition</th>
+                        <th>Country</th>
+                        <th>Season</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        </div>
+
+        </div>
+        </div>
+    </div>
+
+{% endblock %}

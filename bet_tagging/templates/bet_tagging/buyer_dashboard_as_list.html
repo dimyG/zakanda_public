@@ -1,0 +1,107 @@
+{% extends parent %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-sm-12">
+            <div class="portlet box blue-hoki">
+{#                <div class="portlet-title">#}
+{#                    <div class="caption">{% trans 'Buyer Dashboard' %}</div>#}
+{#                    <div class="actions"></div>#}
+{#                </div>#}
+                <div class="portlet-body">
+
+                    <div class="mt-element-list">
+                        <div class="mt-list-head list-news font-white bg-blue">
+                            <div class="list-head-title-container">
+                                <span class="badge badge-primary pull-right">{{ active_subscriptions|length }}</span>
+                                <h3 class="list-title">{% trans 'Active Subscriptions' %}</h3>
+                            </div>
+                        </div>
+
+                        <div class="mt-list-container list-news">
+                            <ul>
+{#                                {% if not active_subscriptions %}<li class="mt-list-item">{% trans 'Nothing yet'%}</li>{% endif %}#}
+                                {% for subscription in active_subscriptions %}
+                                    <li class="mt-list-item">
+                                        <div class="list-icon-container">
+                                            <a href="javascript:;">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                        <div class="list-datetime bold uppercase font-green"><span class="dim_in_list" >ends:</span> {{ subscription.end_date }} </div>
+                                        <div class="list-item-content">
+                                            <h3 class="uppercase">
+                                                <a href="javascript:;"><span class="dim_in_list">{% trans 'bet group' %}: </span>{{ subscription.service.bet_group.name }} {{ subscription.service.bet_group.owner }}</a>
+                                            </h3>
+{#                                            <p>{{ subscription.service.bet_group.description|truncatechars:18 }} </p>#}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-element-list">
+                        <div class="mt-list-head list-news font-white bg-blue">
+                            <div class="list-head-title-container">
+                                <span class="badge badge-primary pull-right">{{ inactive_subscriptions|length }}</span>
+                                <h3 class="list-title">{% trans 'Past Subscriptions' %}</h3>
+                            </div>
+                        </div>
+                        <div class="mt-list-container list-news">
+                            <ul>
+                                {% for subscription in inactive_subscriptions %}
+                                    <li class="mt-list-item">
+                                        <div class="list-icon-container">
+                                            <a href="javascript:;">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                        <div class="list-datetime bold uppercase font-green"><span class="dim_in_list" >ended:</span> {{ subscription.end_date }} </div>
+                                        <div class="list-item-content">
+                                            <h3 class="uppercase">
+                                                <a href="javascript:;"><span class="dim_in_list">{% trans 'bet group' %}: </span>{{ subscription.service.bet_group.name }} {{ subscription.service.bet_group.owner }} </a>
+                                            </h3>
+{#                                            <p>{{ subscription.service.bet_group.description|truncatechars:18 }} </p>#}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-element-list">
+                        <div class="mt-list-head list-news font-white bg-blue">
+                            <div class="list-head-title-container">
+                                <span class="badge badge-primary pull-right">{{ payments|length }}</span>
+                                <h3 class="list-title">{% trans 'Payments History' %}</h3>
+                            </div>
+                        </div>
+                        <div class="mt-list-container list-news">
+                            <ul>
+                                {% for payment in payments %}
+                                    <li class="mt-list-item">
+                                        <div class="list-icon-container">
+                                            <a href="javascript:;">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                        <div class="list-datetime bold uppercase font-green"> {{ payment.statusreport_set.all.0.created_at }} </div>
+                                        <div class="list-item-content">
+                                            <h3 class="uppercase">
+                                                <a href="javascript:;">{{ payment.amount }} {{ payment.currency }}</a>
+                                            </h3>
+{#                                            <p>{{ subscription.service.bet_group.description|truncatechars:18 }} </p>#}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    </div>
+{% endblock %}

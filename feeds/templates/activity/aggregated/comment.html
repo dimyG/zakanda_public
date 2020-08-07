@@ -1,0 +1,45 @@
+{% load avatar_tags %}
+{% load i18n %}
+
+{% with activity.is_seen as is_seen %}{% with activity.is_read as is_read %}
+
+    <li class="list-group-item {% if not is_seen %} not_seen {% else %} seen {% endif %} {% if not is_read %} not_read {% endif %}">
+        <div class="row notification_activity">
+
+{#            <div>{{ activity }}</div><br>#}
+            <div>Your bet on </div>
+            <div>
+            {% for act in activity.activities %}
+                {% with act.object as total_bet %}
+                {% if forloop.first %}
+                {# if there are more than one comments on the same total bet then show only one message #}
+
+                    <a class="pjax_call bg_orange url_param_dependent" href="{{ act.object.get_absolute_url }}">
+
+                    {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+{#                            <div class="col-sm-3 col-xs-12">#}
+                                <span class="label label-sm bg_zak_orange" >
+                                    {{ bet_event.event.home_team.generic_name }} - {{ bet_event.event.away_team.generic_name }}
+                                </span>&nbsp&nbsp
+{#                            </div>#}
+                        {% endfor %}
+                    {% endfor %}
+
+                    </a>
+
+{#                <div>{% trans 'There are new comments in ' %}#}
+{#                    <a class="pjax_call url_param_dependent" href="{{ act.object.get_absolute_url }}">#}
+{#                        {% trans 'this' %}</a>#}
+{#                    {% trans 'bet of yours' %}#}
+{#                </div>#}
+
+                {% endif %}
+                {% endwith %}
+            {% endfor %}
+            </div>
+        <div>has new comments</div>
+        </div>
+    </li>
+
+{% endwith %}{% endwith %}

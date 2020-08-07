@@ -1,0 +1,23 @@
+{% extends parent %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-sm-12">
+         <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-feed"></i>{{ title }}
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body">
+                {% include 'entities/total_bets_datatable.html' with total_bets=total_bets table_id="raw_bev_parent_tbs" open="True"%}
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends parent %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+
+    <div class="col-sm-12 loading_wrapper">
+        {# <img class="img-responsive " src="{% static 'img/preloader_girl_01.gif' %}" alt="Loading..."/>#}
+        {% include 'entities/balls.svg' %}
+    </div>
+
+    <div id="profile_charts_wrapper" class="hidden col-sm-12">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="portlet box blue-hoki nested_parent">
+                <div class="portlet-body portlet_parent">
+                    <div class="row ">
+                        <div class="col-lg-4 col-md-12" id="bank_growth_history_wrapper">
+                            {% include 'bet_statistics/entities/bank_growth_linechart.html' %}
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12" id="profile_description">
+                            {% include 'bet_statistics/entities/profile_description.html' %}
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12" id="overview_values_wrapper">
+                            {% include 'bet_statistics/entities/overview_values.html' %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% include 'bet_statistics/entities/misc.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-lg-3 col-sm-12" id="tb_status_wrapper">
+            {% include 'bet_statistics/entities/tb_status_pie.html' %}
+        </div>
+        <div class="col-lg-9 col-sm-12" id="">
+            {% include 'bet_statistics/entities/bev_pies.html' %}
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-lg-8 col-sm-12" id="event_table_wrapper">
+            {% include 'bet_statistics/entities/tbs_table.html' %}
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <div class="row">
+
+                <div class="col-sm-12" id="">
+                    {% include 'bet_statistics/entities/filters.html' %}
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="portlet box blue-hoki collapsed_md_down">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-rss"></i>{% trans 'Seasons' %} {% if normalization_method == 'Unit' %} <span style="font-size: 12px;"> ({% trans 'in units' %})</span> {% endif %}
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
+                        </div>
+                        <div class="actions">
+                        </div>
+                    </div>
+                    <div class="portlet-body portlet-collapsed">
+                        <div class="row">
+                        <div id="seasons_bubble_chart" class="col-sm-12"></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="portlet box blue-hoki collapsed_md_down">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-rss"></i>{% trans 'Bank Growth History' %} {% if normalization_method == 'Unit' %} <span style="font-size: 12px;"> ({% trans 'in units' %})</span> {% endif %}
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
+                        </div>
+                        <div class="actions">
+                        </div>
+                    </div>
+                    <div class="portlet-body portlet-collapsed">
+                        <div class="row">
+                        <div id="bank_growth_history_bar_chart" class="col-sm-12"></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{#    <div class="row ">#}
+{#        <div class="col-xs-12">#}
+{#        <div class="portlet box blue-hoki">#}
+{#            <div class="portlet-title">#}
+{#                <div class="caption">#}
+{#                    <i class="fa fa-rss"></i>Charts#}
+{#                </div>#}
+{#                <div class="actions">#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="portlet-body">#}
+{#                <div class="row">#}
+{#                    <div id="deposit_bar_chart" class="col-lg-4 col-sm-12"><span class="chart-title">DEPOSITS</span></div>#}
+{#                    <div id="seasons_bubble_chart" class="col-lg-4 col-sm-12"><span class="chart-title">SEASONS</span></div>#}
+{#                    <div id="bank_growth_history_bar_chart" class="col-lg-4 col-sm-12"><span class="chart-title">BANK GROWTH HISTORY</span></div>#}
+{#                    <div id="competitions_bubble_chart" class="col-lg-4 col-sm-12"></div>#}
+{#                    <div id="teams_bubble_chart" class="col-lg-4 col-sm-12"></div>#}
+{#                    <div id="profit_history_chart" class="col-lg-4 col-sm-12"></div>#}
+{#                    <div id="profit_history_histogram" class="col-lg-4 col-sm-12"></div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        </div>#}
+{#    </div>#}
+
+    </div>
+
+    </div>
+
+{#    {% include 'comments.html' %}#}
+
+{% endblock %}

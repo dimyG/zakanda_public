@@ -1,0 +1,7 @@
+{% extends parent %}
+
+{% block content %}
+
+    [{{ raw_bet_event.event.date }}] {{ raw_bet_event.event.home_team.generic_name }} - {{ raw_bet_event.event.away_team.generic_name }} <strong>{{ raw_bet_event.choice }}</strong>
+
+{% endblock %}

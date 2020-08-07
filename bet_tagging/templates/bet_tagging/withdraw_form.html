@@ -1,0 +1,33 @@
+{% extends parent %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-object-ungroup"></i>Withdraw
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body form">
+
+    <form role="form" id="create_withdrawal" action="#" method="post" data-pjax data-pjax_container="#main_container">
+        <div class="form-body">
+            {% csrf_token %}
+            {# {{ form.as_p }} #}
+            {% include 'entities/form.html' %}
+        </div>
+        <div class="form-actions">
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

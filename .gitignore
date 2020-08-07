@@ -1,0 +1,120 @@
+# pycharm project specific files
+.idea/workspace.xml
+
+# From Python gitignore github
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+
+# Translations (manually removed .mo from ignored files)
+# *.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+######
+
+# javascript libraries (except from the ones that I have changed)
+/static/js/libs/*
+!static/js/libs/jquery.pjax.js
+
+# sensitive_data
+/zakanda/sensitive_data.py
+
+# avatar images directory
+/media/avatars
+
+/xmlSoccerParser/my_test.py
+
+venv
+*.pyc
+staticfiles
+/static-files/*
+.env
+*.env
+
+# local_logfile
+/zakanda/logfile.log
+
+# production settings
+/zakanda/settings/local.py
+
+# test fixtures
+/fixtures/*
+
+# temp folder
+/temp/*
+
+# vcr folders
+/vcr_cassetes/*
+/sportmonks/vcr_cassetes/*
+
+# response_texts
+/sportmonks/response_texts/*
+/sportmonks/response_texts/odds_by_fixtures_01.txt
+/sportmonks/response_texts/fixtures_by_date_range_2016-11-15_2017-11-16_.txt
+/sportmonks/response_texts/smonks_views_teams_by_seasons__country.txt
+
+# outputs folder
+/outputs/*
+
+# they contain environment variable values
+/docker_aws_ECS/web_task.json
+/docker_aws_ECS/worker_task.json
+/docker_aws_ECS/scheduler_task.json
+
+# the ssh key for connecting to AWS EC2 instances (that run the ECS containers cluster)
+/docker_aws_ECS/zakanda_container_instances.pem
+
+# zakanda env variables
+zakanda_local.env
+zakanda_aws.env

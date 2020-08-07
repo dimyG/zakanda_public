@@ -1,0 +1,63 @@
+{% extends parent %}
+{% load i18n avatar_tags %}
+
+{% block content %}
+
+
+{#    <div class="col-sm-12 centered" data-toggle="tooltip" title="Your current profile picture">#}
+{#        {% avatar user 160 class="img-circle centered" %}#}
+{#    </div>#}
+{#    </div>#}
+{#    <br><br>#}
+
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-feed"></i>Add Picture
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+        <div class="portlet-body">
+
+    <div class="row">
+    <div class="col-sm-12 centered">
+    <form enctype="multipart/form-data" data-pjax data-pjax_container="#main_container" method="POST" action="{% url 'avatar_add' %}" class="centered">{% csrf_token %}
+
+        {% for field in upload_avatar_form %}
+            {% if field.errors %}
+                <div class="form-group has-error">
+                {% for error in field.errors %}
+                    <div class=""><strong>{{ error|escape }}</strong></div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-preview thumbnail" data-trigger="fileinput">
+                {# <img src="{% static 'img/add_image.gif' %}" alt="..."> #}
+                <h3 class="text_in_image_input">Click here to add an image...</h3>
+            </div>
+            <div>
+                <span class="btn btn-default btn-file hidden">
+                    <span class="fileinput-new">Select image</span>
+                    <span class="fileinput-exists">Change</span>
+                    {# The upload form waits for an input field with name="avatar" and id="id_avatar" to get the picture #}
+                    <input type="file" id="id_avatar" name="avatar">
+                </span>
+                <input type="submit" value="{% trans "Upload it" %}" class="btn btn-primary btn_zak_dark_01" />
+                <a href="#" class="btn btn-primary btn_zak_danger fileinput-exists" data-dismiss="fileinput">Remove it</a>
+            </div>
+        </div>
+
+    </form>
+    </div>
+    </div>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

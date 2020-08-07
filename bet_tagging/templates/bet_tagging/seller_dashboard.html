@@ -1,0 +1,102 @@
+{% extends parent %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+
+{#    <div class="col-sm-12">#}
+{#        <div class="portlet box blue-hoki">#}
+{#            <div class="portlet-title">#}
+{#                <div class="caption"><i class=""></i>{% trans 'Next Payment' %}</div>#}
+{#            </div>#}
+{#            <div class="portlet-body">#}
+{#                <div class="table-scrollable">#}
+{#                    <table class="table table-striped table-hover">#}
+{#                        <thead>#}
+{#                            <tr>#}
+{#                                <th> {% trans 'Payment Date' %} </th>#}
+{#                                <th> {% trans 'Amount' %} </th>#}
+{#                            </tr>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{#                            <tr>#}
+{#                                <td> {{ due_funds.pay_day }} </td>#}
+{#                                <td> {{ due_funds.amount }} {{ due_funds.currency }}</td>#}
+{#                            </tr>#}
+{#                        </tbody>#}
+{#                    </table>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption"><i class=""></i>{% trans 'Subscriptions' %}</div>
+            </div>
+            <div class="portlet-body">
+
+                <div class="table-scrollable">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> {% trans 'Bet Group' %} </th>
+                                <th> {% trans 'Duration' %} </th>
+                                <th> {% trans 'Amount' %} </th>
+                                <th> {% trans 'Subscribers' %}</th>
+                                <th> {% trans 'Past Subscribers' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for service in active_services %}
+                            <tr>
+                                <td> {{ forloop.counter }}</td>
+                                <td> {{ service.bet_group.name }} </td>
+                                <td> {{ service.duration }} </td>
+                                <td> {{ service.price }} EUR </td>
+                                <td> {{ service.active_subscribers|length }} </td>
+                                <td> {{ service.past_subscribers }} </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-0"></div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2 ">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-yellow-gold">
+                        <span data-counter="counterup" data-value="567">{{ next_payment_amount }}</span>
+                    </h3>
+                    <small>{% trans 'Next Monthly Payment' %}</small>
+                </div>
+                <div class="icon">
+                    <i class="glyphicon-euro font-yellow-gold"></i>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div class="progress">
+                    <span style="width: 100%;" class="progress-bar progress-bar-success grey-cascade">
+                        <span class="sr-only">100% grow</span>
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status-title"> {% trans 'Monthly Turnover' %} </div>
+                    <div class="status-number"> {{ monthly_turnover }} € </div><br>
+                    <div class="status-title"> {% trans 'Tipster Tier' %} </div>
+                    <div class="status-number"> {{ tier }} % </div><br>
+                    <div class="status-title"> {% trans 'Payment Fees' %} </div>
+                    <div class="status-number"> {{ fees|floatformat:2 }} € </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

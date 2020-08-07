@@ -1,0 +1,102 @@
+{# this file is used to define the left sidebar part when the left_and_main container is updated  #}
+{# it is included in the profile.html so it must not extend anything (and consequently not override any block #}
+
+{#{% extends parent %}#}
+{% load activity_tags %}
+{% load staticfiles %}
+{% load avatar_tags %}
+{% load i18n %}
+
+{#{% block left_sidebar %}#}
+<div class="user_info row" data-user_id="{{ target_user.id }}">
+<div class="col-sm-12">
+<ul class="page-sidebar-menu {% if not user.is_authenticated %}page-sidebar-menu-closed{% endif %}">
+
+    <li class="sidebar-toggler-wrapper hide">
+        <div class="sidebar-toggler">
+            <span></span>
+        </div>
+    </li>
+
+    <li class="nav-item profile_picture_wrapper">
+        {# <a class="nav-link nav-toggle"></a> #}
+        <div class="page-header-fixed row">
+            <div class="col-md-12">
+            <div class="profile-sidebar">
+            <div class="profile-sidebar-portlet ">
+
+            <div class="profile-userpic">
+                {% avatar target_user 160 class="img-circle img-responsive" %}
+            </div>
+
+            </div></div></div>
+        </div>
+    </li>
+
+    <li class="">
+{#        <a class="nav-link nav-toggle dummy_link"></a>#}
+
+        <ul class="sub-menu always-open profile_info_wrapper">
+        <li class="nav-item">
+            <div class="profile-usertitle nav-toggle row"><div class="col-sm-12">
+                <div class="profile-usertitle-name"> {{ target_user.username }} </div>
+                {# <div class="profile-usertitle-job"> Developer </div> #}
+            </div></div>
+
+            {% if request.user != target_user %}
+            <div class="profile-userbuttons row" style="padding-bottom: 20px"><div class="col-sm-12">
+                {% include 'user_accounts/follow.html' with target_user=target_user %}
+                {% include 'subscribe.html' with length_limit=2 %}
+            </div></div>
+            {% endif %}
+
+{#            <div class="row">#}
+{#                <div class="col-sm-3"><span class="label label-sm label-success" style="width: 50px;"> Yield: </span>12%></div>#}
+{#                <div class="col-sm-3"><span class="label label-sm label-success" style="width: 50px;"> ROI: </span>56%</div>#}
+{#                <div class="col-sm-3"><span class="label label-sm label-success" style="width: 50px;"> Num Bets: </span>124</div>#}
+{#            </div>#}
+
+            <div class="profile-usermenu row"><div class="col-sm-12">
+                <ul class="sub-menu always-open">
+                    <li class="nav-item">
+                        <a href="{% url 'user_accounts:users_relation_list' user_pk=target_user.id relation="Followers"%}" class="pjax_call">
+                            <span class="title">{% trans "Followers" %}</span>
+                            <span class="badge badge-roundless"> {{ followers|length }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'user_accounts:users_relation_list' user_pk=target_user.id relation="Following"%}" class="pjax_call">
+                            <span class="title">{% trans "Following" %}</span>
+                            <span class="badge badge-roundless"> {{ following|length }} </span>
+                        </a>
+                    </li>
+{#                    <li class="nav-item">#}
+{#                        <a href="{% url 'bet_statistics:bet_events_table_template' user_id=target_user.id %}" class="pjax_call">Activities</a>#}
+{#                    </li>#}
+                    <li class="nav-item">
+                        <a href="{% url 'bet_statistics:profile_stats_template' user_pk=target_user.pk %}" class="pjax_call">{% trans "Profile" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'bet_statistics:total_bets_list' user_id=target_user.id %}" class="pjax_call url_param_dependent">{% trans "Bets" %}</a>
+                    </li>
+{#                    <li class="nav-item">#}
+{#                        <a href="{% url 'bet_statistics:bet_events_table_template' user_id=target_user.id %}" class="pjax_call url_param_dependent">Bet Events</a>#}
+{#                    </li>#}
+
+                    {% if request.user.id == target_user.id %}
+                        <li class="nav-item"><a href="{% url 'user_accounts:user_tips' user_pk=target_user.id %}" class="pjax_call url_param_dependent">{% trans "My Tips" %}</a></li>
+                    {% endif %}
+
+                    <li class="nav-item">
+                        <a href="{% url 'bet_tagging:bet_tags_list' target_user_id=target_user.id %}" class="pjax_call url_param_dependent">{% trans "Bet Groups" %}</a>
+                    </li>
+                </ul>
+            </div></div>
+        </li>
+        </ul>
+    </li>
+
+</ul>
+</div>
+</div>
+{#{% endblock %}#}

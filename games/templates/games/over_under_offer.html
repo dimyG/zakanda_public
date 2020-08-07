@@ -1,0 +1,45 @@
+{% load games_template_filters %}
+<div class="row">
+
+{% with threshold_per_over_under_market_type|get_item:market_type as over_under_threshold %}
+{% with over_under_threshold|stringformat:"f"|slice:":3" as over_under_threshold %}
+{% with "Over "|add:over_under_threshold as over_text %}
+{% with "Under "|add:over_under_threshold as under_text %}
+
+{% if odd_dict %} {# odd_dict is: {latest_odd_obj: True/False} If False the odd is not from the selected bookmaker #}
+    {% if over_under_threshold %}
+
+    <div class="col-md-3 col-xs-12 market_label">
+        <span class="label label-sm label-primary bg_zak_orange {% if odd_dict and not odd_dict.values.0 %}other_bookmaker{% endif %}">
+            {{ market_type }}{% if odd_dict and not odd_dict.values.0 %}<span> * </span>{% endif %}
+        </span>
+    </div>
+    <div class="btn-group market_{{ market_type.id }}_wrapper col-md-9 col-xs-12" role="group" aria-label="...">
+    <div class="row">
+        {% if odd_dict.values.0 %}
+            {% include 'games/offer_choice.html' with choice=over_under_market_choices.over    text=over_text     init_odd=odd_dict.keys.0.over   span_class="" %}
+            {% include 'games/offer_choice.html' with choice=over_under_market_choices.under    text=under_text     init_odd=odd_dict.keys.0.under     span_class="" %}
+        {% else %}
+            {% include 'games/offer_choice.html' with choice=over_under_market_choices.over    text=over_text     init_odd=odd_dict.keys.0.over   span_class="" %}
+            {% include 'games/offer_choice.html' with choice=over_under_market_choices.under    text=under_text     init_odd=odd_dict.keys.0.under     span_class="" %}
+        {% endif %}
+    </div>
+    </div>
+
+    {% else %}
+        Over Under threshold has no value
+    {% endif %}
+
+{% else %}
+    <div class="col-md-3 col-xs-12 market_label"><span class="label label-sm label-primary bg_zak_orange">{{ market_type }}</span></div>
+    <div class="btn-group market_{{ market_type.id }}_wrapper col-md-9 col-xs-12" role="group" aria-label="...">
+    <div class="row">
+    {% include 'games/no_odds_offer.html' with choice=over_under_market_choices.over    text=over_text %}
+    {% include 'games/no_odds_offer.html' with choice=over_under_market_choices.under   text=under_text %}
+    <br>
+    <span class="label label-danger">No ods available yet</span>
+    </div></div>
+{% endif %}
+
+{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+</div>

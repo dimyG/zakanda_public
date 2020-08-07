@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    {% trans "Verify Your E-mail Address" %}
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body">
+
+    <div class="row">
+    <div class="col-sm-12">
+
+        <h5><span>{% blocktrans %}We have sent an e-mail to you for verification.{% endblocktrans %}</span></h5>
+        <h5><span>{% blocktrans %}Follow the link in the email to finalize the signup process.{% endblocktrans %}</span></h5>
+        <h5><span>{% blocktrans %}Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</span></h5>
+        <hr>
+        <h5><span>{% blocktrans %}* Check also in your Spam/Junk folder. If it is there, then mark our email as safe!{% endblocktrans %}</span></h5>
+
+    </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

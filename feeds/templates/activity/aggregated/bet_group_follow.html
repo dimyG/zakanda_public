@@ -1,0 +1,56 @@
+{% load avatar_tags %}
+{% load i18n %}
+
+{% with activity.is_seen as is_seen %}{% with activity.is_read as is_read %}
+
+    <li class="list-group-item {% if not is_seen %} not_seen {% else %} seen {% endif %} {% if not is_read %} not_read {% endif %}">
+        <div class="row notification_activity">
+
+{#            <div>{{ activity }}</div><br>#}
+
+            {% for act in activity.activities %}
+                {% if act.object in request.user.bet_tags.all %}
+                    {# follow activities are aggregated by the object. #}
+                    {# There might be many actors but one object and so only one message #}
+                    {# should be shown. The activity.activities would be more than one so we want to do this only once #}
+                    {# this is why we create html content only for the last loop. To make only one aggregated message #}
+                    {# But if the activities #}
+                    {% if forloop.last %}
+                        <div>Your premium bet group {{ act.object.name }} has {{ activity.actor_count }} new subscriber{{ activity.actor_count|pluralize }} today!</div>
+                        <div>
+                            {% for act in activity.activities %}
+                                {% if forloop.last and activity.actor_count > 1%}and {% endif %}
+                                &nbsp
+                                <a href="{% url 'bet_statistics:profile_stats_template' user_pk=act.actor.id %}"
+                                   class="pjax_call {% if not is_seen %} bg_dark {% else %} bg_orange {% endif %}">
+                                    <span class="">{{ act.actor.username }}</span>
+                                    {# avatar tag doesn't work with user_id, it needs a user object #}
+                                    <span class="">{% avatar act.actor 30 class="img-circle" %}</span>
+                                </a>
+                                &nbsp &nbsp
+                                {# {% if forloop.revcounter > 2 %}, {% endif %}#}
+                            {% endfor %}
+                            {% if activity.actor_count > 1%}are {% else %}is {% endif %}now subscribed to your bet group.
+                        </div>
+                        <div>Congratulations! Keep up the good work!</div>
+                    {% endif %}
+                {% else %}
+                {#  this should never happen #}
+                    <div>
+                        <a href="{% url 'bet_statistics:profile_stats_template' user_pk=act.actor.id %}"
+                           class="pjax_call {% if not is_seen %} bg_dark {% else %} bg_orange {% endif %}">
+                            <span class="">{{ act.actor.username }}</span>
+                            {# avatar tag doesn't work with user_id, it needs a user object #}
+                            <span class="">{% avatar act.actor 30 class="img-circle" %}</span>
+                        </a>
+                        &nbsp followed &nbsp
+                        {{ act.object.username }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            {# {{ activity.actor_count }} user{{ activity.actor_count|pluralize }} liked {% render_activity activity.activities.0 %}#}
+        </div>
+    </li>
+
+{% endwith %}{% endwith %}

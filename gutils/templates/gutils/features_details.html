@@ -1,0 +1,197 @@
+{% extends parent %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="row feature_wrapper" id="global_coverage" xmlns="http://www.w3.org/1999/html"><div class="col-sm-12">
+    <div class="portlet light nested_parent">
+        <div class="portlet-body">
+            <div class="row feature v_center_children">
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="card-title">
+                            <span> {% trans "Global Coverage" %} </span>
+                        </div>
+                        <div class="description_wrapper card-desc"><span>
+                            {% blocktrans %} Choose any football competition on the planet, select your favorite bookmaker and
+                            submit your bets. They will be added to your profile statistics and they will be sent as tips
+                            to your followers. We offer the latest available odds from a wide range of bookmakers, but if you find some
+                            inconsistencies you can easily fine tune them. {% endblocktrans %}
+                        </span></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="img_wrapper"><img src="{% static 'img/flags_01b_transparent_2.gif' %}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>
+
+{% get_current_language as LANGUAGE_CODE %}
+
+<div class="row feature_wrapper" id="bet_group_management"><div class="col-sm-12">
+    <div class="portlet light nested_parent">
+        <div class="portlet-body">
+            <div class="row feature v_center_children">
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="card-title">
+                            <span> {% trans "Bet Groups Management" %} </span>
+                        </div>
+                        <div class="description_wrapper card-desc"><span>
+                            {% blocktrans %} Create as many Bet Groups as you want and manage them separately.
+                                You can think of Bet Groups as wallets to which you make deposits and place your bets with. When you
+                                sign up in zakanda, a bet group is automatically created for you. This is your default bet group.
+                                Every time you make a deposit, you deposit to this bet group and when you bet, you use money from this bet group.
+                                You can create more bet groups if you want.
+                            For example, you can create one and name it "Outsiders". After its creation, its balance will
+                                be 0 no matter if you have money in your other bet groups. To put some money to this
+                                new bet group you have to make a new deposit to it. As soon as its balance is greater than 0,
+                                you can start using it for betting. Any time that you want to bet on an outsider,
+                                you can use the money of the "Surprises" bet group. This way you will be able to see
+                            how it performs over time without messing with your other groups.{% endblocktrans %}
+                        </span></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="img_wrapper">
+                            {% if LANGUAGE_CODE == 'el' %}
+                                {# use this to produce the iframe code:  http://embedresponsively.com/ #}
+                                <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+                                <div class='embed-container'>
+                                    <iframe src='https://www.youtube.com/embed//DOA0vwz5hz4' frameborder='0' allowfullscreen></iframe>
+                                </div>
+                            {% else %}
+                                <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+                                <div class='embed-container'>
+                                    <iframe src='https://www.youtube.com/embed//uFJ_-K5dVO4' frameborder='0' allowfullscreen></iframe>
+                                </div>
+                            {% endif %}
+                            {# <img src="{% static 'img/bet_groups_03.PNG' %}">#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>
+
+<div class="row feature_wrapper" id="private_amounts"><div class="col-sm-12">
+    <div class="portlet light nested_parent">
+        <div class="portlet-body">
+            <div class="row feature v_center_children">
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="card-title">
+                            <span> {% trans "Private Bet Amounts" %}</span>
+                        </div>
+                        <div class="description_wrapper card-desc"><span>
+                            {% blocktrans %}In zakanda you have the option to keep your bet amounts and balance private, visible only by you.
+                                While you will be betting the amount of your choice, the others will not be able to see
+                                your real bet amounts. They will only see them as percentage of your balance. For example,
+                                if you have 1000 virtual euros in one of your bet groups and you make a bet using 100
+                                of them, the others will see that you used 10 percent of your balance for that bet.
+                                In order for your balance to be private too, we convert it to what we call "units".
+                                A unit represents your average bet amount. For example if your balance is 1000 virtual
+                                euros, and your average bet is 10 euros, then the others will see that your balance is
+                                100 units without knowing that your 100 units correspond to 1000 euros. This
+                                way you can be reassured that your money amounts remain always private.{% endblocktrans %}
+                        <br>
+                            {% blocktrans %}In the main menu bar under your profile picture, there is a switch with 2 states: Cash On and Cash Off.
+                                If you switch to Cash On, then zakanda shows the real bet amounts and balances if possible.
+                                So, if you are checking the history or the bets of a player who doesn't hide his money, you
+                                will see his real amounts. If you switch to "Cash Off" then you will see percentages and units.{% endblocktrans %}
+                        </span></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="img_wrapper">
+                            {% if LANGUAGE_CODE == 'el' %}
+                                {# use this to produce the iframe code:  http://embedresponsively.com/ #}
+                                <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+                                <div class='embed-container'>
+                                    <iframe src='https://www.youtube.com/embed//SV2L4TziWRg' frameborder='0' allowfullscreen></iframe>
+                                </div>
+                            {% else %}
+                                <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+                                <div class='embed-container'>
+                                    <iframe src='https://www.youtube.com/embed//JdqEmGMDeE8' frameborder='0' allowfullscreen></iframe>
+                                </div>
+                            {% endif %}
+                            {# <img src="{% static 'img/bet_list_04.PNG' %}">#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>
+
+<div class="row feature_wrapper" id="interactive_statistics"><div class="col-sm-12">
+    <div class="portlet light nested_parent">
+        <div class="portlet-body">
+            <div class="row feature v_center_children">
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="card-title">
+                            <span> {% trans "Interactive Charts" %} </span>
+                        </div>
+                        <div class="description_wrapper card-desc"><span>
+                            {% blocktrans %}One of the unique features of zakanda is its interactive statistics. The performance
+                            of a player is described not only by some indicators like ROI and Yield, but by a variety
+                            of charts that interact with each other. For example, in the Wins-Losses pie if you select
+                            the wins, then all the other charts will be filtered to describe the wins. This way
+                            you can see with just one click, which are the won matches, in which markets they correspond (over/under, double chance etc.)
+                            what is their average odd and stake and many more indicators that describe them. {% endblocktrans %}
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="img_wrapper"><img src="{% static 'img/dashboard_03.png' %}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>
+
+<div class="row feature_wrapper" id="betting_community"><div class="col-sm-12">
+    <div class="portlet light nested_parent">
+        <div class="portlet-body">
+            <div class="row feature v_center_children">
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="card-title">
+                            <span> {% trans "Betting Community" %} </span>
+                        </div>
+                        <div class="description_wrapper card-desc"><span>
+                            {% blocktrans %} Betting as a form of entertainment could have a lot of fun. For some
+                                people though, is more than just fun. They are the ones that we call "experts",
+                                who are dedicating endless hours to study the matches, analyze the past performance
+                                of the teams, search for the latest news, check the players mood and motivation, the weather, the
+                                fans, the court and so many variables to end up to the correct betting choices.
+                                If this sounds too much for you, but you still want access to this information, you can simply
+                                follow these experts and receive their valuable advices directly to your inbox.{% endblocktrans %}
+                        </span></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 portlet light" id="">
+                    <div class="portlet-body">
+                        <div class="img_wrapper"><img src="{% static 'img/advice_grayscale.jpg' %}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>
+{% endblock %}

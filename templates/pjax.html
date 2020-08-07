@@ -1,0 +1,12 @@
+{#<div class="row"><div class="col-sm-12"><h4>pjax main</h4></div></div>#}
+
+{% block messages %}
+    {% include 'messages.html' %}
+{% endblock %}
+
+{% block content %}
+{#    children tempaltes extend the base or pjax. The base has blocks, so they must have also. If they extend pjax #}
+{#    then pjax.html must also have blocks that the chlidren will override. But pajx html doesn't extend the base #}
+{#    so it's blocks don't ovveride base, actually they have nothing to do with base since the response overrides #}
+{#    an already rendered page #}
+{% endblock %}

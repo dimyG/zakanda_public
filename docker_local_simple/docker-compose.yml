@@ -1,0 +1,23 @@
+version: "3"
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: docker_local_simple/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      # the from path is the path of the folder in the VM (so it has to be shared with windows first)
+      - /zakanda_src:/usr/src/zakanda_src
+  worker:
+    build:
+      context: ..
+      dockerfile: docker_local_simple/Dockerfile-worker
+    volumes:
+      - /zakanda_src:/usr/src/zakanda_src
+  scheduler:
+    build:
+      context: ..
+      dockerfile: docker_local_simple/Dockerfile-scheduler
+    volumes:
+      - /zakanda_src:/usr/src/zakanda_src

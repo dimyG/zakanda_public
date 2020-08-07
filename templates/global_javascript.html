@@ -1,0 +1,11 @@
+{% load staticfiles %}
+
+<!-- Placed at the end of the document so the pages load faster -->
+
+{# The cookies is AMD module. But layout.js uses the global variable Cookies that the cookies creates when it #}
+{# isn't used as AMD module. I couldn't manage to load it with requirejs and making somehow the global Cookies #}
+{# variable available. So I load it normally infecting the global namespace with Cookies variable #}
+<script type="text/javascript" src="{% static 'metronic/assets/global/plugins/js.cookie.js' %}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js" data-main="{% static 'js/main.js' %}"></script>  {# 2.2.0 #}
+

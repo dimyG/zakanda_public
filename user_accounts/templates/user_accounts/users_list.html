@@ -1,0 +1,142 @@
+{% extends parent %}
+{% load avatar_tags %}
+{% load mathfilters %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row users_list_wrapper">
+    <div class="col-sm-12">
+
+    <div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-users"></i>Users
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+        <div class="portlet-body">
+
+    {% if users %}
+        <div class="table-responsive">
+        <table class="display responsive users_table" id="">
+            <thead class="">
+                <tr class="">
+                    <th></th> {# expand button #}
+                    <th></th>
+                    <th data-priority="1">User</th>
+                    <th data-priority="2">Score</th>
+                    <th data-priority="3">Yield</th>
+                    <th data-priority="6">ROI</th>
+                    <th data-priority="4">Open Bets</th>
+                    <th data-priority="7">Number of Bets</th>
+                    <th data-priority="12">Wins</th>
+                    <th data-priority="13">Losses</th>
+                    <th data-priority="10">Win Ratio</th>
+                    <th data-priority="5">Followers</th>
+                    <th data-priority="15">Following</th>
+                    <th data-priority="11">Bet Groups</th>
+                    <th data-priority="9">Action</th>
+                    <th data-priority="8">Services</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for target_user in users %}
+                    {% with target_user.basic_stats.num_bets|sub:target_user.basic_stats.num_opens as closed_total_bets %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="bg_zak_dark align_center">
+                        <a href="{% url 'bet_statistics:profile_stats_template' user_pk=target_user.pk %}" class="pjax_call bg_dark s13">
+                            <div class="row">
+                            <div class=""><span class="">{% avatar target_user 30 class="img-circle" %}</span></div>
+                            <div class=""><span class="username username-hide-on-mobile">{{ target_user }}</span></div>
+                            </div>
+                        </a>
+                    </td>
+
+                    {% if target_user.basic_stats.score > 0 %}
+                        <td class="won"><span class="label label-sm won">{{ target_user.basic_stats.score|floatformat:'1' }}</span></td>
+                    {% else %}
+                        <td class="lost"><span class="label label-sm lost">{{ target_user.basic_stats.score|floatformat:'1' }}</span></td>
+                    {% endif %}
+
+                    {% if target_user.basic_stats.bet_yield > 0 %}
+                        <td class="won">
+                        <span class="label label-sm won">{{ target_user.basic_stats.bet_yield|floatformat:'2' }} %</span></td>
+                    {% else %}
+                        <td class="lost">
+                        <span class="label label-sm lost">{{ target_user.basic_stats.bet_yield|floatformat:'2' }} %</span></td>
+                    {% endif %}
+
+                    {% if target_user.basic_stats.roi > 0 %}
+                        <td class="won">
+                        <span class="label label-sm won">{{ target_user.basic_stats.roi|floatformat:'2' }} %</span></td>
+                    {% else %}
+                        <td class="lost">
+                        <span class="label label-sm lost">{{ target_user.basic_stats.roi|floatformat:'2' }} %</span></td>
+                    {% endif %}
+
+                    <td><a href="{% url 'bet_statistics:total_bets_list' user_id=target_user.id %}" class="pjax_call url_param_dependent"><span style="font-weight: bold">{{ target_user.basic_stats.num_opens }}</span></a></td>
+                    <td><a href="{% url 'bet_statistics:total_bets_list' user_id=target_user.id %}" class="pjax_call url_param_dependent"><span style="font-weight: bold">{{ target_user.basic_stats.num_bets }}</span></a></td>
+                    <td><span class="won_num">{{ target_user.basic_stats.num_wins }}</span></td>
+                    <td><span class="lost_num">{{ target_user.basic_stats.num_losses }}</span></td>
+                    <td>{% if closed_total_bets %}{{ target_user.basic_stats.num_wins|div:closed_total_bets|mul:100|floatformat:'2' }} %{% else %}0 %{% endif %}</td>
+                    <td>
+                        <a href="{% url 'user_accounts:users_relation_list' user_pk=target_user.id relation="Followers"%}" class="pjax_call">
+{#                            <span class="title">{% trans "Followers" %}</span>#}
+                            <span style="font-weight: bold">
+                                {% if not target_user.basic_stats.num_followers %}0{% else %}{{ target_user.basic_stats.num_followers }}{% endif %}
+                            </span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'user_accounts:users_relation_list' user_pk=target_user.id relation="Following"%}" class="pjax_call">
+                            <span style="font-weight: bold">
+                                {% if not target_user.basic_stats.num_following %}0{% else %}{{ target_user.basic_stats.num_following }}{% endif %}
+                            </span>
+                        </a>
+                    </td>
+                    <td><a href="{% url 'bet_tagging:bet_tags_list' target_user_id=target_user.id %}" class="pjax_call url_param_dependent"><span style="font-weight: bold">{{ target_user.basic_stats.num_bet_groups }}</span></a></td>
+
+                    <td>
+                    {% if request.user != target_user %}
+                        <div class="profile-userbuttons row"><div class="col-sm-12">
+                            {% include 'user_accounts/follow.html' with target_user=target_user %}
+                        </div></div>
+                    {% endif %}
+                    </td>
+
+                    <td>
+                        {% if request.user != target_user and target_user.profile.premium_bet_groups %}
+                            {% include 'subscribe.html' with length_limit=1 premium_bet_groups=target_user.profile.premium_bet_groups %}
+                        {% endif %}
+                    </td>
+
+                </tr>
+                    {% endwith %}
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+{#    <ul class="list-group">#}
+{#    {% for user in users %}#}
+{#        <li class="list-group-item"><a href="{% url 'bet_statistics:user_detail' user.id %}" class="pjax_call">{{ user.username }}</a></li>#}
+{#        <li class="list-group-item">#}
+{#            <a href="{% url 'bet_statistics:profile_stats_template' user.id %}" class="pjax_call">{{ user.username }}</a>#}
+{#        </li>#}
+{#    {% endfor %}#}
+{#    </ul>#}
+
+    {% else %}
+        <div>There is no one here!</div>
+    {% endif %}
+
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+{% endblock %}

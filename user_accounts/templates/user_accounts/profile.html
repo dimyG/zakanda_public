@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        {% if request.user.is_authenticated %}
+            <h1>Hello {{ request.user.username }} this is your profile page</h1>
+            <ul class="list-group">
+            <li class="list-group-item"><a href="{% url 'auth_password_change'%}">Change your password</a></li>
+            </ul>
+        {% else %}
+            You are not logged in
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

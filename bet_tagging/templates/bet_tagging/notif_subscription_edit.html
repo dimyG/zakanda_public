@@ -1,0 +1,33 @@
+{% extends parent %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    {% trans 'Bet Group' %} {{ object.bet_group.name }} ({{ object.bet_group.owner.username }})
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body form">
+
+    <form role="form" action="#" method="post" data-pjax data-pjax_container="#main_container">
+        <div class="form-body">
+            {% csrf_token %}
+            {# {{ form.as_p }} #}
+            {% include 'entities/form.html' %}
+        </div>
+        <div class="form-actions">
+            <input type="submit" value="Submit" class="btn btn-primary btn_zak_dark_01"/>
+        </div>
+    </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{# the bookmakers list submits a form with a pjax call so if the page that you are supports pjax then #}
+{# pjax will be called. If not then pjax will degrade and you will have a normal hard refresh #}
+{# Notice: The session isn't updated on browser's back button if there is no hard refresh. In hard refresh the view is called #}
+{# so the get_selected_bookmaker is called since it is a POST request the bookmaker is updated #}
+{# So: You select a bookmaker. The odds change, the session changes. You select another one. The same things change #}
+{# But when you press back, the bookmaker selected option changes (it is the cached one) but the session isn't updated #}
+
+{# All the views that serve templates that contain the bookmakers list, must call the get_selected_bookmaker function #}
+{# This because the bookmakers list form will make a post request in the current url. The POST data is the selected #}
+{# bookmaker name and is processed in the get_selected_bookmaker function that updateds the selected bookmaker in session #}
+
+
+<div class="portlet box blue-hoki hor_table">
+
+    <div class="portlet-body form">
+        <table class="table table-striped table-condensed hor_table">
+            <tbody>
+            <tr>
+                <td class="bg_zak_dark vertical_middle hor_table_title">
+                    <div class=""><span class="label">Bookmaker</span></div>
+                </td>
+                <td>
+                    <div class="dropdown bookmakers_form_wrapper" >
+                        {# I removed data-pjax attribute from the bookmakers_list_form, in order to make a custom pjax call #}
+                        {# <form role="form" class="" action="{{ default_domain }}{{ request.get_full_path }}" method="POST" id="bookmakers_form"> {% csrf_token %}#}
+                        <form role="form" class="" action="#" method="POST" id="bookmakers_form"> {% csrf_token %}
+                            <input type="hidden" name="selected_bookmaker_name" id="selected_bookmaker_name_input">
+                            {% if bookmakers %}
+                                <button type="button" class="btn btn-default btn_zak_orange_01 dropdown-toggle" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true" id="bookmakers_button">
+                                    <span id="bookmaker_name">
+                                        {% if selected_bookmaker_name %}
+                                            {{ selected_bookmaker_name }}
+                                        {% else %}
+                                            None
+                                        {% endif %}
+                                    </span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu scrollable-menu bookmakers_list" role="menu">
+                                    {% for bookmaker in bookmakers %}
+                                        {% if bookmaker.name != 'dummy' %}
+                                        <li id="{{ bookmaker.name }}"><a>{{ bookmaker.name }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{# this file is used to define the left sidebar when the left_sidebar container is updated #}
+
+{% extends parent %}
+
+{% block left_sidebar %}
+    {% include 'left_sidebar/user_info_left_sidebar.html' with target_user=target_user following=following followers=followers %}
+{% endblock %}

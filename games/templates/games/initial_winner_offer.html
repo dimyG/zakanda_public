@@ -1,0 +1,49 @@
+{% load tz %}
+{# Each list item corresponds to an event so I assign to it the event_id #}
+<li class="mt-list-item event_list_item " id="event_{{ event.id }}">
+{#    {% ifchanged event.date.day %} <div class="well well-sm event_date_wrapper">{{ event.date|date:"l d M Y" }}</div> {% endifchanged %}#}
+{#    <div class="row" style="border: solid #ffff00">#}
+    <div class="row offer_wrapper">
+    <div class="btn-toolbar col-sm-12" role="toolbar" aria-label="...">
+        <div class="row offer_content_wrapper">
+            {# {% localtime off %}#}
+            <div class="col-md-1 col-sm-1 col-xs-12 event_hour_wrapper"><span class="label label-sm label-primary bg_zak_orange">{{ event.date|date:"G:i" }}</span></div>
+            {# {% endlocaltime %}#}
+        {% if odd_dict %}
+
+        <div class="btn-group market_{{ market_type.id }}_wrapper winner_wrapper col-md-10 col-sm-10 col-xs-12" role="group" aria-label="...">
+            <div class="row">
+            {% if odd_dict.values.0 %} {# if the odds are from the selected bookmaker #}
+        {% include 'games/offer_choice.html' with choice=winner_market_choices.1    text=event.home_team.generic_name     init_odd=odd_dict.keys.0.home     span_class="home_team" %}
+        {% include 'games/offer_choice.html' with choice=winner_market_choices.X    text="X"     init_odd=odd_dict.keys.0.draw  span_class="" %}
+        {% include 'games/offer_choice.html' with choice=winner_market_choices.2    text=event.away_team.generic_name     init_odd=odd_dict.keys.0.away     span_class="away_team" %}
+            {% else %}
+        {% include 'games/offer_choice.html' with choice=winner_market_choices.1    text=event.home_team.generic_name     init_odd=odd_dict.keys.0.home     span_class="home_team" %}
+        {% include 'games/offer_choice.html' with choice=winner_market_choices.X    text="X"     init_odd=odd_dict.keys.0.draw  span_class="" %}
+        {% include 'games/offer_choice.html' with choice=winner_market_choices.2    text=event.away_team.generic_name     init_odd=odd_dict.keys.0.away     span_class="away_team" %}
+            {% endif %}
+            </div>
+        </div>
+
+        <div class="col-md-1 col-sm-1 col-xs-12 btn-group market_{{ market_type.id }}_wrapper additional_markets_wrapper" role="group" aria-label="...">
+            <a class="btn btn-primary btn_zak_dark_01 additional_markets pjax_call" type="button" role="button" href="{% url 'games:all_markets_for_event' event_id=event.id %}">
+                +{{ event.market_types.count|add:"-1" }}
+            </a>
+        </div>
+
+        {% else %}
+            <div class="btn-group market_{{ market_type.id }}_wrapper winner_wrapper col-md-10 col-sm-10 col-xs-12" role="group" aria-label="...">
+            <div class="row">
+            {% include 'games/no_odds_offer.html' with choice=winner_market_choices.1    text=event.home_team.generic_name %}
+            {% include 'games/no_odds_offer.html' with choice=winner_market_choices.X    text="X" %}
+            {% include 'games/no_odds_offer.html' with choice=winner_market_choices.2    text=event.away_team.generic_name %}
+            <br>
+            <span class="label label-danger">No ods available yet</span>
+            </div>
+            </div>
+        {% endif %}
+
+        </div>
+    </div>
+    </div>
+</li>

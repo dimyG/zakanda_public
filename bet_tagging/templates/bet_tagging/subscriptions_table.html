@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<div class="table-scrollable">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th> # </th>
+                <th> {% trans 'Bet Group' %} </th>
+                <th> {% trans 'User' %} </th>
+                <th> {% trans 'Price' %} </th>
+                <th> {% trans 'Expiration Date' %} </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for subscription in subscriptions %}
+                <tr>
+                <td> {{ forloop.counter }} </td>
+                <td>
+<a href="{% url 'bet_statistics:profile_stats_template' user_pk=subscription.service.bet_group.owner.id %}?{% if not request.session.money_mode %}{{ qs_normalized }}{% endif %}&{{ subscription.service.bet_group.name }}=On" class="pjax_call bg_dark ">{{ subscription.service.bet_group.name }}</a>
+                </td>
+                <td>
+<a href="{% url 'bet_statistics:profile_stats_template' user_pk=subscription.service.bet_group.owner.id %}" class="profile pjax_call bg_dark">{{ subscription.service.bet_group.owner.username }}</a>
+                </td>
+                <td> {{ subscription.payment_report.skrill_report.amount }} {{ subscription.payment_report.skrill_report.currency }}</td>
+                <td> {{ subscription.end_date|date:"M d Y" }} </td>
+{#              <td><span class="label label-sm label-success"> Approved </span></td>#}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

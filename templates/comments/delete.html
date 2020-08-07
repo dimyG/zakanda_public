@@ -1,0 +1,35 @@
+{#{% extends "base.html" %}#}
+
+{# This html replaces the modal's modal-content div (done by bootstrap) #}
+{% load i18n %}
+
+<div class="delete_comment">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">{% trans "Are you sure you want to remove this comment?" %}</h4>
+</div>
+<div class="modal-body">
+    <blockquote>{{ comment|linebreaks }}</blockquote>
+</div>
+<div class="modal-footer">
+    <form action="{% url "comments-delete_custom" comment.id %}" method="post">{% csrf_token %}
+
+  {% with comment.get_absolute_url as next %}
+    {% if next %}
+      <div><input type="hidden" name="next" value="{{ next }}" id="next"/></div>
+    {% endif %}
+  {% endwith %}
+
+    <p class="submit">
+      <input type="submit" class="btn_zak_orange_01 " name="submit" value="{% trans "Remove" %}"/>
+{#        or <a href="{{ comment.get_absolute_url }}">Cancel</a>#}
+    </p>
+  </form>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+{#        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
+{#        <button type="button" class="btn btn-primary" id="bet_tags_select_ok">OK</button>#}
+</div>
+</div>
+
+
+

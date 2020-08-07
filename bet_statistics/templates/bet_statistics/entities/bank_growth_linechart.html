@@ -1,0 +1,25 @@
+{% load i18n %}
+
+<div class="portlet box blue-hoki">
+<div class="portlet-title">
+    <div class="caption">
+        <i class="fa fa-rss"></i>{% trans 'Bank Growth History' %} {% if normalization_method == 'Unit' %} <span style="font-size: 12px;"> ({% trans 'in units' %})</span> {% endif %}
+    </div>
+    <div class="tools">
+        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+    </div>
+    <div class="actions">
+    </div>
+</div>
+<div class="portlet-body">
+    <div class="row">
+{#        <div id="profile_messages" class="col-sm-12"></div>#}
+        <div id="bank_growth_history_chart" class="col-sm-12">
+{#                            <span class="chart-title">BANK GROWTH HISTORY</span>#}
+        </div>
+        <div id="time_bar_chart" class="col-sm-12">
+            <span class="reset" style="visibility: hidden; align-self: center"><span class="filter"></span> | </span>
+            <a class="reset" style="visibility: hidden;">{% trans 'reset' %}</a>
+        </div>
+    </div>
+</div></div>

@@ -1,0 +1,2 @@
+class PastBetsDataFormatError(Exception):
+    pass

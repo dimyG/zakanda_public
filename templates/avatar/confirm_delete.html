@@ -1,0 +1,46 @@
+{% extends parent %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+
+    <div class="col-sm-12">
+    <div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-feed"></i>Available Pictures
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+        <div class="portlet-body form">
+
+    <div class="row">
+    <div class="col-sm-12 ">
+    <div class="well well-sm">{% trans "Select the pictures that you would like to delete." %}</div>
+    {% if not avatars %}
+        {% url 'avatar_change' as avatar_change_url %}
+        <p>{% blocktrans %}You have no avatars to delete. <a href="{{ avatar_change_url }}">Upload one</a> now.{% endblocktrans %}</p>
+    {% else %}
+        <form role="form" method="POST" data-pjax data-pjax_container="#main_container" action="{% url 'avatar_delete' %}" class="">{% csrf_token %}
+            <div class="form-body">
+            {% for field in delete_avatar_form %}
+                {% for choice in field %}
+                    {{ choice }}
+                {% endfor %}
+            {% endfor %}
+            </div>
+            <div class="form-actions">
+            <input type="hidden" value="{% url 'avatar_change' %}" name="next">
+            <p><input type="submit" value="{% trans "Delete Selected" %}" class="btn btn-danger"/></p>
+            </div>
+        </form>
+    {% endif %}
+    </div>
+    </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

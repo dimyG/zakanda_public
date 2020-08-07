@@ -1,0 +1,91 @@
+{% extends parent %}
+{% load i18n %}
+{% load l10n %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-sm-12">
+
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    {% trans 'Seller Settings' %}
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body">
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" {% if request.user.profile.legal_seller_info %} class="active" {% elif not request.user.profile.legal_seller_info and not request.user.profile.person_seller_info %}class="active"{% endif %}>
+                    <a href="#legal_entity_settings" role="tab" data-toggle="tab">{% trans 'Legal Entity' %}</a>
+                </li>
+{#                <li role="presentation" {% if request.user.profile.person_seller_info and not request.user.profile.legal_seller_info %}class="active"{% endif %}><a href="#natural_person_settings" role="tab" data-toggle="tab">{% trans 'Natural Person' %}</a></li>#}
+            </ul>
+
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane {% if request.user.profile.legal_seller_info %} active {% elif not request.user.profile.legal_seller_info and not request.user.profile.person_seller_info %} active {% endif %}" id="legal_entity_settings">
+                    <div class="row"><div class="col-sm-12">
+                        <form role="form" action="#" method="post" data-pjax data-pjax_container="#main_container">
+                            <div class="form-body">
+                            {# <form method="post" data-pjax_form>#}
+                            {% csrf_token %}
+                            {% include 'entities/form.html' with form=legal_seller_form help_text=True %}
+                            </div>
+                            <div class="form-actions">
+                                <input type="submit" value="Submit" class="btn btn-primary btn_zak_dark_01"/>
+                            </div>
+                        </form>
+                    </div></div>
+                </div>
+
+{#                <div role="tabpanel" class="tab-pane {% if request.user.profile.person_seller_info and not request.user.profile.legal_seller_info %}active{% endif %}" id="natural_person_settings">#}
+{#                    <div class="row"><div class="col-sm-12">#}
+{#                        <form role="form" action="#" method="post" data-pjax data-pjax_container="#main_container">#}
+{#                            <div class="form-body">#}
+                            {# <form method="post" data-pjax_form>#}
+{#                            {% csrf_token %}#}
+{#                            {% include 'entities/form.html' with form=person_seller_form help_text=True %}#}
+{#                            </div>#}
+{#                            <div class="form-actions">#}
+{#                                <input type="submit" value="Submit" class="btn btn-primary btn_zak_dark_01"/>#}
+{#                            </div>#}
+{#                        </form>#}
+{#                    </div></div>#}
+{#                </div>#}
+
+            </div>
+
+            </div>
+        </div>
+
+{#        <div class="portlet box blue-hoki">#}
+{#            <div class="portlet-title">#}
+{#                <div class="caption">#}
+{#                    {% trans 'Seller Settings' %}#}
+{#                </div>#}
+{#                <div class="actions">#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="portlet-body form">#}
+{##}
+{#            <div class="row"><div class="col-sm-12">#}
+{#            <form role="form" action="#" method="post" data-pjax data-pjax_container="#main_container">#}
+{#                <div class="form-body">#}
+                {# <form method="post" data-pjax_form>#}
+{#                {% csrf_token %}#}
+{#                {% include 'entities/form.html' with help_text=True %}#}
+{#                </div>#}
+{#                <div class="form-actions">#}
+{#                    <input type="submit" value="Submit" class="btn btn-primary btn_zak_dark_01"/>#}
+{#                </div>#}
+{#            </form>#}
+{#            </div></div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+
+    </div>
+    </div>
+{% endblock %}

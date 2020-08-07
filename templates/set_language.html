@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load staticfiles %}
+
+{# django's default set language view works with a form. So I manually submit the form when the link is clicked #}
+{# The "language flags" folder uses the django language naming convention (en, el, etc.) for naming the files #}
+{# This is the difference with the "flags" folder which uses another naming convention #}
+
+<form action="{% url 'set_language' %}" method="post" class="hidden" id="set_language_form">{% csrf_token %}
+<div class="controls">
+    <input name="next" type="hidden" value="{{ redirect_to }}" class="form-control"/>
+    <select name="language" id="selected_language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+                {% with 'img/language_flags/'|add:language.code|add:'.svg' as image_static %}
+                    {{ image_static }}
+
+                {% endwith %}
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go" class="controls"/>
+</div>
+</form>
+
+{#<ul class="nav navbar-nav">#}
+<li class="dropdown dropdown-language br-l">
+
+	<a href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+        {% with 'img/language_flags/'|add:LANGUAGE_CODE|add:'.svg' as image_static %}
+		    <img height="12" alt="" src="{% static image_static %}">
+        {% endwith %}
+		<i class="fa fa-angle-down"></i>
+	</a>
+	<ul class="dropdown-menu">
+        {% for language in languages %}
+            {% if language.code != LANGUAGE_CODE %}
+                {% with 'img/language_flags/'|add:language.code|add:'.svg' as image_static %}
+        <li>
+            <a href="javascript:;" onclick="
+                    document.getElementById('selected_language').value='{{ language.code }}';
+                    document.getElementById('set_language_form').submit(); ">
+                <img height="12" alt="" src="{% static image_static %}"> {{ language.name_local }}
+            </a>
+        </li>
+                {% endwith %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+{#</ul>#}

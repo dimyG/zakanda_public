@@ -1,0 +1,30 @@
+{% load avatar_tags %}
+
+{% if activity.bet_event.event.status == not_started %}
+<li class="list-group-item bg_zak_dark_03">
+<div class="row"><div class="col-sm-12">
+    <a href="{% url 'bet_statistics:profile_stats_template' user_pk=activity.actor.id %}" class="pjax_call bg_dark">
+        <span class="">{{ activity.actor.username }}</span>
+        <span class="">{% avatar activity.actor.id 30 class="img-circle" %}</span>
+    </a>
+    betted on
+    <span class="label label-sm label-warning bg_zak_orange">
+        <a {% if activity.bet_event.event.status == not_started %}href="{% url 'games:all_markets_for_event' event_id=activity.bet_event.event.id %}" {% else %}href="javascript:"{% endif %} class="pjax_call bg_orange">
+            {{ activity.bet_event.event.home_team.generic_name }} - {{ activity.bet_event.event.away_team.generic_name }}
+        </a>
+    </span>
+    <span class="label label-sm label-warning bg_zak_dark">{{ activity.bet_event.market_type.name }}</span>
+    <span class="label label-sm label-warning bg_zak_orange">{{ activity.bet_event.selection.choice}}</span>
+
+    {% if activity.num_bet_events > 1 %}
+        and <span class="badge badge-danger">{{ activity.num_bet_events|add:"-1" }}</span> other bet events
+    {% endif %}
+    as part of a
+    <span class="label label-sm label-warning bg_zak_dark">
+        <a href="{% url 'bet_statistics:total_bet_detail' pk=activity.total_bet.id %}" class="pjax_call url_param_dependent bg_dark">multiple bet</a>
+    </span>
+     {{ activity.time|timesince }} ago
+{#    [raw bet <a href="{% url 'feeds:raw_bet_event_detail' pk=activity.object.id %}" class="pjax_call">{{ activity.object.id }}</a>]#}
+</div></div>
+</li>
+{% endif %}

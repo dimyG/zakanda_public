@@ -1,0 +1,115 @@
+{% extends parent %}
+{% load games_template_filters %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-sm-12">
+
+    <div class="row">
+    <div class="col-sm-4"> {% include 'games/bookmakers_list.html' %} </div>
+    </div>
+
+    <div class="row">
+    <div class="col-lg-12 col-md-12">
+    {% if odds_per_market_type_for_event %}
+        {# { event1: {winner: {odd: True}, over_under: {odd: False}}, event2: {winner: {odd: True}, over_under: {odd: True}} }#}
+        <div class="row">
+        <div class="col-sm-12">
+
+
+
+        {% for event, odds_per_market_type in odds_per_market_type_for_event.iteritems %}
+
+            <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <span class="title_event_teams">{{ event.home_team.generic_name }} - {{ event.away_team.generic_name }} </span>
+                    <span class="title_event_date">({{ event.date|date:"l d M Y" }}) </span> &nbsp &nbsp
+{#                    <span class="title_event_competition_name">{{ event.competition_season.competition.generic_name }} </span> &nbsp &nbsp#}
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="well well-sm all_markets_competition_link">
+                    <a class="competition_link pjax_call bookmaker_param zak_classic"
+                       href="{% url 'games:planned_competition_events' competition_gnames=event.competition_season.competition.generic_name.strip competition_ids=event.competition_season.competition.id %}?bookmaker={{ selected_bookmaker_name }}">
+{#                        <i class="fa fa-angle-double-left"></i>#}
+                        <span class="title_event_back_to_competition">{{ event.competition_season.competition.generic_name }}
+                        {{ event.competition_season.competition.country.name }}</span>
+                    </a>
+                </div>
+{#            <li class="event_date_wrapper list-group-item">{{ event.date|date:"l d M Y" }}</li>#}
+            {% if odds_per_market_type %}
+
+                {% with market_types_with_order_per_event|get_item:event as markets_with_order %}
+                {% with markets_with_order|dictsort:"order" as ordered_markets %}
+                <ul class="list-group all_markets_list">
+                    {% for ordered_market in ordered_markets %}
+                    {% with ordered_market.market_type as market_type %}
+                    {% with odds_per_market_type|get_item:market_type as odd_dict %}
+
+                    {# {% for market_type, odd in odds_per_market_type.iteritems %} This was replaced by the "withs" #}
+                    <li class="list-group-item event_list_item bg_zak_dark" id="event_{{ event.id }}">
+                    {# the class event_list_item is needed for js for selectig the event id for bet slip #}
+                        <div class="row offer_wrapper">
+                        <div class="col-sm-12 btn-toolbar" role="toolbar" aria-label="...">
+
+                            {% if winner_market_name and market_type.name == winner_market_name %}
+                                {% include 'games/winner_offer.html' %}
+
+                            {% elif double_chance_market_name and market_type.name == double_chance_market_name %}
+                                {% include 'games/double_chance_offer.html' %}
+
+                            {% elif "Goals Over Under" in market_type.name %}
+                                {% include 'games/over_under_offer.html' %}
+
+                            {% elif "Handicap" in market_type.name and "Asian" not in market_type.name %}
+                                {% include 'games/handicap_offer.html' %}
+
+                            {% elif "Asian Handicap" in market_type.name %}
+                                {% include 'games/asian_handicap_offer.html' %}
+
+                            {% else %}
+                                <h3>Event {{ event }} has no market with name {{ market_type.name }} associated with it</h3>
+                            {% endif %}
+
+                        </div>
+                        </div>
+                    </li>
+                    {% endwith %}
+                    {% endwith %}
+                {% endfor %}
+                </ul>
+                {% endwith %}
+                {% endwith %}
+
+            {% else %}
+                <h3>Notice: There is an error. No markets and odds were returned by the view.</h3>
+                {% if winner_market %}
+                    {% include 'games/winner_offer.html' %}
+                {% else %}
+                    <h3> winner_market context variable did not pass to the template</h3>
+                {% endif %}
+            {% endif %}
+            </div>
+            </div>
+        {% endfor %}
+
+        </div>
+        </div>
+    {% else %}
+        <h3>odds_per_market_type_for_event dictionary is empty</h3>
+    {% endif %}
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+    {% include 'comments.html' %}
+{% endblock %}

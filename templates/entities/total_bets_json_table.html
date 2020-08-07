@@ -1,0 +1,60 @@
+{% extends parent %}
+{% load staticfiles %}
+
+{# it has no body data since it will be populated with ajax data #}
+
+{% block content %}
+
+    <table id="{{ table_id }}" class="display responsive" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th></th> {# Expand button #}
+                <th>Tipster</th>
+                <th>Date</th>
+                <th>Bookmaker</th>
+                {# <th>To Win</th> #}
+                <th>Odd</th>
+                <th data-priority="4">Amount</th>
+                {% if open == "False" %}<th data-priority="6">Profit</th>{% endif %}
+                {# https://datatables.net/extensions/responsive/examples/display-control/classes.html#}
+                <th data-priority="1" class="mobile tablet desktop">Events</th>
+                <th data-priority="2">Choice</th>
+                {% if open == "False" %}<th>Result</th>{% endif %}
+                <th data-priority="3">Market</th>
+            <th data-priority="5">Status</th>
+                <th>Event Date</th>
+            <th data-priority="6">Competition</th>
+            <th data-priority="7">Round</th>
+            <th data-priority="8">Season</th>
+                <th data-priority="9">Country</th>
+                <th>Event Odd</th>
+                <th>Bet Group</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th>Tipster</th>
+                <th>Date</th>
+                <th>Bookmaker</th>
+                {# <th>To Win</th>#}
+                <th>Odd</th>
+                <th>Amount</th>
+                {% if open == "False" %}<th>Profit</th>{% endif %}
+                <th>Events</th>
+                <th>Choice</th>
+                {% if open == "False" %}<th>Result</th>{% endif %}
+                <th>Market</th>
+                <th>Status</th>
+                <th>Event Date</th>
+                <th>Competition</th>
+                <th>Round</th>
+                <th>Season</th>
+                <th>Country</th>
+                <th>Event Odd</th>
+                <th>Bet Group</th>
+            </tr>
+        </tfoot>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+#left_sidebar_container{
+    background-color: #21282e !important;
+}
+
+.page-sidebar-menu li a span, .page-sidebar-menu li h3 {
+    color: #C49F47 !important;
+}
+.page-sidebar-menu>li>ul>li>a:hover span.title{
+    color: #E87E04 !important;
+}
+.page-sidebar-menu>li>ul>li>a {
+    font-size: small !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+.page-sidebar-menu > li > ul > li.open > a > span.title{
+    border-top-color: transparent !important;
+    color: #E87E04 !important;
+}
+
+.left_sidebar_icon{
+    margin-right: 10px;
+}
+
+.left_sidebar_icon .football{
+    opacity: 0.8;
+}
+
+.competition_link {
+    font-size: 95% !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.profile-usermenu ul li.nav-item > a{
+    padding-left: 25px !important;
+}
+
+.profile-userbuttons .follow_unfollow{
+    margin-bottom: 10px;
+}
+
+/*a.subscribe{*/
+/*    min-width: 113px;*/
+/*}*/
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+.page-sidebar-menu li a span{
+    color: #C49F47;
+}
+.page-sidebar-menu li a span:hover, .page-sidebar-menu li a span:active, .page-sidebar-menu li a span:focus{
+    color: #E87E04;
+}
+
+.page-sidebar .page-sidebar-menu .sub-menu>li.active>a, .page-sidebar .page-sidebar-menu .sub-menu>li.open>a, .page-sidebar .page-sidebar-menu .sub-menu>li:hover>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li.active>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li:hover>a {
+    /* country names on sidebar */
+    background: transparent!important;
+}
+.page-sidebar .page-sidebar-menu>li.open>a, .page-sidebar .page-sidebar-menu>li:hover>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li:hover>a {
+    /* sport name in sidebar */
+    background: transparent;
+    color: #E87E04;
+}
+
+.page-sidebar .page-sidebar-menu .sub-menu>li>a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li>a:hover {
+    color: #E87E04;
+}
+
+
+.page-sidebar, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {
+    background-color: rgba(31, 31, 31, 0.9);
+}
+#left_sidebar_container {
+    background-color: transparent !important;
+}
+@media (max-width: 991px){
+    .page-sidebar .page-sidebar-menu .sidebar-search input, .page-sidebar .page-sidebar-menu>li .sub-menu {
+        background-color: transparent !important;
+    }
+}
+.page-sidebar .page-sidebar-menu>li:last-child>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li:last-child>a {
+    border-bottom: 0 solid transparent!important;
+}
+@media (max-width: 991px){
+    .page-sidebar.navbar-collapse {
+        max-height: 600px;
+    }
+}
+
+.page-sidebar-closed .page-sidebar .page-sidebar-menu:hover .sub-menu, .page-sidebar-closed .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu:hover .sub-menu{
+    background-color: transparent;
+}
+
+.page-sidebar-closed .page-sidebar-menu .sub-menu.always-open.profile_info_wrapper, .page-sidebar-closed .page-sidebar-menu.page-sidebar-menu-closed .sub-menu.always-open.profile_info_wrapper{
+    display: none;
+}
+
+.page-sidebar.navbar-collapse.collapse.in .page-sidebar-menu .sub-menu.always-open.profile_info_wrapper{
+    /* show the sidebar content on mobile when user is unauthenticated */
+    display: block;
+}

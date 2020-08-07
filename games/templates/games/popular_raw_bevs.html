@@ -1,0 +1,45 @@
+{% extends parent %}
+
+{% load staticfiles %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+{#        <div class="col-lg-8 col-md-12">#}
+{#            <div class="portlet box blue-hoki">#}
+{#            <div class="portlet-title">#}
+{#                <div class="caption">#}
+{#                    <i class="fa fa-feed"></i>Tips#}
+{#                </div>#}
+{#                <div class="actions">#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="portlet-body">#}
+{#                {% include 'entities/total_bets_datatable.html' with total_bets=tips table_id="home_tips_datatable" open="True"%}#}
+{#            </div>#}
+{#            </div>#}
+{#        </div>#}
+
+        <div class="col-xs-12">
+            {% include 'entities/raw_bet_events_datatable.html' with raw_bet_events=raw_bet_events table_id="popular_bevs_datatable" title="Popular Bet Choices" open="True" %}
+        </div>
+
+{#        <div class="col-lg-12 col-md-12">#}
+{#            <div class="portlet box blue-hoki">#}
+{#            <div class="portlet-title">#}
+{#                <div class="caption">#}
+{#                    <i class="fa fa-feed"></i>Latest Winning Tips#}
+{#                </div>#}
+{#                <div class="actions">#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="portlet-body">#}
+{#                {% include 'entities/total_bets_datatable.html' with total_bets=win_tbs table_id="latest_win_tbs_datatable" open="False" %}#}
+{#            </div>#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+{% endblock %}

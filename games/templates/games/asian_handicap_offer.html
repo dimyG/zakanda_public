@@ -1,0 +1,48 @@
+{% load mathfilters %}
+{% load games_template_filters %}
+<div class="row">
+
+{% with threshold_1_per_asian_handicap_market_type|get_item:market_type as handicap_threshold_1 %}
+{% with threshold_2_per_asian_handicap_market_type|get_item:market_type as handicap_threshold_2 %}
+
+{# odd_dict is: {latest_odd_obj: True/False} If False the odd is not from the selected bookmaker #}
+{% if odd_dict %}
+    <div class="col-sm-3 market_label"><span class="label label-sm label-primary bg_zak_orange">Asian Handicap: {{ handicap_threshold_1 }},{{ handicap_threshold_2 }}</span></div>
+    <div class="btn-group market_{{ market_type.id }}_wrapper col-sm-9" role="group" aria-label="...">
+        {% if odd_dict.values.0 %}
+            <button type="button" class="btn btn-default market_option {{ asian_handicap_market_choices.home }}">
+                <span class="option_wrapper">{{ event.home_team.generic_name }} ({{ handicap_threshold_1 }} {{ handicap_threshold_2 }})</span>
+                <span class="odd_wrapper" style="color: red">{{ odd_dict.keys.0.home }}</span>
+            </button>
+            <button type="button" class="btn btn-default market_option {{ asian_handicap_market_choices.away }}" >
+                <span class="option_wrapper">{{ event.away_team.generic_name }} </span>
+                <span class="odd_wrapper" style="color: red">{{ odd_dict.keys.0.away }}</span >
+            </button>
+        {% else %}
+            <button type="button" class="btn btn-default market_option {{ asian_handicap_market_choices.home }}">
+                <span class="option_wrapper">{{ event.home_team.generic_name }} ({{ handicap_threshold_1 }} {{ handicap_threshold_2 }})</span>
+                <span class="odd_wrapper" style="color: green">{{ odd_dict.keys.0.home }}</span>
+            </button>
+            <button type="button" class="btn btn-default market_option {{ asian_handicap_market_choices.away }}" >
+                <span class="option_wrapper">{{ event.away_team.generic_name }}</span>
+                <span class="odd_wrapper" style="color: green">{{ odd_dict.keys.0.away }}</span >
+            </button>
+        {% endif %}
+    </div>
+
+{% else %}
+    <div class="well well-sm"><span class="label label-sm label-primary bg_zak_orange">Asian Handicap: {{ handicap_threshold_1 }},{{ handicap_threshold_2 }}</span></div>
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default market_option {{ asian_handicap_market_choices.home }}" disabled>
+            <span class="option_wrapper">{{ event.home_team.generic_name }}</span>
+        </button>
+        <button type="button" class="btn btn-default market_option {{ asian_handicap_market_choices.away }}" disabled>
+            <span class="option_wrapper">{{ event.away_team.generic_name }}</span>
+        </button>
+        <br>
+        <span class="label label-danger">No ods available yet</span>
+    </div>
+{% endif %}
+{% endwith %}
+{% endwith %}
+</div>

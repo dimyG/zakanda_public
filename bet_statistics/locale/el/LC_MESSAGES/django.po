@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-13 13:19+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\bet_statistics\entities\bank_growth_linechart.html:6
+#: .\templates\bet_statistics\profile.html:82
+msgid "Bank Growth History"
+msgstr "Καθαρά Κέρδη"
+
+#: .\templates\bet_statistics\entities\bank_growth_linechart.html:6
+#: .\templates\bet_statistics\entities\misc.html:76
+#: .\templates\bet_statistics\entities\overview_values.html:9
+#: .\templates\bet_statistics\entities\stakes_barchart.html:6
+#: .\templates\bet_statistics\profile.html:62
+#: .\templates\bet_statistics\profile.html:82
+msgid "in units"
+msgstr "σε μονάδες"
+
+#: .\templates\bet_statistics\entities\bank_growth_linechart.html:22
+#: .\templates\bet_statistics\entities\bev_pies.html:22
+#: .\templates\bet_statistics\entities\bev_pies.html:32
+#: .\templates\bet_statistics\entities\bev_pies.html:42
+#: .\templates\bet_statistics\entities\filters.html:22
+#: .\templates\bet_statistics\entities\filters.html:29
+#: .\templates\bet_statistics\entities\filters.html:36
+#: .\templates\bet_statistics\entities\filters.html:43
+#: .\templates\bet_statistics\entities\filters.html:50
+#: .\templates\bet_statistics\entities\filters.html:57
+#: .\templates\bet_statistics\entities\stakes_barchart.html:18
+#: .\templates\bet_statistics\entities\tb_status_pie.html:20
+msgid "reset"
+msgstr "επαναφορά"
+
+#: .\templates\bet_statistics\entities\bev_pies.html:6
+msgid "Events"
+msgstr "Στοιχηματικά Γεγονότα"
+
+#: .\templates\bet_statistics\entities\bev_pies.html:20
+msgid "MARKET"
+msgstr "ΑΓΟΡΑ"
+
+#: .\templates\bet_statistics\entities\bev_pies.html:30
+msgid "CHOICE"
+msgstr "ΕΠΙΛΟΓΗ"
+
+#: .\templates\bet_statistics\entities\bev_pies.html:40
+msgid "STATUS"
+msgstr "ΑΠΟΤΕΛΕΣΜΑ"
+
+#: .\templates\bet_statistics\entities\filters.html:7
+msgid "Filters"
+msgstr "Φίλτρα"
+
+#: .\templates\bet_statistics\entities\filters.html:21
+msgid "Coutnry"
+msgstr "Χώρα"
+
+#: .\templates\bet_statistics\entities\filters.html:28
+msgid "Competition"
+msgstr "Διοργάνωση"
+
+#: .\templates\bet_statistics\entities\filters.html:35
+msgid "Season"
+msgstr "Σεζόν"
+
+#: .\templates\bet_statistics\entities\filters.html:42
+msgid "Home Team"
+msgstr "Γηπεδούχος"
+
+#: .\templates\bet_statistics\entities\filters.html:49
+msgid "Away Team"
+msgstr "Φιλοξενούμενος"
+
+#: .\templates\bet_statistics\entities\filters.html:56
+msgid "Bet Events per Bet"
+msgstr "Γεγονότα ανα στοίχημα"
+
+#: .\templates\bet_statistics\entities\misc.html:14
+msgid "Filtered Bets"
+msgstr "Αριθμός Στοιχημάτων"
+
+#: .\templates\bet_statistics\entities\misc.html:30
+msgid "Reset All"
+msgstr "Επαναφορά Ολων"
+
+#: .\templates\bet_statistics\entities\misc.html:42
+msgid "Bet Groups"
+msgstr "Μπάνκες"
+
+#: .\templates\bet_statistics\entities\misc.html:76
+msgid "Other Indicators"
+msgstr "Άλλοι Δείκτες"
+
+#: .\templates\bet_statistics\entities\overview_values.html:9
+msgid "Basic Indicators"
+msgstr "Βασικοί Δείκτες"
+
+#: .\templates\bet_statistics\entities\overview_values.html:44
+msgid "Recent Form"
+msgstr "Φόρμα"
+
+#: .\templates\bet_statistics\entities\profile_description.html:7
+msgid "Description"
+msgstr "Περιγραφή"
+
+#: .\templates\bet_statistics\entities\profile_description.html:22
+#, python-format
+msgid ""
+"Apparently %(target_user)s believes that it's not necessary to introduce "
+"himself. Actions speak louder than words after all..."
+msgstr ""
+"Πιθανότατα ο %(target_user)s πιστεύει πως δεν είναι απαραίτητο να πει κάτι "
+"για τον εαυτό του. Άλλωστε οι πράξεις μιλούν καλύτερα από τα λόγια..."
+
+#: .\templates\bet_statistics\entities\stakes_barchart.html:6
+msgid "Stakes and Profits"
+msgstr "Ποσά Στοιχηματισμού"
+
+#: .\templates\bet_statistics\entities\tb_status_pie.html:6
+msgid "Bets Status"
+msgstr "Στοιχήματα"
+
+#: .\templates\bet_statistics\entities\tbs_table.html:6
+msgid "Bets Table"
+msgstr "Πίνακας Στοιχημάτων"
+
+#: .\templates\bet_statistics\profile.html:62
+msgid "Seasons"
+msgstr "Σεζόν"

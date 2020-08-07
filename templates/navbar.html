@@ -1,0 +1,190 @@
+   {% load staticfiles %}
+   {% load avatar_tags %}
+{% load i18n %}
+
+   <!-- Static navbar -->
+{#    <nav class="navbar navbar-fixed-top">#}
+    <div class="page-header-inner">
+
+{#  <div class="container">#}
+
+{#      <div class="navbar-header">#}
+{#          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">#}
+{#            <span class="sr-only">Toggle navigation</span>#}
+{#            <span class="icon-bar"> t </span> dsfx #}
+{#            <span class="icon-bar"></span>#}
+{#            <span class="icon-bar"></span>#}
+{#          </button>#}
+{#        </div>#}
+
+        <div class="page-logo">
+            <a href="{% url 'gutils:popular_raw_bevs' %}" class="pjax_call">
+                <img src="{% static 'img/logo_01_demo.png' %}" alt="zakanda demo" class="logo-default">
+            </a>
+            <div class="menu-toggler sidebar-toggler">
+                <span></span>
+            </div>
+        </div>
+
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+            <span></span>
+        </a>
+
+{#      <div id="navbar" class="navbar-collapse collapse">#}
+        <div class="hor-menu hidden-sm hidden-xs">
+            <ul class="nav navbar-nav">
+                <li class="classic-menu-dropdown" aria-haspopup="true">
+                    {% if request.user.is_authenticated %}<a href="{% url 'gutils:popular_raw_bevs' %}" class="pjax_call">{% trans "Home" %}</a>  {# TODO NOW HAVE IN MIND url_param_dependent #}
+{#                    {% if request.user.is_authenticated %}<a href="{% url 'gutils:popular_raw_bevs' %}" class="pjax_call url_param_dependent">Home</a>#}
+                    {% else %}<a href="{% url 'home' %}" class="pjax_call">{% trans "Home" %}</a>
+                    {% endif %}
+                </li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'bet_statistics:profile_stats_template' user_pk=request.user.id %}" class="profile pjax_call">{% trans "Profile" %}</a></li>
+{#                    <li><a href="{% url 'wallet:dashboard' %}" class="profile pjax_call btn disabled">{% trans "My Wallet" %}</a></li>#}
+                {% endif %}
+                <li class="classic-menu-dropdown {{ request.session }}"><a href="{% url 'games:pick_bets' %}?bookmaker={{ selected_bookmaker_name }}" class='main_menu pjax_call bookmaker_param' id="pick_bets">{% trans "Pick Bets"%}</a></li>
+                {# <li class="classic-menu-dropdown"><a href="{% url 'user_accounts:users_list' %}" class='main_menu pjax_call'>Users</a></li>#}
+                <li class="classic-menu-dropdown"><a href="{% url 'user_accounts:leader_board' %}" class='main_menu pjax_call'>{% trans "Leaderboard" context "ονομαστική" %}</a></li>
+
+            {% if request.user.is_staff %}
+                <li class="classic-menu-dropdown"><a href="{% url 'admin:index' %}">Admin</a></li>
+{#                <li class="classic-menu-dropdown"><a href="javascript:;" id="init">Init</a></li>#}
+{#                <li class="classic-menu-dropdown">#}
+{#                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="dev_menu">Dev Buttons <span class="caret"></span></a>#}
+{#                  <ul class="dropdown-menu" role="menu">#}
+    {#                  <li><a href="{% url 'xmlSoccerParser:get_league_standings' xmlSoccer_league_id='3' %}">xmlSoccer Get League Standings</a></li>#}
+{#                      <li><a href="{% url 'xmlSoccerParser:xmlsoccer_get_all_leagues' %}">xmlSoccer Get Leagues</a></li>#}
+{#                      <li><a href="{% url 'xmlSoccerParser:get_all_teams_by_league_and_season' %}">xmlSoccer Get Teams by League and Season</a></li>#}
+{#                      <li><a href="{% url 'xmlSoccerParser:get_fixtures_by_date_interval' %}">xmlSoccer Get Fixtures by date interval </a></li>#}
+{#                      <li><a href="{% url 'xmlSoccerParser:get_odds_for_events' %}">xmlSoccer Get Odds for Open Events </a></li>#}
+{#                      <li><a href="{% url 'xmlSoccerParser:get_results' %}">xmlSoccer Get Results </a></li>#}
+{#                      <li><a href="{% url 'games:simple_test' %}">Simple Test </a></li>#}
+{#                      <li><a href="{% url 'bet_statistics:bet_event_list' %}" class="pjax_call">Popular BetEvents </a></li>#}
+{#                      <li><a href="{% url 'bet_statistics:total_bet_detail' 130 %}" class="pjax_call url_param_dependent">Total Bet 130 </a></li>#}
+{#                      <li><a href="{% url 'games:create_initial_data' %}">Create Initial Data</a></li>#}
+{#                  </ul>#}
+{#                </li>#}
+            {% endif %}
+
+            </ul>
+        </div>
+    {#        </div><!--/.nav-collapse -->#}
+
+        <div class="top-menu" id="navbar">
+            <ul class="nav navbar-nav pull-right">
+
+            {% if request.user.is_authenticated %}
+
+                <li class="dropdown dropdown-extended dropdown-notification">
+                    <a href="{% url 'feeds:user_notification_timeline' user_id=request.user.id%}" class="pjax_call dropdown-toggle" id="notifications_wrapper">
+                    <i class="icon-bell"></i>
+                    <span class="badge badge-primary" id="notifications"></span></a>
+                </li>
+
+                {% include 'left_sidebar/hor_menu_as_dropdown.html' %}
+
+                <li class="dropdown dropdown-dark">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="total_balance_wrapper">
+                        <span id="total_balance_number">{{ total_balance|floatformat:1 }}</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default" role="menu">
+{#                        <li><a href="{% url 'bet_tagging:bet_tags_list' target_user_id=request.user.id %}" class="pjax_call url_param_dependent">Bet Groups</a></li>#}
+                        <li><a href="{% url 'bet_tagging:deposit_create' %}" class="pjax_call" id="generic_deposit">{% trans "Deposit" %}</a></li>
+                        <li><a href="{% url 'bet_tagging:withdrawal_create' %}" class="pjax_call" id="generic_withdrawal">{% trans "Withdraw" %}</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown dropdown-dark dropdown-user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" role="button" aria-expanded="false" id="profile_drop_down">
+                        {% avatar request.user 30 class="img-circle" %}
+                        <span class="username username-hide-on-mobile">{{ request.user.username }}</span>
+                        <span class="caret"></span>
+    {#                        <i class="fa fa-angle-down"></i>#}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default" role="menu">
+    {#                        {% url 'user_accounts:profile' %}#}
+    {#                        <li><a href="{% url 'bet_statistics:profile_stats_template' %}" class="profile ajax_call">Profile</a></li>#}
+                        <li><a><form><input type="checkbox" name="profile_mode"
+                                {% if request.session.money_mode %}checked{% endif %}
+                                data-size="mini"
+                                data-on-text="Cash On"
+                                data-off-text="Cash Off"
+                                data-on-color="danger"
+                                data-off-color="primary"
+                        ></form></a></li>
+                        <li><a href="{% url 'bet_statistics:profile_stats_template' user_pk=request.user.id %}" class="profile pjax_call">{% trans "Profile" %}</a></li>
+                        <li class="">
+                            <a href="{% url 'bet_statistics:total_bets_list' user_id=request.user.id %}" class="pjax_call url_param_dependent">{% trans "Bets" %}</a>
+                        </li>
+                        <li><a href="{% url 'bet_tagging:bet_tags_list' target_user_id=request.user.id %}" class="pjax_call url_param_dependent">{% trans "Bet Groups" %}</a></li>
+{#                        <li class="">#}
+{#                            <a href="{% url 'bet_statistics:bet_events_table_template' user_id=request.user.id %}" class="pjax_call url_param_dependent">Bet Events</a>#}
+{#                        </li>#}
+                        <li><a href="{% url 'user_accounts:user_tips' user_pk=request.user.id %}" class="pjax_call url_param_dependent">{% trans "My Tips"%}</a></li>
+{#                        <li><a href="{% url 'feeds:user_timeline' user_pk=request.user.id %}" class="pjax_call">NewsFeed</a></li>#}
+{#                        <li><a href="{% url 'feeds:user_aggregated_timeline' user_pk=request.user.id %}" class="pjax_call">Aggregated NewsFeed</a></li>#}
+{#                      <li><a href="{% url 'account_change_password' %}">Change Password</a></li>#}
+
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{% url 'user_accounts:edit_profile' user_id=request.user.id %}" class="pjax_call">{% trans "Settings" %}</a></li>
+                        {% if user.profile.legal_seller_info or user.profile.person_seller_info %}
+                            <li><a href="{% url 'user_accounts:seller_settings' user_id=request.user.id %}" class="pjax_call">{% trans "Seller Settings" %}</a></li>
+                            <li><a href="{% url 'bet_tagging:seller_dashboard' %}" class="pjax_call">{% trans "Seller Dashboard" %}</a></li>
+                        {% else %}
+                            <li><a href="{% url 'user_accounts:seller_settings' user_id=request.user.id %}" class="pjax_call">{% trans "Become Seller" %}</a></li>
+                        {% endif %}
+                        {% if request.user.subscriptions.all %}
+                            <li><a href="{% url 'bet_tagging:buyer_dashboard' %}" class="pjax_call">{% trans "Buyer Dashboard" %}</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'account_logout' %}" class="">{% trans "Logout" %}</a></li>
+                    </ul>
+                </li>
+
+            {% elif not request.user.is_authenticated and not "/accounts/login" in request.get_full_path %}
+                <li class="dropdown">
+                    <form class='navbar-form navbar-right login' method='POST' action='{% url "account_login" %}'> {# data-pjax data-pjax_container="#main_container" #}
+                        {% csrf_token %}
+
+                        <div class='form-group hidden-sm hidden-xs'>
+                          <input type='text' class='form-control input_zak_def_01' name='login' placeholder='Username or Email' id="id_login"/>
+                        </div>
+
+                        <div class='form-group hidden-sm hidden-xs'>
+                          <input type='password' class='form-control input_zak_def_01' name='password' placeholder='Password' id="id_password"/>
+                        </div>
+
+                        {# Thefollowing is from the allauth login template. Don't sure yet what they do #}
+                        {# {% if redirect_field_value %}#}
+                        {# <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />#}
+                        {# {% endif %}#}
+
+                        <button type='submit' class='btn btn-primary btn_zak_orange_01 primaryAction'>{% trans "Sign In" %}</button>
+                    </form>
+                </li>
+{#                <li class="dropdown dropdown-dark"><a class="dropdown-toggle button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></li>#}
+                <li class="dropdown dropdown-dark"><a class="dropdown-toggle" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
+                {% include 'left_sidebar/hor_menu_as_dropdown.html' %}
+
+            {% else %}
+                <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
+                {% include 'left_sidebar/hor_menu_as_dropdown.html' %}
+            {% endif %}
+
+            <li class="dropdown dropdown-quick-sidebar-toggler">
+                <a href="javascript:;" class="dropdown-toggle">
+                    <span>{% trans "BET SLIP" %}</span>
+                    <i class="icon-logout"></i>
+                </a>
+            </li>
+
+            {% include 'set_language.html' %}
+
+        </ul>
+        </div>
+
+{#  </div>#}
+
+    </div>
+       {#    </nav>#}

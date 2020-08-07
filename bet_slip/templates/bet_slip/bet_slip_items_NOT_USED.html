@@ -1,0 +1,12 @@
+
+{% if bet_slip_events_list %}
+    {% for bet_slip_event_dict in bet_slip_events_list %}
+        {% if bet_slip_event_dict|length > 0 %}
+         <div class="well well-sm bet_slip_item" id="{{ bet_slip_event_dict.event_id }}--{{ bet_slip_event_dict.market_type_id }}--{{ bet_slip_event_dict.choice }}--{{ bet_slip_event_dict.original_odd }}">
+             {{ bet_slip_event_dict.event_id }} {{ bet_slip_event_dict.market_type_id }} {{ bet_slip_event_dict.choice }} {{ bet_slip_event_dict.original_odd }}
+{#             {{ bet_slip_event_dict.bookmaker }}#}
+             <button type="button" class="btn btn-default remove_from_bet_slip"> Del </button>
+         </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}

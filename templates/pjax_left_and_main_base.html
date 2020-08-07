@@ -1,0 +1,31 @@
+{#<h4> pjax v2 </h4>#}
+
+{#<div class="row">#}
+<div class="page-sidebar-wrapper">
+<div class="page-sidebar navbar-collapse collapse">
+{#<div class="page-sidebar-menu">#}
+    <div id="left_sidebar_container">
+    {% block left_sidebar %}
+    {% endblock %}
+    </div>
+{#</div>#}
+</div>
+</div>
+
+<div class="page-content-wrapper">
+<div class="page-content">
+<div id="main_container">
+{#    <div class="row"><div class="col-sm-12"><h4>pjax left and main</h4></div></div>#}
+    {% block messages %}
+        {% include 'messages.html' %}
+    {% endblock %}
+    {% block processing_details %}
+    {% endblock %}
+    {% block before_content %}
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+</div>
+</div>
+</div>
+{#</div>#}

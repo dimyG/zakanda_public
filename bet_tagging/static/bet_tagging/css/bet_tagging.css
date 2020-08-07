@@ -1,0 +1,131 @@
+/* CSS REQUIRED */
+.state-icon {
+    left: -5px;
+}
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
+}
+
+.bet_tags_list_wrapper .mt-head-icon{
+    font-size: 16px !important;
+    padding-top: 5px !important;
+}
+
+.bet_tags_list_wrapper .mt-head{
+    margin-bottom: 1px !important;
+}
+.mt-head.bg-blue-hoki{
+    background-color: rgba(54, 66, 79, 1) !important;
+}
+
+.bet_tags_list_wrapper .btn-group.btn-group.btn-group-justified{
+    margin-bottom: 1px !important;
+}
+
+.bet_tags_list_wrapper .mt-widget-3{
+    margin-bottom: 10px;
+}
+
+.service_forms_wrapper{
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.service_form{
+    padding-bottom: 20px;
+}
+
+.service_30 .price-table-head{
+    background: rgb(63, 71, 77);
+}
+
+.service_90 .price-table-head{
+    background: rgba(57, 57, 57, 1);
+}
+
+.service_90 .arrow-down{
+    border-top-color: rgba(57, 57, 57, 1);
+}
+
+.service_30 .arrow-down{
+    border-top-color: rgb(63, 71, 77);
+}
+
+/*span.dim_in_list{*/
+/* for span inside list-items */
+    /*color: dimgrey;*/
+    /*text-transform: lowercase;*/
+    /*font-size: 13px;*/
+    /*font-weight: 300;*/
+/*}*/
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+.mt-head.bg-blue-hoki {
+    background-color: rgba(21, 35, 47, 0.6) !important;
+}
+.btn.dark:not(.btn-outline) {
+    color: rgba(255, 255, 255, 0.85);
+    background-color: #15232f;
+    border-color: #333;
+    padding: 5px;
+}
+.btn.dark:not(.btn-outline).active, .btn.dark:not(.btn-outline):active, .btn.dark:not(.btn-outline):hover, .open>.btn.dark:not(.btn-outline).dropdown-toggle {
+    color: #ffb400;
+    background-color: #111315;
+    border-color: #111315;
+}
+.btn.dark:not(.btn-outline).focus, .btn.dark:not(.btn-outline):focus {
+    color: #FFF;
+    background-color: #181c1f;
+    border-color: #000;
+}
+
+.default_banner {
+    background-color: #c49f47 !important;
+    color: #ebebeb !important;
+}
+
+/* services */
+.pricing-content-1 {
+     background-color: transparent;
+}
+.pricing-content-1 .price-column-container.border-active {
+    border: 1px solid #333;
+}
+.pricing-content-1 .price-column-container {
+    background-color: rgba(51, 51, 51, 0.75);
+}
+
+.pricing-content-1 .price-table-content {
+    background-color: transparent;
+    color: #ccc;
+}
+.pricing-content-1 .price-table-content .row i {
+    color: #c49f47;
+}
+.pricing-content-1 .arrow-down.arrow-grey {
+    border-top-color: transparent;
+}
+.service_30 .price-table-head, .service_90 .price-table-head {
+    background: rgb(33, 40, 46);
+    color: #ccc;
+}
+.service_30 .arrow-down, .service_90 .arrow-down {
+    border-top-color: rgb(33, 40, 46);
+}
+.price-table-pricing{
+    color: #c49f47;
+}
+
+.mt-widget-3 .mt-head .mt-head-date {
+    color: #ccc;
+}
+.mt-widget-3 .mt-head .mt-head-desc {
+    color: #ccc;
+}
+
+span.subscribed_color{
+    color: #26c281 !important;
+}

@@ -1,0 +1,200 @@
+#form_messages{
+    display: none;
+}
+
+#right_sidebar_container * {
+    margin-bottom: 5px;
+}
+
+.page-quick-sidebar-wrapper {
+    /* overriding the default color */
+    color: #7aa8ce !important;
+}
+
+.bet_slip_wrapper{
+    border-bottom: solid #E87E04;
+    background-color: #21282e !important;
+}
+
+.cl_orange{
+    color: #E87E04;
+}
+/*.total_bet_odd_wrapper{*/
+    /*color: #7aa8ce;*/
+/*}*/
+
+#place_bet{
+    margin-right: 10px;
+}
+
+div #place_bet_form_wrapper input{
+    width: 90px;
+}
+
+.bet_slip_item{
+    background-color: #1f1f1f !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.bet_slip_item .media-heading{
+    color: #C49F47 !important;
+}
+
+.bet_slip_item .media-heading-sub{
+    color: #7aa8ce !important;
+}
+
+.bet_slip_item .odd{
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #E87E04;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.active > a, .page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li:hover > a{
+    /* the tab title */
+    border-bottom: 3px solid #E87E04;
+    /* inactive: border-bottom: 3px solid rgba(243,86,93,.3) */
+}
+.page-quick-sidebar .nav-tabs > li > a:hover{
+    color: white !important;
+}
+.remove_from_bet_slip{
+    background-color: transparent;
+    border: none;
+    font-size: 11px;
+}
+
+.remove_from_bet_slip .glyphicon-remove{
+    color: brown;
+}
+.remove_from_bet_slip:hover .glyphicon-remove{
+    color: #E87E04;
+}
+.remove_from_bet_slip:active .glyphicon-remove{
+    color: brown;
+}
+
+.media-list .media .media-body .media-heading-sub, .media-list .media .media-body .media-heading {
+    text-transform: none !important;
+}
+
+.odd_amount_wrapper, .details_submit_wrapper{
+    background-color: #1f1f1f !important;
+    padding-bottom: 5px !important;
+    /*border-top: solid #E87E04;*/
+    /*border-bottom: solid thin #E87E04;*/
+}
+
+.bet_slip_bet_tag{
+    display: flex;
+    background-color: rgba(31, 31, 31, 1) !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+.bet_slip_bet_tag > span{
+    margin: 0 auto;
+}
+
+p.help-block {
+
+}
+
+#keep_selections{
+    text-align: center;
+}
+#keep_selections > label{
+    color: #E87E04;
+}
+#keep_selections > input{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.label_zak_red{
+    background-color: rgba(165, 42, 42, 0.6) !important;
+    display: block !important;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+.page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li.active > a, .page-quick-sidebar-wrapper .page-quick-sidebar .nav-tabs > li:hover > a {
+    border: 0;
+    color: #ccc;
+}
+.page-quick-sidebar .nav-tabs > li > a:hover {
+    color: #ccc !important;
+}
+.page-quick-sidebar-toggler > i {
+    color: #f5d891;
+}
+.page-quick-sidebar-toggler:hover > i,  .page-quick-sidebar-toggler > i:hover{
+    color: #E87E04 !important;
+}
+.bet_slip_wrapper {
+    border: 0;
+}
+
+.page-quick-sidebar-wrapper {
+    background: rgba(31, 31, 31, 0.95);
+}
+.page-quick-sidebar-wrapper .page-quick-sidebar {
+    background: rgba(16, 16, 16, 0.86);
+}
+.bet_slip_wrapper {
+    /*border-bottom: solid #E87E04;*/
+    background-color: transparent !important;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.bet_slip_item {
+    background-color: #333333a6 !important;
+}
+.page-quick-sidebar-wrapper .page-quick-sidebar .list-items > li {
+    border-bottom-color: #463f2f;
+}
+
+.bet_slip_bet_tag {
+    display: flex;
+    background-color: transparent !important;
+}
+.odd_amount_wrapper {
+    background-color: transparent !important;
+}
+/*.details_submit_wrapper {*/
+/*    background-color: transparent !important;*/
+/*}*/
+.page-quick-sidebar-wrapper {
+    color: #c49f47 !important;
+}
+.remove_from_bet_slip .glyphicon-remove {
+    color: #e87e04;
+}
+.remove_from_bet_slip .glyphicon-remove:hover {
+    color: #f5d891;
+}
+.bet_slip_item .media-heading {
+    color: #f5d891 !important;
+}
+.bet_slip_item .media-heading-sub {
+    color: #999 !important;
+}
+.bet_slip_item .odd {
+    color: #c49f47;
+}
+#keep_selections > label {
+    color: #c49f47;
+}
+
+.label_zak_red{
+    background-color: transparent !important;
+    color: #f5d891;
+    display: block !important;
+}
+
+.bt_balance{
+    color: #c49f47;
+}
+
+#right_sidebar_container input {
+    background-color: #1d1c1a !important;
+}

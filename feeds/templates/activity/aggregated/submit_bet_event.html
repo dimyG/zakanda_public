@@ -1,0 +1,68 @@
+{% load avatar_tags %}
+
+{# activity is an aggregated activity which contains a list of the matched activities #}
+
+{# Currently we show also the closed events. We can not show them. Notice though that the notification number #}
+{# doesn't currently check if an event is open or not. It only checks if the activity is seen or not. So closed #}
+{# events will also modify the notifications number #}
+{#{% if activity.activities.0.object.event.status == not_started %} {# show only the open events #}
+
+    {# {% if activity.actor_count > 1 %} {# I can define this to 1 to show only raw_bet_events that have been used by at least 2 users #}
+    {% with activity.is_seen as is_seen %}{% with activity.is_read as is_read %}
+    <li class="list-group-item {% if not is_seen %} not_seen {% else %} seen {% endif %} {% if not is_read %} not_read {% endif %}">
+    <div class="row notification_activity">
+
+        <div class="col-sm-3 col-xs-12">
+            <a href="{% url 'bet_statistics:profile_stats_template' user_pk=activity.activities.0.actor.id %}"
+               class="pjax_call {% if not is_seen %} bg_dark {% else %} bg_orange {% endif %}">{% endwith %}{% endwith %}
+                <span class="">{{ activity.activities.0.actor.username }}</span>
+                {# avatar tag doesn't work with user_id, it needs a user object #}
+                <span class="">{% avatar activity.activities.0.actor 30 class="img-circle" %}</span>
+            </a>
+            {% if activity.actor_count > 1 %}
+                {# TODO NOW actor_count strange bug adding sometimes the same actor  #}
+                and <span class="badge badge-danger">{{ activity.actor_count|add:"-1" }}</span> more users
+            {% endif %}
+            betted on
+        </div>
+
+        <div class="col-sm-3 col-xs-12">
+            {% with activity.activities.0.bet_event as bet_event %}
+            {# this is an aggregated per object, so the object (the rawbetevent) is common for all the activities #}
+            {# the bet_events might be different (having different odds) but the teams, market_type and choice are common #}
+            {# I use the bet_event to collect this data in order to avoid one tables join #}
+            <span class="label label-sm label-warning bg_zak_orange">
+            <a {% if bet_event.event.status == not_started %}href="{% url 'games:all_markets_for_event' event_id=bet_event.event.id %}" {% else %}href="javascript:"{% endif %} class="pjax_call bg_orange">
+                {{ bet_event.event.home_team.generic_name }} - {{ bet_event.event.away_team.generic_name }}
+            </a>
+            </span>
+        </div>
+
+        <div class="col-sm-4 col-xs-12">
+            <span class="label label-sm label-warning bg_zak_dark">{{ bet_event.market_type.name }}</span>
+            <span class="label label-sm label-warning bg_zak_orange">{{ bet_event.selection.choice}}</span>
+            {% with bet_event.selection.status as status %}
+                {% if status == 'Won' %}
+                    <span class="label label-sm won bev_status">{{ status }}</span>
+                {% elif status == 'Lost' %}
+                    <span class="label label-sm lost bev_status">{{ status }}</span>
+                {% elif status == 'Open' %}
+                    <span class="label label-sm label-info bev_status">{{ status }}</span>
+                {% else %}
+{#                    <span class="label label-sm label-default bev_status">{{ status }}</span>#}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="col-sm-2 col-xs-12">
+            {% if activity.activity_count > activity.actor_count %}
+                in <span class="badge badge-danger">{{ activity.activity_count }}</span> bets
+            {% endif %}
+            {% endwith %}
+        </div>
+
+    </div>
+    </li>
+
+{#{% endif %}#}
+

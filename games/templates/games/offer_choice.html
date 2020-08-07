@@ -1,0 +1,21 @@
+<div class="col-sm-4 col-xs-12">
+<div class="row market_spinner_wrapper">
+
+    <div class="col-xs-8 market_option_wrapper">
+        {# choice must be the 3rd class :| #}
+        <button type="button" class="btn btn-primary btn_zak_dark_02 {{ choice }} market_option">
+            <span class="option_wrapper {{ span_class }} ">{{ text }}</span>
+            {# <span class="odd_wrapper" style="color: green">{{ odd_dict.keys.0.home }}</span> #}
+        </button>
+    </div>
+
+    <div class="col-xs-4 spinner_wrapper">
+    {% if init_odd != 1 %}
+        {% include 'games/odd_value.html' with init_odd=init_odd odd_exists='True' %}
+    {% else %}
+        {% include 'games/odd_value.html' with init_odd=init_odd odd_exists='False' %}
+    {% endif %}
+    </div>
+
+</div>
+</div>

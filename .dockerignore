@@ -1,0 +1,23 @@
+sportmonks/response_texts
+sportmonks/vcr_cassetes
+outputs
+media
+fixtures
+temp
+vcr_cassetes
+static-files
+docker_production
+docker_local_simple
+
+docker_aws_ECS  # we need the entrypoint.sh
+docker_aws_ECS/web_task.json
+docker_aws_ECS/worker_task.json
+docker_aws_ECS/scheduler_task.json
+# the ssh key for connecting to AWS EC2 instances (that run the ECS containers cluster)
+/docker_aws_ECS/zakanda_container_instances.pem
+
+zakanda/settings/logfile.log
+zakanda/settings/local.py
+zakanda/sensitive_data.py
+
+**/*.pyc

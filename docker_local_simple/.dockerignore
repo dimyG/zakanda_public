@@ -1,0 +1,21 @@
+# Notice that the dockerignore file must be in the build context's directory, so if you use docker-compose
+# to build the docker_local environment you should copy this file to the build context (which is one dir up of docker_local)
+
+sportmonks/response_texts
+sportmonks/vcr_cassetes
+outputs
+media
+fixtures
+temp
+vcr_cassetes
+
+static-files
+
+docker_local
+docker_production
+docker_local_simple
+docker_aws_ECS
+
+zakanda/settings/logfile.log
+
+**/*.pyc

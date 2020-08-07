@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if team_names %}
+        <ul class="list-group">
+        {% for team_name in team_names %}
+            <li class="list-group-item">{{ forloop.counter }} - {{ team_name }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No Team names returned from xmlsoccer call</h3>
+    {% endif %}
+
+{% endblock %}

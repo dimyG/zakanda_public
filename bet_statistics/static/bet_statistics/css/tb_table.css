@@ -1,0 +1,101 @@
+#tb_datatable tbody td.multi_content{
+    /*white-space: nowrap;*/
+    /*font-size: smaller;*/
+}
+
+#tb_datatable tbody td.date{
+    white-space: nowrap !important;
+}
+
+td, th{
+    text-align: center !important;
+}
+
+tr.child > td.child{
+    /* in responsive mode the hidden contents are aligned to the left (start) */
+    text-align: start !important;
+    padding-left: 50px;
+}
+
+td.child span{
+    /* so that the stats title and value appear next to each other */
+    display: inline-block !important;
+}
+
+td.events a:hover{
+    text-decoration: none!important;
+}
+
+.label_zak_blue{
+    background-color: rgba(122, 168, 206, 1) !important;
+    display: block !important;
+}
+
+
+.label_zak_l1{
+    background-color: rgba(232,126,4,1) !important;
+    display: block !important;
+    /* TODO for very small screens define white-space: normal */
+    /*white-space: normal !important;*/ /* if you want the text to split in more than one lines */
+}
+
+.label_zak_l2{
+    background-color: rgba(122, 168, 206, 0.7) !important;
+    display: block !important;
+}
+
+.label_zak_d1{
+    background-color: #36424f!important;
+    display: block !important;
+}
+
+a:hover > div > .label_zak_d1{
+    /* for events case: all events are highlighted */
+    color: rgba(232,126,4,1) !important;
+}
+a > .label_zak_d1:hover{
+    color: rgba(232,126,4,1) !important;
+}
+.badge.label_zak_d1{
+    font-size: 13px !important;
+}
+
+td.multi_content .bev_status_wrapper{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+td.multi_content span.bev_status{
+    /* so there is no overlap between them */
+    font-size: smaller !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+td > a:hover{
+    text-decoration: none !important;
+}
+
+/* total bet detail page */
+.tb_details_wrapper .table tbody tr:hover td,
+.tb_details_wrapper .table tbody tr:hover th {
+  /*background-color: transparent;*/
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+.label_zak_d1 {
+    background-color: rgb(33, 40, 46) !important;
+}
+.label_zak_l1 {
+    background-color: #54431b !important;
+}
+
+/*a .label_zak_d1{*/
+/*    color: #f5d891;*/
+/*}*/
+/*a:hover .label_zak_d1{*/
+/*    !* for events case: all events are highlighted *!*/
+/*    color: rgb(255, 137, 0) !important;*/
+/*}*/
+/*a .label_zak_d1:hover{*/
+/*    color: rgb(255, 138, 0) !important;*/
+/*}*/

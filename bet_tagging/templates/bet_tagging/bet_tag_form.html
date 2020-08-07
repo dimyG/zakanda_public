@@ -1,0 +1,45 @@
+{% extends parent %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-object-ungroup"></i>{% trans 'Bet Group' %} {{ object.name }} ({{ object.owner.username }})
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body form">
+
+    <form class="bet_group_form" role="form" action="#" method="post" data-pjax data-pjax_container="#main_container">
+        <div class="form-body">
+            {% csrf_token %}
+            {% include 'entities/form.html' with form=bet_group_form %}
+            {% if service_form_30 and service_form_90 %}
+                <div class="row hidden" id="service_forms">
+                    <div class="col-sm-12 service_forms_wrapper text-center">{% trans 'Services' %}</div>
+                    <div class="col-sm-2 col-xs-0"></div>
+                    <div class="col-sm-4 col-xs-12 service_form">
+                        {% include 'entities/form.html' with form=service_form_30 %}
+                    </div>
+                    <div class="col-sm-4 col-xs-12 service_form">
+                        {% include 'entities/form.html' with form=service_form_90 %}
+                    </div>
+                    <div class="col-sm-2 col-xs-0"></div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="form-actions">
+            <input type="submit" value="Submit" class="btn btn-primary btn_zak_dark_01"/>
+        </div>
+    </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

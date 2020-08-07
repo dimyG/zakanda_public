@@ -1,0 +1,48 @@
+{% load i18n %}
+
+<div class="portlet box blue-hoki bev_pies_wrapper">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-rss"></i>{% trans 'Events' %}
+        </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+        </div>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+
+        <div id="bet_events_market_pie" class="col-xs-12 col-md-4 col-lg-4">
+            <table>
+                <tr>
+                <td><span class="label label-primary chart-title">{% trans 'MARKET' %}</span></td>
+                <td><span class="reset" style="visibility: hidden; align-self: center"><span class="filter"></span> | </span></td>
+                <td><a class="reset" style="visibility: hidden;">{% trans 'reset' %}</a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="bet_events_choice_pie" class="col-xs-12 col-md-4 col-lg-4">
+{#            <hr>#}
+            <table>
+                <tr>
+                <td><span class="label label-primary chart-title">{% trans 'CHOICE' %}</span></td>
+                <td><span class="reset" style="visibility: hidden; align-self: center"><span class="filter"></span> | </span></td>
+                <td><a class="reset" style="visibility: hidden;">{% trans 'reset' %}</a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="bet_events_status_pie" class="col-xs-12 col-md-4 col-lg-4">
+{#            <hr>#}
+            <table>
+                <tr>
+                <td><span class="label label-primary chart-title">{% trans 'STATUS' %}</span></td>
+                <td><span class="reset" style="visibility: hidden; align-self: center"><span class="filter"></span> | </span></td>
+                <td><a class="reset" style="visibility: hidden;">{% trans 'reset' %}</a></td>
+                </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>

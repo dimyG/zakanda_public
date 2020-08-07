@@ -1,0 +1,23 @@
+{% extends parent %}
+
+{% block content %}
+    {% if bet_tags %}
+        {% for bet_tag in bet_tags %}
+            <div><strong>{{ bet_tag }}</strong></div>
+            {% if not bet_tag.deposits.all %}<div>There are no deposits</div>
+            {% else %}
+            <ul class="list-group">
+                {% for deposit in bet_tag.deposits.all %}
+                <li class="list-group-item">
+                    <div>{{ deposit.date }}:</div> <div> {{ deposit.amount|floatformat:3 }} {% if deposit.is_calculated %}<h6>-calculated-</h6>{% endif %}</div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {{ target_user }} has no deposits
+    {% endif %}
+
+    {% include "generic_pagination.html" %}
+{% endblock %}

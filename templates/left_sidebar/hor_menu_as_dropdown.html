@@ -1,0 +1,33 @@
+{#<div class="page-sidebar-wrapper">#}
+{#    <ul class="page-sidebar-menu visible-sm visible-xs page-header-fixed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">#}
+{#        <li class="nav-item start"><a href="{% url 'home' %}" class="pjax_call">Home</a></li>#}
+{#        {% if request.user.is_authenticated %}#}
+{#            <li class="nav-item"><a href="{% url 'bet_statistics:profile_stats_template' user_pk=request.user.id %}" class="profile pjax_call">Profile</a></li>#}
+{#        {% endif %}#}
+{#        <li class="nav-item"><a href="{% url 'games:pick_bets' %}" class='main_menu pjax_call' id="pick_bets">Pick Bets</a></li>#}
+{#        <li class="nav-item"><a href="{% url 'user_accounts:leader_board' %}" class='main_menu pjax_call'>Leaderboard</a></li>#}
+{#        {% if request.user.is_staff %}#}
+{#            <li class="nav-item"><a href="{% url 'admin:index' %}">Admin</a></li>#}
+{#        {% endif %}#}
+{#    </ul>#}
+{#</div>#}
+{% load i18n %}
+
+<li class="dropdown dropdown-dark visible-sm visible-xs">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="">
+        <span id="">{% trans "Menu" %}</span>
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-default hor_dropdown_menu" role="menu" >
+        <li class=""><a href="{% url 'home' %}" class="pjax_call">{% trans "Home" %}</a></li>
+        {% if request.user.is_authenticated %}
+            <li class=""><a href="{% url 'bet_statistics:profile_stats_template' user_pk=request.user.id %}" class="profile pjax_call">{% trans "Profile" %}</a></li>
+{#            <li><a href="{% url 'wallet:dashboard' %}" class="profile pjax_call btn disabled">{% trans "My Wallet" %}</a></li>#}
+        {% endif %}
+        <li class=""><a href="{% url 'games:pick_bets' %}?bookmaker={{ selected_bookmaker_name }}" class='main_menu pjax_call bookmaker_param' id="pick_bets">{% trans "Pick Bets" %}</a></li>
+        <li class=""><a href="{% url 'user_accounts:leader_board' %}" class='main_menu pjax_call'>{% trans "Leaderboard" context "ονομαστική" %}</a></li>
+        {% if request.user.is_staff %}
+            <li class=""><a href="{% url 'admin:index' %}">Admin</a></li>
+        {% endif %}
+    </ul>
+</li>

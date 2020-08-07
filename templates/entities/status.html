@@ -1,0 +1,10 @@
+
+{% if status == 'Won' %}
+    <span class="label label-sm won bev_status">{{ status }}</span>
+{% elif status == 'Lost' %}
+    <span class="label label-sm lost bev_status">{{ status }}</span>
+{% elif status == 'Open' %}
+    <span class="label label-sm label-info bev_status">{{ status }}</span>
+{% else %}
+    <span class="label label-sm label-default bev_status">{{ status }}</span>
+{% endif %}

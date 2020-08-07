@@ -1,0 +1,46 @@
+{% extends parent %}
+{# TODO pull request to django_stream: change the activity_tags.py to something else to avoid name collision #}
+{# with the actstream activity_tags.py file #}
+{#{% load stream_activity_tags %}#}
+{# the first app defined in settings is the one the activity_tags.py of which is used  #}
+{% load stream_django_tags %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-feed"></i>Activities
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body">
+
+                <div class="row"><div class="col-sm-12">
+
+                <ul class="list-group timeline">
+                {% if not enriched_activities %}<li class="list-group-item nothing_new">Nothing new...</li>{% endif %}
+                {% for activity in enriched_activities %}
+                    {# {{ activity.verb }} #}
+                    {# each activity type is rendered with it's own url #}
+                    {% render_activity activity %}
+                {% endfor %}
+{#                <h2>Next activities</h2>#}
+{#                {% for activity in enriched_activities_2 %}#}
+{#                    {% render_activity activity %}#}
+{#                {% endfor %}#}
+                </ul>
+
+                {% include 'generic_pagination.html' with page_obj=enriched_activities %}
+                {# <a href="?{{ last_activity_id }}" class="pjax_call">More</a>#}
+
+                </div></div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

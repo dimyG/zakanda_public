@@ -1,0 +1,12 @@
+{% if activity.is_open %}
+{% if activity.num_bet_events > 1 %}
+    <li>
+    <h4>
+    <a href="{% url 'bet_statistics:profile_stats_template' user_pk=activity.actor.id %}" class="pjax_call">{{ activity.actor.username }}</a>
+    submitted multiple bet <a href="{% url 'bet_statistics:total_bet_detail' pk=activity.object.id %}" class="pjax_call">{{ activity.object.id }}</a>
+    with {{ activity.num_bet_events }} games
+    "{{ activity.time|timesince }} ago"
+    </h4>
+    </li>
+{% endif %}
+{% endif %}

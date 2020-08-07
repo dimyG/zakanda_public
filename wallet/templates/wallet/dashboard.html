@@ -1,0 +1,34 @@
+{% extends parent %}
+{% load i18n %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">{% trans 'My Wallet' %}</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+                <div class="portlet-body">
+                    {# I use the method calc_wallet_balance instead of the argument wallet_balance because in #}
+                    {# the latter case it showed not the actual value but the F expression #}
+                    <div>Balance: <span>{{ request.user.profile.calc_wallet_balance }}</span></div>
+                    <div><a href="">Deposit</a></div>
+                    <div><a href="{% url 'skrill:transfer_request' %}" class="pjax_call_timeout45">Withdraw</a></div>
+                    <div>Transactions History</div>
+                    <ul>
+                        {% for action in wallet_history %}
+                            <li>{{ action }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

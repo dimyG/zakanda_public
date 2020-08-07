@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if sports %}
+        <h3>The following sports were created successfully</h3>
+        {% for sport in sports %}
+            <h4>{{ sport }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No sports were created!</h4>
+    {% endif %}
+
+    {% if countries %}
+        <h3>The following countries were created successfully</h3>
+        {% for country in countries %}
+            <h4>{{ country }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No countries were created!</h4>
+    {% endif %}
+
+    {% if competitions %}
+        <h3>The following competitions were created successfully</h3>
+        {% for competition in competitions %}
+            <h4>{{ competition }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No competitions were created!</h4>
+    {% endif %}
+
+    {% if teams %}
+        <h3>The following teams were created successfully</h3>
+        {% for team in teams %}
+            <h4>{{ team }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No teams were created!</h4>
+    {% endif %}
+
+    {% if events %}
+        <h3>The following events were created successfully</h3>
+        {% for event in events %}
+            <h4>{{ event }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No events were created!</h4>
+    {% endif %}
+
+    {% if bookmakers %}
+        <h3>The following bookmakers were created successfully</h3>
+        {% for bookmaker in bookmakers %}
+            <h4>{{ bookmaker }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No bookmakers were created!</h4>
+    {% endif %}
+
+    {% if winner_results %}
+        <h3>The following winner market results were created successfully</h3>
+        {% for winner_result in winner_results %}
+            <h4>{{ winner_result }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No winner market results were created!</h4>
+    {% endif %}
+
+    {% if winner_markets %}
+        <h3>The following winner markets were created successfully</h3>
+        {% for winner_market in winner_markets %}
+            <h4>{{ winner_market }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No winner market were created!</h4>
+    {% endif %}
+
+    {% if over_under_results %}
+        <h3>The following over under 2.5 market results were created successfully</h3>
+        {% for over_under_result in over_under_results %}
+            <h4>{{ over_under_result }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No over under market results were created!</h4>
+    {% endif %}
+
+    {% if over_under_markets %}
+        <h3>The following over under 2.5 markets were created successfully</h3>
+        {% for over_under_market in over_under_markets %}
+            <h4>{{ over_under_market }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No over under markets were created!</h4>
+    {% endif %}
+
+    {% if final_score_results %}
+        <h3>The following final score market results were created successfully</h3>
+        {% for final_score_result in final_score_results %}
+            <h4>{{ final_score_result }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No final score market results were created!</h4>
+    {% endif %}
+
+    {% if final_score_markets %}
+        <h3>The following final score markets were created successfully</h3>
+        {% for final_score_market in final_score_markets %}
+            <h4>{{ final_score_market }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No final score markets were created!</h4>
+    {% endif %}
+
+    {% if bets %}
+        <h3>The following bets were created successfully</h3>
+        {% for bet in bets %}
+            <h4>{{ bet }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No bets were created!</h4>
+    {% endif %}
+
+    {% if selected_events %}
+        <h3>The following selected_events were created successfully</h3>
+        {% for selected_event in selected_events %}
+            <h4>{{ selected_event }}</h4>
+        {% endfor %}
+    {% else %}
+        <h4>No selected_events were created!</h4>
+    {% endif %}
+
+{% endblock %}

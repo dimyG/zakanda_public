@@ -1,0 +1,1289 @@
+/* IMPORTANT */
+/* zakanda css files must be loaded after metronic ones so that they can override specific metronic styling */
+
+/*input[type=hidden]{*/
+    /*display: none;*/
+/*}*/
+
+.zak_pallete{
+    color: rgba(165, 42, 42, 1);
+    color: rgba(232,126,4,1);       /* #E87E04 */
+    color: rgba(196, 159, 71, 0.96);    /* #C49F47 */
+    color: rgba(122, 168, 206, 1);
+    color: rgba(33, 40, 46, 1);
+    color: rgba(54, 66, 79, 1);     /* #36424f */
+    color: rgba(31, 31, 31, 1);     /* #1f1f1f; */
+    color: rgba(57, 57, 57, 1); /* hover background #393939*/
+    color: rgba(119, 108, 93, 1); /* #776c5d */
+    color: rgba(208, 208, 208, 1);
+    color: #3182bd;
+    color: lightgoldenrodyellow;
+}
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspect ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.blur, .blur + tr.child{
+    /* it selects also the next tr if it is of child class. This is for datatables responsive hidden content*/
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -ms-filter: blur(1px);
+    -o-filter: blur(1px);
+    filter: blur(1px);
+}
+
+/*.blur a, .blur + tr.child a{*/
+    /*!* make links inactive *!*/
+    /*pointer-events: none;*/
+    /*cursor: default;*/
+    /*text-decoration: none;*/
+    /*color: black;*/
+/*}*/
+
+.zoom{
+    /* this is applied so that there is a smooth transition to normal size when hover is removed */
+    transform: scale(1.0);
+    transition-duration: 1s;
+}
+.zoom:hover {
+    transform: scale(1.02); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transition-duration: 1s;
+}
+
+.margin_left_20{
+    margin-left: 20px;
+}
+
+span.dtr-data > span{
+    /* These spans are the hidden fields of the responsive datatables which have white background. Usually the */
+    /* internal spans have white text color so they become invisible. For this reason black text color is assigned to them */
+    color: black;
+}
+
+span.dtr-data > span.bg_zak_blue_black, span.dtr-data > span.label_zak_d1{
+    /* These spans are the hidden fields of the responsive datatables which have white background. Usually the */
+    /* internal spans have white text color so they become invisible. For this reason black text color is assigned to them */
+    color: white;
+}
+
+.bg_inherit{
+    background-color: inherit !important;
+}
+
+.priv_color{
+     color: #79a6cc !important;
+}
+
+.prem_color{
+     color: #e89904fa !important;
+}
+
+td.private, div.private{
+  background-color: #3c3a3a !important;
+}
+
+td.premium, div.premium{
+    background-color: #1f1f1f !important;
+}
+
+/*.color-gold{*/
+/*    color: rgba(196, 159, 71, 0.96) !important;*/
+/*}*/
+
+.orange_zak_bg{
+    background-color: rgba(232,126,4,1) !important;
+    color: #ebebeb !important;
+}
+
+body {
+    font-size: 12px;
+}
+
+.bg_zak_blue_black{
+    background-color: #2f353b !important;
+}
+
+.bg_zak_orange:not(th){
+    /* if you add a class with ClassName option of Datatables then the class is added also in the footer th */
+    /* and not only in the tds */
+    background-color: rgba(232,126,4,1) !important;
+}
+
+.bg_zak_dark:not(th){
+    background-color: rgba(54, 66, 79, 1) !important;
+}
+.bg_zak_dark_02:not(th){
+    background-color: rgba(33, 40, 46, 1) !important;
+}
+
+.bg_zak_dark_03{
+    background-color: rgba(33, 40, 46, 0.9) !important;
+}
+
+.align_center{
+    text-align: center;
+}
+
+p.help-block{
+    /* crispy forms errors*/
+}
+
+/*.center-block {*/
+    /*display: block;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*text-align: center;*/
+/*}*/
+
+.table td {
+    border: none !important;
+}
+
+.page-content{
+    background-color: rgba(208, 208, 208, 1);
+    /*padding-top: 0 !important;*/
+    /*background-image: url("../img/bg_grey_05.jpg");*/
+    /*background-image: url("../img/3336-grey-texture-1920x1080-abstract-wallpaper.gif");*/
+    /*background-color: rgb(193, 193, 193);*/
+}
+
+.page-content h1,h2,h3,h4,h5{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.portlet.box.blue-hoki{
+    border: 0 !important;
+    /*border-left-width: 0 !important;*/
+    /*border-right-width: 0 !important;*/
+}
+
+.portlet.blue-hoki .portlet-title{
+    background-color: rgba(33, 40, 46, 0.7) !important; /* #21282e */
+}
+
+.btn_zak_danger{
+    /* used with bootstrap btn-danger */
+    /* rgba(165, 42, 42, 1) is brown */
+    color: rgba(255, 255, 255, 0.85) !important;
+    background-color: rgba(165, 42, 42, 1);
+    /*border-color: #21282e;*/
+    border-color: transparent;
+}
+.btn_zak_danger:hover{
+    color: #fff !important;
+    background-color: rgba(165, 42, 42, 0.7);
+    /*border-color: #E87E04;*/
+}
+.btn_zak_danger:active{
+    /*border-color: white;*/
+    background-color: rgba(165, 42, 42, 0.4) !important;
+    border-color: transparent !important;
+}
+.btn_zak_danger:focus{
+    color: rgba(255, 255, 255, 0.85) !important;
+    background-color: rgba(165, 42, 42, 1);
+    /*border-color: #21282e;*/
+    border-color: transparent;
+}
+
+
+.btn_zak_orange_01{
+    /* used with bootstrap btn-warning */
+    color: rgba(255, 255, 255, 0.85) !important;
+    background-color: rgba(232,126,4,0.9);
+    /*border-color: #21282e; *//* the background color */
+    border-color: transparent;
+}
+.btn_zak_orange_01:hover{
+    color: #fff !important;
+    background-color: rgba(232,126,4,0.6);
+}
+.btn_zak_orange_01:active{
+    background-color: rgba(232,126,4,0.4) !important;
+    border-color: transparent !important;
+}
+.btn_zak_orange_01:focus{
+    color: rgba(255, 255, 255, 0.85) !important;
+    background-color: rgba(232,126,4,0.9);
+    border-color: transparent;
+}
+
+
+.btn_zak_blue_01{
+    /* used with bootstrap btn-warning */
+    color: rgba(255, 255, 255, 0.85) !important;
+    /*background-color: rgba(122, 168, 206, 0.6) !important;*/
+    background-color: rgb(52, 139, 210) !important;
+    border-color: transparent !important;    /* the background color */
+}
+.btn_zak_blue_01:hover{
+    color: #fff !important;
+    background-color: rgba(122, 168, 206, 0.95) !important;
+}
+.btn_zak_blue_01:active{
+    background-color: rgba(122, 168, 206, 0.4) !important;
+    border-color: transparent !important;
+}
+
+.btn_zak_dark_01{
+    /* used with bootstrap btn-warning */
+    color: rgba(255, 255, 255, 0.85) !important;
+    /*background-color: rgba(54, 66, 79, 1) !important;*/
+    background-color: rgba(33, 40, 46, 0.95) !important;
+    border-color: transparent !important;  /* the background color */
+}
+.btn_zak_dark_01:hover{
+    color: #fff !important;
+    background-color: rgba(33, 40, 46, 0.7) !important;
+    /*border-color: rgba(33, 40, 46, 1) !important;*/
+}
+.btn_zak_dark_01:active{
+    background-color: rgba(33, 40, 46, 1) !important;
+    border-color: transparent !important;
+}
+
+/* input */
+#right_sidebar_container input{
+    /* relative and not a class for defining the input automatically created by django form */
+    background-color: #21282e !important;
+    /*border: 1px solid #7aa8ce !important;*/
+    color: #E87E04;
+}
+#right_sidebar_container input:focus{
+    border-color: #E87E04 !important;
+}
+/* end input */
+
+.input_zak_def_01{
+    background-color: #21282e !important;
+    /*border: 1px solid #7aa8ce !important;*/
+    border: 1px solid rgba(54, 66, 79, 1) !important;
+    /*border: 1px solid #C49F47 !important;*/
+    /*border: 1px solid #7aa8ce !important;*/
+    /*border: none !important;*/
+    color: #E87E04 !important;
+}
+.input_zak_def_01:focus{
+    border-color: #E87E04 !important;
+}
+.input_zak_def_01:active{
+    background-color: #21282e !important;
+}
+
+.s13{
+    font-size: 13px;
+}
+
+a.bg_dark {
+    color: rgba(196, 159, 71, 0.96);
+    /*font-size: 13px;*/
+}
+a.bg_dark:hover, a.bg_dark:active{
+    /*background-color: rgba(57, 57, 57, 1);*/
+    color: rgba(232,126,4,1);
+    text-decoration: none;
+}
+
+a.bg_dark:hover span.username, a.bg_dark:active span.username{
+    color: rgba(232,126,4,1) !important;
+}
+
+a.bg_orange{
+    color: rgba(33, 40, 46, 1);
+    font-weight: bolder;
+}
+a.bg_orange:hover{
+    color: white !important;
+    text-decoration: none;
+}
+
+a.bg_orange>span.label{
+    color: rgba(33, 40, 46, 1);
+    font-weight: bold;
+}
+a.bg_orange:hover>span.label{
+    color: white !important;
+    text-decoration: none;
+}
+
+ul.nav-tabs li a, ul.nav-tabs li a:focus{
+    /* panel tabs */
+    background-color: rgb(191, 191, 191);
+    color: rgb(84, 84, 84);
+}
+ul.nav-tabs li a:hover{
+    background-color: rgb(159, 159, 159);
+    /*color: white;*/
+}
+
+ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover, ul.nav-tabs li.active a:focus{
+    /* panel tabs */
+    /*background-color: rgba(54, 66, 79, 1);*/
+    background-color: rgba(232,126,4,1);
+    color: white;
+}
+
+.no_wrap{
+    white-space: nowrap;
+}
+
+.list_avatar{
+    float: left;
+    padding-left: 5%;
+}
+
+.pagination span.next{
+    margin-right: 5px;
+}
+.pagination span.prev{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.portlet-body.form .no_form_content{
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+}
+
+.form-actions .secondaryAction{
+    float: right;
+}
+
+.about-header {
+     /*overrides metronic about.css */
+    /*background-image: url("../img/crowd.jpg");*/
+    /*opacity: 0.8;*/
+}
+
+.feature_wrapper .img_wrapper, .feature_wrapper{
+    text-align: center;
+}
+
+.img_wrapper img {
+    max-width: 450px;
+    width: 100%;
+}
+
+.about-header .logo_img_wrapper{
+    text-align: center;
+}
+.logo_img_wrapper img{
+    max-width: 300px;
+    width: 100%;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+/* By default display is flex so that cards have the same height */
+/* after a breakpoint on 1260 [lg range max limit is at 1260] display goes back to block so that the cards */
+/* behave according to their responsive values (col-md-6) */
+.feature_cards, .feature_cards_2 {
+    display: flex;
+    margin-top: 80px;
+}
+.feature_cards .portlet, .feature_cards_2 .portlet {
+    height: 100%;
+}
+@media only screen and (max-width: 1260px) {
+    .feature_cards {
+        display: block;
+    }
+}
+@media only screen and (max-width: 1100px) {
+    .feature_cards_2 {
+        display: block;
+    }
+}
+
+
+
+.v_center_children{
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+
+@media only screen and (max-width: 768px) {
+    /* for styling the features below 768px (sm) */
+    .feature_wrapper .feature {
+        display: block;
+    }
+}
+
+/*.bootstrap-growl.alert {*/
+    /*z-index: 20000 !important;*/
+/*}*/
+
+.profile-userpic img{
+    max-width: 200px;
+}
+
+td span.username{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media only screen and (max-width: 520px) {
+    .dropdown-menu {
+        text-align: right;
+        padding-right: 10px;
+    }
+}
+@media only screen and (max-width: 520px) {
+    .hor_dropdown_menu {
+        text-align: right;
+        padding-right: 10px;
+    }
+}
+
+
+.contact_us .portlet-body, .contact_us .portlet-title{
+    text-align: center;
+}
+.contact_us .portlet-title .caption{
+    float: none;
+}
+.contact_us .portlet-body p{
+    font-size: 14px;
+}
+
+
+div.card-icon > i{
+    border: 0;
+    font-size: 100px;
+}
+
+div.target_audience_icon > i{
+    font-size: 150px;
+    padding-left: 0;
+}
+@media only screen and (max-width: 1230px) {
+    div.target_audience_icon > i{
+        font-size: 120px;
+    }
+}
+
+a.zak_color{
+    color: rgba(232,126,4,1);
+}
+
+/*#main_loader, .loading_wrapper{*/
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*z-index: 1;*/
+/*}*/
+
+/* loading image */
+div.loading_wrapper, #main_loader{
+    size: 200px;
+    position: fixed;
+    z-index: 100;
+    top: 25%;
+    left: 50%;
+    /* use half the image size to center the center of image  or use transform translate*/
+    margin-top: -50px;
+    margin-left: -100px;
+    /*transform: translate(-50%, -50%);*/
+}
+
+
+a.zak_classic{
+    color: #C49F47 !important;
+    font-size: 15px !important;
+}
+
+a.zak_classic:hover{
+    /*background-color: rgba(57, 57, 57, 1) !important;*/
+    color: #E87E04 !important;
+    text-decoration: none !important;
+
+}
+
+.portlet > .portlet-title > .caption {
+    font-size: 16px;
+}
+@media only screen and (min-width: 768px) {
+    /* in small screen < 768 I deactivate the width so that the float applies and the title floats left */
+    /* this is done so that the actions and the title stay in one line */
+    .portlet > .portlet-title > .caption {
+        text-align: center;
+        width: 85%; /* must be after a float so that text is centered, 90% so that there is space for the actions */
+    }
+}
+
+.description_wrapper{
+    text-align: justify;
+}
+
+.use_examples div{
+    font-size: 14px;
+    font-weight: 400;
+    color: #808a94;
+    text-align: justify;
+}
+
+.use_examples .card-title{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center !important;
+    font-weight: 700;
+}
+
+.use_examples .desc{
+    padding-bottom: 20px;
+}
+
+/*.use_examples{*/
+/*    margin-top: 0;*/
+/*}*/
+
+.about-header h1{
+    margin-top: 90px;
+}
+
+/*.what_is > .portlet {*/
+/*    margin-bottom: 0;*/
+/*}*/
+
+.what_is{
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    /*background-color: #21282e;*/
+}
+
+/* CAROUSEL */
+/*.carousel-inner img {*/
+  /*margin: auto;*/
+/*}*/
+
+/* CAROUSEL */
+.carousel_wrapper{
+    margin-bottom: 0;
+}
+
+.carousel_body{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.carousel{
+    /*max-width: 700px;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*float: inherit;*/
+    /*position: relative;*/
+}
+
+.carousel_img{
+    max-width: 100%;
+    max-height: 400px;
+}
+
+/*.carousel_img_wrapper{*/
+/*    text-align: center !important;*/
+/*}*/
+
+#carousel-example-generic{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#carousel-example-generic>.left .carousel-control{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.carousel-control > .glyphicon{
+    /*color: #36424f;*/
+    color: #e87e048c;
+}
+
+.carousel_body .desc{
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 25px;
+}
+
+/* overwriting indicators styling from bootstrap.css */
+.carousel-indicators{
+    bottom: 0px;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    border: 1px solid #2b2b2b;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #2b2b2b !important; \9;
+    /*background-color: rgba(0,0,0,0);*/
+}
+
+.carousel-indicators .active {
+    margin: 0;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #E87E04;
+    background-color: #E87E04 !important;
+}
+/* END CAROUSEL */
+
+.desc_container{
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse;
+}
+.learn_more{
+    /*text-align: center;*/
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+
+.card-desc{
+    margin-bottom: 0;
+}
+/*div.portlet{*/
+    /*!* center *!*/
+    /*text-align: center;*/
+    /*width: fit-content;*/
+    /*margin: 0 auto;*/
+/*}*/
+
+.ribbon-content{
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.ribbon{
+    margin-top: 0 !important;
+}
+
+#comments *{
+    font-size: 102% !important;
+}
+
+#comments .content{
+    font-size: 120% !important;
+}
+
+
+/* ############## form.html stuff START ############## */
+div.form-group{
+    display: flex;  /* so that label and input are next to each other */
+}
+div.form-group.block{
+    display: block;
+}
+
+div.form-group > label{
+    /*color: rgba(232,126,4,1);*/
+    /* width and min-width needed so that the label is always 110px */
+    width: 110px;
+    min-width: 110px;
+}
+
+.help_text{
+    color: #8080809c;
+    padding-left: 110px;  /* the same with the width of the label so that help text is aligned with the input */
+    display: block;  /* so that if the text is more than 2 lines, the padding applies to the other lines too.*/
+}
+
+.form_error{
+    color: red;
+    padding-left: 110px;  /* the same with the width of the label so that help text is aligned with the input */
+    display: block;  /* so that if the text is more than 2 lines, the padding applies to the other lines too.*/
+}
+/* ############## form.html stuff END ############## */
+
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+body{
+    color: #ccccccc2;
+}
+
+.label{
+    color: #e5e5e5
+}
+
+.portlet-body label {
+    color: #ccccccc2 !important;
+}
+.portlet-body{
+    /*background-color: #333 !important;*/
+    background-color: rgba(51, 51, 51, 0.75) !important;
+}
+.portlet-body .portlet-body{
+    background-color: transparent !important;
+}
+.portlet-body label{
+    color: white;
+}
+/* parent has class comments_container */
+.portlet.light{
+    background-color: rgba(51, 51, 51, 0.75);
+}
+
+.form .form-actions, .portlet-form .form-actions {
+    background-color: transparent;
+    border-top: 1px solid #333;
+}
+
+/*.portlet.blue-hoki, .portlet.box.blue-hoki>.portlet-title, .portlet>.portlet-body.blue-hoki{*/
+/*    background-color: rgba(33, 40, 46, 1);*/
+/*}*/
+.portlet.blue-hoki, .portlet>.portlet-body.blue-hoki{
+    background-color: transparent;
+}
+.portlet.box.blue-hoki>.portlet-title{
+    background-color: rgba(33, 40, 46, 1) !important;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+    color: #999;
+}
+
+.portlet-body tr{
+    background-color: transparent !important;
+}
+
+.portlet.box.blue-hoki>.portlet-title>.caption, .portlet.box.blue-hoki>.portlet-title>.caption>i{
+    color: #c49f47;
+}
+
+.portlet.box>.portlet-title>.tools>a.collapse {
+    background-image: url(../metronic/assets/global/img/portlet-collapse-icon.png);
+}
+.portlet.box>.portlet-title>.tools>a.expand {
+    background-image: url(../metronic/assets/global/img/portlet-expand-icon.png);
+}
+
+table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {
+    border-top: 1px solid #21282e;
+    /*border-collapse: unset;*/
+}
+.table-responsive table{
+    /*border-top: 1px solid #21282e;*/
+    border-collapse: unset;
+}
+@media screen and (max-width: 767px) {
+    .table-responsive {
+        border: 1px solid #21282e;
+    }
+}
+tr th{
+    /*color: #ccccccc2;*/
+    color: #999;
+}
+tr td{
+    /*background-color: #333;  !* #333; *!*/
+    background-color: rgba(51, 51, 51, 0.5);
+}
+tr td tr td{
+    background-color: transparent;
+}
+td a, .portlet-body a {
+    /*color: #d47406;*/
+    color: #e87e04d6;
+    /*border-bottom: 1px solid #ff8b39;*/
+}
+td a:hover, .portlet-body a:hover{
+    color: #fca800;  /* #ffe600 */
+    text-decoration: none;
+}
+td a:active, .portlet-body a:active{
+    color: #fca800;
+    text-decoration: none;
+}
+td a:focus, .portlet-body a:focus{
+    color: #fca800;
+    text-decoration: none;
+}
+td a {
+    display: block;
+}
+
+#event_table_wrapper .table>thead>tr>th{
+    color: #c49f47;
+    border: transparent;
+}
+
+.portlet_parent{
+    padding: 0 !important;
+}
+
+input, select, textarea{
+    /* same with input_zak_def_01 */
+    background-color: #21282e !important;
+    border: 1px solid rgba(54, 66, 79, 1) !important;
+    color: #E87E04 !important;
+    outline: 0;
+}
+
+input:focus, textarea:focus{
+    /* same with input_zak_def_01 */
+    border-color: #E87E04 !important;
+}
+
+input:active, textarea:active{
+    /* same with input_zak_def_01 */
+    background-color: #21282e !important;
+}
+
+/*.select2-search--dropdown{*/
+/*    background-color: #21282e !important;*/
+/*    color: #ccccccc2 !important;*/
+/*}*/
+/*.select2-search__field{*/
+/*    background-color: #21282e !important;*/
+/*    color: #ccccccc2 !important;*/
+/*}*/
+.select2-results {
+    background-color: #21282e;
+}
+/*.select2-container--default .select2-selection--single{*/
+/*    background-color: #e80b0b !important;*/
+/*}*/
+.select2-container--bootstrap .select2-selection {
+    border: 1px solid rgba(54, 66, 79, 1);
+}
+.select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection {
+     -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,0.075), 0 0 8px rgba(147,161,187,0.6);
+     box-shadow: inset 0 0px 0px rgba(0,0,0,0.075), 0 0 0px rgba(147,161,187,0.6);
+     /*-webkit-transition: border-color ease-in-out 0.15s,box-shadow ease-in-out 0.15s; */
+    /*-o-transition: border-color ease-in-out 0.15s,box-shadow ease-in-out 0.15s;*/
+    /* transition: border-color ease-in-out 0.15s,box-shadow ease-in-out 0.15s; */
+     /*border-color: #93a1bb; */
+}
+.select2-selection .select2-selection--multiple{
+    border: 0 !important;
+}
+.select2-search__field{
+    border: 0 !important;
+}
+.select2-selection__choice {
+    background-color: #36424f!important;
+    border: 1px solid #36424f!important;
+    color: white !important;
+}
+.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice__remove{
+    color: white;
+}
+.select2-container--bootstrap .select2-selection {
+    background-color: transparent !important;
+}
+.input-group.bet_groups_filter{
+    background-color: #21282e !important;
+}
+
+.dc-chart > svg {
+    fill: #c49f47;
+}
+
+.dc-chart .axis line, .dc-chart .axis path {
+    stroke: #c49f47;
+}
+
+#extra-line{
+    /* descendant of dc-chart */
+    stroke: #c49f4780;
+}
+
+.btn_zak_orange_01{
+    /* used with bootstrap btn-warning */
+    color: rgba(255, 255, 255, 0.85) !important;
+    background-color: rgba(232, 126, 4, 0.75);
+    border: 0;
+    /*border-color: #21282e; *//* the background color */
+    /*border-color: transparent;*/
+}
+.btn_zak_orange_01:hover{
+    color: #fff !important;
+    background-color: rgb(255, 138, 0);
+}
+.btn_zak_orange_01:active{
+    background-color: rgb(255, 138, 0) !important;
+    border-color: transparent !important;
+}
+.btn_zak_orange_01:focus{
+    color: rgba(255, 255, 255, 0.85) !important;
+    background-color: rgb(255, 138, 0);
+    border-color: transparent;
+}
+
+.label-default{
+    background-color: #555;
+}
+
+#bank_growth_history_chart, #time_bar_chart{
+    float: none;
+}
+
+/*.text-stat .title{*/
+/*    background-color: rgba(49, 130, 189, 0.8) !important;*/
+/*}*/
+/*.text-stat .value{*/
+/*    background-color: rgba(49, 130, 189, 0.8) !important;*/
+/*}*/
+.won{
+    background-color: rgb(34, 76, 34) !important;  /* rgba(0, 128, 0, 0.33) !important; */
+}
+.lost{
+    background-color: rgb(123, 31, 31) !important;  /* background-color: rgba(229, 0, 0, 0.4) !important; */
+}
+
+.form_error {
+    color: #e87e04;
+}
+
+/*table.dataTable thead .sorting {*/
+/*    background-image: url(../img/soccer_20px.png);*/
+/*}*/
+table.dataTable thead .sorting_desc {
+    background-image: url(../img/sort_desc_orange.png);
+}
+table.dataTable thead .sorting_asc {
+    background-image: url(../img/sort_asc_orange.png);
+}
+table.dataTable thead .sorting {
+    background-image: url(../img/sort_both_grey.png);
+}
+
+.bg_zak_dark:not(th) {
+    background-color: rgb(33, 40, 46) !important;
+}
+
+a.bg_dark {
+    color: #e87e04d6 !important;
+    /* #ff8b39 */
+    /*font-size: 13px;*/
+}
+a.bg_dark:hover, a.bg_dark:active{
+    /*background-color: rgba(57, 57, 57, 1);*/
+    color: #fca800;
+    text-decoration: none;
+}
+
+a.bg_dark:hover span.username, a.bg_dark:active span.username{
+    color: #fca800 !important;
+}
+
+.bg_zak_orange:not(th) {
+    background-color: #54431b !important;
+}
+.label_zak_l1 {
+    background-color: #54431b !important;
+}
+
+hr {
+    border-top: 1px solid #21282e;
+}
+
+.use_examples div{
+    color: #ccc;
+}
+
+.feature_cards tr td {
+    background-color: transparent;
+}
+.card-desc span {
+    color: #ccc;
+}
+.card-title span {
+    color: #ccc;
+}
+
+/* after individual assignment */
+.light .light, .portlet-body .light{
+    background-color: transparent
+}
+.light .portlet-body{
+    background-color: transparent !important;
+}
+
+.mt-widget-3 {
+     border: 0 solid #333;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #333;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    border: 1px solid #333;
+}
+ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover, ul.nav-tabs li.active a:focus {
+    color: #ffb400;
+    background: #15232f;
+    border: 1px solid #15232f;
+}
+ul.nav-tabs li:not(.active) a:hover{
+    background-color: #21282e;
+    color: #c49f47;
+    border: 1px solid #21282e;
+}
+ul.nav-tabs li a, ul.nav-tabs li a:focus {
+    background-color: #21282e94;
+    color: #999999a8;
+}
+
+.btn_zak_dark_02{
+    /*background: #21282e;*/
+    color: #f5d891 !important;
+    background: rgba(33, 40, 46, 0.6);
+    border: 1px solid rgba(33, 40, 46, 0.6) !important;
+}
+.btn_zak_dark_02:hover{
+    color: #fff !important;
+    background: #21282e;
+    border: 1px solid #21282e;
+}
+.btn_zak_dark_02:active{
+    color: #ffb400 !important;
+    background-color: rgba(33, 40, 46, 0.6) !important;
+    border: 1px solid rgba(33, 40, 46, 0.6) !important;
+}
+.btn_zak_dark_02:focus{
+    color: #f5d891;
+    background-color: rgba(33, 40, 46, 0.6);
+    border: 1px solid rgba(33, 40, 46, 0.6);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    /*color: #000000 !important;*/
+    /*font-weight: bold;*/
+    /*border: 1px solid #333;*/
+    /*!*background: linear-gradient(to bottom, #333 0%, #e87e04 100%);*!*/
+    /*background: #e87e0475;*/
+
+    color: #ffb400 !important;
+    background: #15232f;
+    border: 1px solid #15232f;
+}
+.btn_link_01, .dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: #21282e94;
+    color: #999999a8!important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    /*color: #e87e0475 !important;*/
+    /*background: #21282e8c;*/
+    background-color: #21282e94;
+    color: #999999a8 !important;
+}
+.btn_link_01:hover, .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    /*color: #ffb400 !important;*/
+    /*background: #111;*/
+    background: #21282e;
+    color: #c49f47 !important;
+    border: 1px solid #21282e;
+}
+
+span.ellipsis{
+    color: #ffb400;
+}
+/*.dataTables_wrapper .dataTables_paginate .paginate_button {*/
+/*    background-color: #21282e;*/
+/*    color: #e87e04 !important;*/
+/*}*/
+
+a .label, a .label_zak_d1{
+    color: #f5d891;
+}
+a:hover .label, a:hover .label_zak_d1{
+    /* for events case: all events are highlighted */
+    color: rgb(255, 137, 0) !important;
+}
+a .label:hover, a .label_zak_d1:hover{
+    color: rgb(255, 138, 0) !important;
+}
+
+.change_profile_picture_wrapper>label{
+    color: #e87e04d6 !important;
+}
+/*#popular_bevs_datatable td a{*/
+/*    color: #f5d891;*/
+/*    padding-left: 20px;*/
+/*    padding-right: 20px;*/
+/*}*/
+/*#popular_bevs_datatable td>a>span{*/
+/*    color: #f5d891;*/
+/*}*/
+
+.label-primary, .label-info {
+    background-color: #337ab76b;
+}
+
+.thumbnail {
+    background-color: transparent;
+    border: 0;
+}
+
+
+.form-actions button, .buttonHolder button{
+    /* Identical with btn_zak_dark_01 */
+    /* used with bootstrap btn-warning */
+    color: rgba(255, 255, 255, 0.85) !important;
+    /*background-color: rgba(54, 66, 79, 1) !important;*/
+    background-color: rgba(33, 40, 46, 0.95) !important;
+    border-color: transparent !important;  /* the background color */
+}
+.form-actions button:hover, .buttonHolder button:hover{
+    color: #fff !important;
+    background-color: rgba(33, 40, 46, 0.7) !important;
+    /*border-color: rgba(33, 40, 46, 1) !important;*/
+}
+.form-actions button:active, .buttonHolder button:active{
+    background-color: rgba(33, 40, 46, 1) !important;
+    border-color: transparent !important;
+}
+
+.table-scrollable>.table {
+    background-color: transparent;
+}
+.table-scrollable {
+    border: 0;
+}
+.table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>th, .table>caption+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>td, .table>thead:first-child>tr:first-child>td {
+    border-top: 0;
+    border-bottom: 0;
+}
+.table-hover>tbody>tr:hover, .table-hover>tbody>tr:hover>td {
+     background: rgba(51, 51, 51, 0.5) !important;
+}
+
+.dashboard-stat2 {
+    background: rgba(51, 51, 51, 0.75);
+}
+.status > .status-number{
+    color: #c49f47;
+}
+
+.prem_color {
+    color: #e4bf67 !important;
+}
+
+td.private, div.private {
+    background-color: #666 !important;
+}
+.priv_color {
+    color: #ddd !important;
+}
+.mt-element-ribbon .ribbon, .mt-element-ribbon .ribbon.ribbon-color-default, .mt-element-ribbon .ribbon.ribbon-color-default>.ribbon-sub, .mt-element-ribbon .ribbon>.ribbon-sub {
+    background-color: #214d73;
+    color: #ddd;
+}
+
+
+/*tr.premium{*/
+/*    background-color: #1f1f1f87 !important;*/
+/*}*/
+/*tr.private{*/
+/*    background-color: #1f1f1f87 !important;*/
+/*}*/
+.bg_inherit {
+    background-color: transparent !important;
+}
+
+div.prem_wrapper{
+    padding-left: 0;
+    padding-right: 0;
+}
+.prem_wrapper>a.subscribe{
+    padding-right: 5px !important;
+}
+
+
+.mt-element-list .list-default.mt-list-container {
+    border: 0;
+}
+.mt-element-list .list-default.mt-list-container ul>.mt-list-item {
+    border-bottom: 0;
+    /*border-bottom: 1px solid; */
+    /*border-color: #2f353b;*/
+}
+.mt-list-title.event_date_wrapper{
+    border-top: 1px solid #333;
+}
+
+/*ul.events_list .label{*/
+/*    background-color: #333 !important;*/
+/*}*/
+.event_date_wrapper .label{
+    background-color: transparent !important;
+    color: #ccc;
+    /*color: blanchedalmond;*/
+}
+.event_list_item .label-sm{
+    background-color: #333 !important;
+    font-size: 11px;
+}
+
+.all_markets_competition_link {
+    background-color: transparent !important;
+}
+.all_markets_competition_link>a {
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.list-group-item.event_list_item{
+    background-color: transparent !important;
+    border: 0;
+}
+
+li.list-group-item.bet_tag_li_item{
+    border: 0;
+}
+.list-group-item.bet_tag_li_item {
+    background-color: transparent;
+}
+
+.btn_zak_blue_01 {
+    background-color: #337ab742 !important;
+}
+
+.btn_zak_danger{
+    background-color: rgba(165, 42, 42, 0.6);
+}
+.btn_zak_danger:hover{
+    background-color: rgba(165, 42, 42, 1);
+}
+.btn_zak_danger:active{
+    background-color: rgba(165, 42, 42, 0.5) !important;
+}
+.btn_zak_danger:focus{
+    background-color: rgba(165, 42, 42, 0.6);
+}
+
+button{
+    outline: 0;
+}
+
+.title_country_name, .title_event_date, .title_event_back_to_competition{
+    font-size: small;
+}
+.title_competition_name, .title_event_teams{
+    color: #e4bf67;
+}
+
+.portlet>.portlet-title{
+    text-align: center;
+}
+.portlet>.portlet-title>.caption{
+    float: none;
+}

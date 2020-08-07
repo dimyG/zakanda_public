@@ -1,0 +1,80 @@
+{% extends parent %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-sm-12">
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-object-ungroup"></i>{% trans 'Services' %} - {% trans 'Tipster' %}: {{ bet_group.owner }} - {% trans 'Bet Group' %}: {{ bet_group.name }}
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+                    <div class="pricing-content-1">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-0"></div>
+                            {% for service in services %}
+                            <div class="col-md-4">
+                                <div class="price-column-container border-active {% if service.duration == 30 %}service_30{% elif service.duration == 90 %}service_90{% endif %}">
+                                    <div class="price-table-head">
+                                        <h3 class="no-margin">
+                                            {% if service.duration == 30 %} 1 {% trans 'month' %}{% elif service.duration == 90 %} 3 {% trans 'months' %}{% endif %}
+                                        </h3>
+                                    </div>
+                                    <div class="arrow-down"></div>
+                                    <div class="price-table-pricing">
+                                        <h3>
+                                            <sup class="price-sign">€</sup>{{ service.monthly_price|floatformat:2 }}</h3>
+                                        <p>per month</p>
+{#                                        <div class="price-ribbon">Popular</div>#}
+                                    </div>
+                                    <div class="price-table-content">
+                                        <div class="row mobile-padding">
+                                            <div class="col-xs-3 text-right mobile-padding">
+                                                <i class="glyphicon-euro"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-left mobile-padding">{{ service.price }} Euros</div>
+                                        </div>
+                                        <div class="row mobile-padding">
+                                            <div class="col-xs-3 text-right mobile-padding">
+                                                <i class="icon-calendar"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-left mobile-padding">{{ service.duration }} {% trans 'days' %}</div>
+                                        </div>
+                                        <div class="row mobile-padding">
+                                            <div class="col-xs-3 text-right mobile-padding">
+                                                <i class="icon-user-follow"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-left mobile-padding">{{ service.subscribers_limit }} {% trans 'max subscribers' %}</div>
+                                        </div>
+                                    </div>
+                                    <div class="arrow-down arrow-grey"></div>
+                                    <div class="price-table-footer">
+                                        <button class="payment_btn btn btn-lg btn-warning btn_zak_orange_01 ladda-button disabled {% if bet_group.subscribed %}disabled{% endif %}"
+                                                style="pointer-events: none;" {% if bet_group.subscribed %}style="pointer-events: none;"{% endif %}
+                                                data-style="expand-right" data-size="xs"  >
+                                            {% if bet_group.subscribed %}
+                                                {% trans "Subscribed" %}  {# This should never occur #}
+                                            {% else %}
+                                                {% trans "Payment" %}
+                                            {% endif %}
+                                            {# The span inside the link is only needed so that it can be programmatically clicked with jquery #}
+                                            {# Doing $('a').trigger('click') doesn't work. You need an element inside the link. #}
+                                            <a href="{% url 'bet_tagging:payment_request' service_id=service.id %}" class="hidden disabled"><span></span></a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="col-md-2 col-sm-0"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+    </div>
+    </div>
+{% endblock %}

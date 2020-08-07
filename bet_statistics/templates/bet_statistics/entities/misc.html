@@ -1,0 +1,159 @@
+{% load i18n%}
+
+<div class="col-md-4 col-sm-12">
+    {% include 'bet_statistics/entities/stakes_barchart.html' %}
+</div>
+
+
+<div class="col-md-4 col-sm-12">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-rss"></i>{% trans 'Filtered Bets' %}
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                </div>
+                </div>
+                <div class="portlet-body filtered_bets">
+                    <div class="row">
+                    <div class="center-block col-xs-12" id="dc-data-count" style="width: auto">
+        {#                <span class="chart-title">MULTIPLE BETS</span>#}
+                        <div class="filter_numbers">
+                            <span class="label filter-count"></span>
+                            <span class="label separator">from</span>
+                            <span class="label total-count"></span>
+                        </div>
+                        <div class="filter_reset">
+                            <a class="total_bets reset-all btn btn-sm btn_zak_orange_01" >{% trans 'RESET' %}</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="portlet box blue-hoki collapsed_md_down">
+                <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-rss"></i>{% trans 'Bet Groups' %}
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
+                </div>
+                </div>
+                <div class="portlet-body portlet-collapsed">
+                    <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group row chart_filters_wrapper">
+
+                            <div class="input-group select2-bootstrap-append col-xs-12 bet_groups_filter">
+        {#                        <div class="filter_label input-group-addon">Bet Groups</div>#}
+                                <select class="form-control select2 select2-hidden-accessible" multiple id="bet_tags_filter"> {# select_multiple #}
+                                    {% for bet_tag in bet_tags %}
+                                        <option value="{{ bet_tag.name }}">{{ bet_tag.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+{#                    <div class="col-xs-12 bet_group_description">{{ bet_tag.description }}</div>#}
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 col-sm-12">
+    <div class="portlet box blue-hoki collapsed_md_down overview_values">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-rss"></i>{% trans 'Other Indicators' %} {% if normalization_method == 'Unit' %} <span style="font-size: 12px;"> ({% trans 'in units' %})</span> {% endif %}
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="expand" data-original-title="" title=""> </a>
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+        <div class="portlet-body portlet-collapsed ">
+           <div class="row" id="other_indicators_chart">
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Bets </span>
+                        <h3><span id="numbets_number" class="label value "></span></h3>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Investment </span>
+                        <h3><span id="real_investment_number" class="label value "></span></h3>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Total Profits </span>
+                        <h3><span id="total_profits_number" class="label value "></span></h3>
+                    </div>
+
+                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Total Stakes </span>
+                        <h3><span id="total_stakes_number" class="label value "></span></h3>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Maximum Odd </span>
+                        <h3><span id="max_odd" class="label value "></span></h3>
+                    </div>
+
+                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Average Odd </span>
+                        <h3><span id="median_odd" class="label value "></span></h3>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Maximum Stake </span>
+                        <h3><span id="max_stake" class="label value "></span></h3>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Average Stake </span>
+                        <h3><span id="median_stake" class="label value "></span></h3>
+                    </div>
+
+                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Maximum Profit </span>
+                        <h3><span id="max_profit" class="label value "></span></h3>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title "> Average Profit </span>
+                        <h3><span id="median_profit" class="label value "></span></h3>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title ">  Popular Bookmaker </span>
+                        <h3><span id="pop_bookmaker" class="label value "></span></h3>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title ">  Popular Team </span>
+                        <h3><span id="pop_team" class="label value "></span></h3>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title ">  Popular Competition </span>
+                        <h3><span id="pop_competition" class="label value "></span></h3>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-stat">
+                        <span class="label label-sm title ">  Popular Market </span>
+                        <h3><span id="pop_market" class="label value "></span></h3>
+                    </div>
+           </div>
+        </div>
+    </div>
+</div>

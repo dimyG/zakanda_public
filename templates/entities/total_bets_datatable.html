@@ -1,0 +1,325 @@
+{% load avatar_tags %}
+
+<table id="{{ table_id }}" class="display responsive tbs_table" cellspacing="0" width="100%">
+<thead>
+    <tr>
+        <th></th> {# Expand button #}
+        <th {% if table_id == 'raw_bev_parent_tbs' %}data-priority="1"{% endif %}>Tipster</th>
+        {% if open == "False" %}<th data-priority="6">Status</th>{% else %}<th>Status</th>{% endif %}
+        <th>Date</th>
+        <th>Bookmaker</th>
+        {# <th>To Win</th>#}
+        <th>Odd</th>
+        {% if open == "False" %}<th>Bank Growth</th>{% endif %}
+        <th data-priority="5">Amount</th>
+        {# {% if open == "False" %}<th data-priority="6">Profit</th>{% endif %}#}
+        {# https://datatables.net/extensions/responsive/examples/display-control/classes.html#}
+        <th {% if table_id == 'raw_bev_parent_tbs' %}data-priority="2" {% else %}data-priority="1" class="mobile tablet desktop" {% endif %}>Events</th>
+        <th data-priority="3">Choice</th>
+        {% if open == "False" %}<th data-priority="4">Result</th>{% endif %}
+        <th {% if open == "False" %}data-priority="2"{% endif %}>Event Status</th>
+        <th data-priority="8">Market</th>
+        <th data-priority="7">Event Odd</th>
+        <th >Event Date</th>
+        <th data-priority="9">Bet Group</th>
+        <th>Round</th>
+        <th>Season</th>
+        <th>Country</th>
+        <th>Competition</th>
+    </tr>
+</thead>
+<tfoot>
+    <tr>
+        <th></th>
+        <th>Tipster</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Bookmaker</th>
+        {# <th>To Win</th>#}
+        <th>Odd</th>
+        {% if open == "False" %}<th>Bank Growth</th>{% endif %}
+        <th>Amount</th>
+        {# {% if open == "False" %}<th>Profit</th>{% endif %}#}
+        <th>Events</th>
+        <th>Choice</th>
+        {% if open == "False" %}<th>Result</th>{% endif %}
+        <th>Event Status</th>
+        <th>Market</th>
+        <th>Event Odd</th>
+        <th>Event Date</th>
+        <th>Bet Group</th>
+        <th>Round</th>
+        <th>Season</th>
+        <th>Country</th>
+        <th>Competition</th>
+
+    </tr>
+</tfoot>
+
+<tbody class="">
+    {% for total_bet in total_bets %}
+        {% with total_bet.label as label %}
+            {% if label == free or open == "False" %}
+
+        <tr>
+            <td></td>
+            <td class="bg_zak_dark align_center no_blur">
+                <a href="{% url 'bet_statistics:profile_stats_template' user_pk=total_bet.user.pk %}" class="pjax_call bg_dark s13">
+                    <div class="row">
+                    <div class=""><span class="">{% avatar total_bet.user 30 class="img-circle" %}</span></div>
+                    <div class=""><span class="username username-hide-on-mobile">{{ total_bet.user }}</span></div>
+                    </div>
+                </a>
+            </td>
+
+            <td>
+                {# {% include 'entities/status.html' with status=total_bet.status %} #} {# makes rendering slower #}
+                {% with total_bet.status as status %}
+                {% if status == 'Won' %}
+                    <span class="label label-sm won bev_status">{{ status }}</span>
+                {% elif status == 'Lost' %}
+                    <span class="label label-sm lost bev_status">{{ status }}</span>
+                {% elif status == 'Open' %}
+                    <span class="label label-sm label-info bev_status">{{ status }}</span>
+                {% else %}
+                    <span class="label label-sm label-default bev_status">{{ status }}</span>
+                {% endif %}
+                {% endwith %}
+            </td>
+
+            {# dates are sorted as strings so we define the string in teh data-order attr in order to be sorted correctly #}
+            <td class="date no_wrap" data-order="{{ total_bet.date|date:"YmdHi"}}">
+                {{ total_bet.date|date:"d M y H:i" }}
+            </td>
+
+            <td>{{ total_bet.bookmaker }}</td>
+            {# <td>{{ total_bet.calculate_expected_profit|floatformat:1 }}</td>#}
+
+            <td>
+                {{ total_bet.odd|floatformat:2 }}
+            </td>
+
+            {% if open == "False" %}<td>{{ total_bet.bank_growth }}</td>{% endif %}
+
+            <td class="bg_zak_blue_black">
+                <span class="label label-sm label-info bg_zak_blue_black">
+                    {{ total_bet.amount }}
+                </span>
+            </td>
+
+{#            {% if open == "False" %}#}
+{#                <td class="bg_zak_orange"><span class="label label-sm label-info label_zak_l1">{{ total_bet.calculate_profit }}</span></td>#}
+{#            {% endif %}#}
+            <td class="multi_content bg_zak_dark events">
+                <a class="pjax_call url_param_dependent" href="{{ total_bet.get_absolute_url }}">
+                    {# TODO bet_systems. Currently I take the first bet of the tb since there is only one bet in each tb #}
+
+                    {# {% for bet_event in total_bet.bets.all.0.bet_events.all %}  I could do just this instead #}
+{#                    total_bet.bets.all {{ total_bet.bets.all }}#}
+                    {% for bet in total_bet.bets.all %}
+{#                        bet.bet_events.all {{ bet.bet_events.all }}#}
+                        {% for bet_event in bet.bet_events.all %}
+                <div>
+                    <span class="label label-sm label-info label_zak_d1">
+                    {{ bet_event.event.home_team.generic_name }} - {{ bet_event.event.away_team.generic_name }}
+                    </span>
+                </div>
+                        {% endfor %}
+                    {% endfor %}
+                </a>
+            </td>
+
+            <td class="multi_content bg_zak_orange">
+                {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+                    <div class="">
+                    <span class="label label-sm label-info label_zak_l1 choice">
+                        {{ bet_event.selection.choice }}
+                    </span>
+                    </div>
+                {% endfor %}
+                {% endfor %}
+            </td>
+
+            {% if open == "False" %}
+                <td class="multi_content bg_zak_dark">
+                    {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+
+                            <div><span class="label label-sm label-info label_zak_d1" >
+                            {% for result in bet_event.event.results.all %}
+                                {% if result.final %} {{ result }}
+                                {% elif result.type in decision_result_types %} ({{ result }})
+                                {% endif %}
+                            {% endfor %}
+                            </span></div>
+
+                            {% if not bet_event.event.results.all %}
+                                {# if there are no results. Notice that if there are live results nothing will be shown #}
+                                <div><span class="label label-sm label-info label_zak_d1">-</span></div>
+                            {% endif %}
+
+                        {% endfor %}
+                    {% endfor %}
+                </td>
+            {% endif %}
+
+            <td class="multi_content">
+                {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+                    <div class="bev_status_wrapper">
+{#                    {% include 'entities/status.html' with status=bet_event.selection.status %}#}
+                    {% with bet_event.selection.status as status %}
+                    {% if status == 'Won' %}
+                        <span class="label label-sm won bev_status">{{ status }}</span>
+                    {% elif status == 'Lost' %}
+                        <span class="label label-sm lost bev_status">{{ status }}</span>
+                    {% elif status == 'Open' %}
+                        <span class="label label-sm label-info bev_status">{{ status }}</span>
+                    {% else %}
+                        <span class="label label-sm label-default bev_status">{{ status }}</span>
+                    {% endif %}
+                    {% endwith%}
+                    </div>
+                {% endfor %}
+                {% endfor %}
+            </td>
+
+            <td class="multi_content">
+                {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+                <div>
+                    {{ bet_event.market_type.abbreviation }}
+                </div>
+                {% endfor %}
+                {% endfor %}
+            </td>
+
+            <td class="multi_content">
+                {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+                <div>
+                    {{ bet_event.selection.selected_odd }}
+                </div>
+                {% endfor %}
+                {% endfor %}
+            </td>
+
+            <td class="multi_content no_wrap">
+                    {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+                    <div>
+                        {{ bet_event.event.date|date:"M d H:i" }}
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+            </td>
+
+            <td>
+                <a href="{% url 'bet_statistics:profile_stats_template' user_pk=total_bet.user.pk %}?{{ total_bet.bet_tag.name }}=On" class="pjax_call">
+                    <span class="badge badge-info label_zak_d1" >{{ total_bet.bet_tag.name }}</span>
+                </a>
+            </td>
+
+            <td class="multi_content">
+                {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+                <div>{{ bet_event.event.round }}</div>
+                {% endfor %}
+                {% endfor %}
+            </td>
+
+            <td class="multi_content">
+                {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+                <div>{{ bet_event.event.competition_season.season }}</div>
+                {% endfor %}
+                {% endfor %}
+            </td>
+
+            <td class="multi_content">
+                {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+                <div>{{ bet_event.event.competition_season.competition.country.name }}</div>
+                {% endfor %}
+                {% endfor %}
+            </td>
+
+            <td class="multi_content">
+                {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+                <div>
+                    {{ bet_event.event.competition_season.competition }}
+                </div>
+                {% endfor %}
+                {% endfor %}
+            </td>
+        </tr>
+
+            {% else %}
+
+        <tr class="{% if label == private %}private{% else %}premium{% endif %}">
+            <td></td>
+            <td class="bg_zak_dark align_center no_blur">
+                <a href="{% url 'bet_statistics:profile_stats_template' user_pk=total_bet.user.pk %}" class="pjax_call bg_dark s13">
+                    <div class="row">
+                    <div class=""><span class="">{% avatar total_bet.user 30 class="img-circle" %}</span></div>
+                    <div class=""><span class="username username-hide-on-mobile">{{ total_bet.user }}</span></div>
+                    </div>
+                </a>
+            </td>
+            <td></td>
+            {# dates are sorted as strings so we define the string in teh data-order attr in order to be sorted correctly #}
+            <td class="date no_wrap" data-order="{{ total_bet.date|date:"YmdHi"}}"></td>
+            <td></td>
+            <td></td>
+            {% if open == "False" %}<td>{{ total_bet.bank_growth }}</td>{% endif %}
+            <td class=""></td>
+            <td class="multi_content events">
+                <span class="label label-info bg_inherit {% if label == private %}priv_color{% else %}prem_color{% endif %}">{% if request.user.is_authenticated %}{{ label }}{% else %}
+                    <a href="{% url "account_login" %}" style="color: rgba(196, 159, 71, 0.96)">Sign In</a>{% endif %}</span>
+            </td>
+            <td class=""><span></span></td>
+            {% if open == "False" %}
+                <td class="multi_content bg_zak_dark">
+                    {% for bet in total_bet.bets.all %}
+                        {% for bet_event in bet.bet_events.all %}
+
+                            <div><span class="label label-sm label-info label_zak_d1" >
+                            {% for result in bet_event.event.results.all %}
+                                {% if result.final %} {{ result }}
+                                {% elif result.type in decision_result_types %} ({{ result }})
+                                {% endif %}
+                            {% endfor %}
+                            </span></div>
+
+                            {% if not bet_event.event.results.all %}
+                                {# if there are no results. Notice that if there are live results nothing will be shown #}
+                                <div><span class="label label-sm label-info label_zak_d1">-</span></div>
+                            {% endif %}
+
+                        {% endfor %}
+                    {% endfor %}
+                </td>
+            {% endif %}
+            <td class="multi_content"></td>
+            <td class="multi_content"></td>
+            <td class="multi_content"></td>
+            <td class="multi_content no_wrap"></td>
+            <td>
+                <a href="{% url 'bet_statistics:profile_stats_template' user_pk=total_bet.user.pk %}?{{ total_bet.bet_tag.name }}=On" class="pjax_call">
+                    <span class="badge badge-info label_zak_d1" >{{ total_bet.bet_tag.name }}</span>
+                </a>
+            </td>
+            <td class="multi_content"></td>
+            <td class="multi_content"></td>
+            <td class="multi_content"></td>
+            <td class="multi_content"></td>
+        </tr>
+
+            {% endif %}
+        {% endwith %}
+    {% endfor %}
+</tbody>
+
+</table>

@@ -1,0 +1,61 @@
+{% extends parent %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-sm-12 loading_wrapper">
+        {# <img class="img-responsive" src="{% static 'img/preloader_girl_01.gif' %}" alt="Loading..."/>#}
+        {% include 'entities/balls.svg'%}
+    </div>
+
+    <div class="col-sm-12 hidden" id="leaderboard_table_wrapper">
+
+    <div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-feed"></i>Users
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+        <div class="portlet-body">
+
+    <table id="leaderboard" class="display responsive" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>User</th>
+                <th>Yield %</th>
+                <th>ROI %</th>
+                <th>Bank Growth</th>
+                <th>Investment</th>
+                <th>W/L</th>
+{#                <th>Form</th>#}
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="odd center-text">
+                <td valign="top" colspan="8" class="dataTables_empty">There is nothing here...</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th>User</th>
+                <th>Yield %</th>
+                <th>ROI %</th>
+                <th>Bank Growth</th>
+                <th>Investment</th>
+                <th>W/L</th>
+{#                <th>Form</th>#}
+            </tr>
+        </tfoot>
+    </table>
+
+        </div>
+        </div>
+
+    </div>
+
+    </div>
+{% endblock %}

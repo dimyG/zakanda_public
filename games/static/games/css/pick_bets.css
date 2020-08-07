@@ -1,0 +1,142 @@
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.odd_input_wrapper label{
+    margin-bottom: 0 !important;
+}
+
+.events_list li.event_list_item {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+span.odd_wrapper{
+    display: none;
+}
+
+.market_label{
+    margin-bottom: 3px !important;
+}
+/*div[class^="col"] {*/
+    /*margin-bottom: 5px;*/
+/*}*/
+
+li.mt-list-item{
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    min-height: 0 !important;
+}
+
+.market_option_wrapper{
+    padding-right: 0 !important;
+    /*padding-left: 3px !important;*/
+}
+.spinner_wrapper{
+    /*padding-left: 0 !important;*/
+    /*padding-right: 3px !important;*/
+}
+
+div.margin_sm {
+    margin-bottom: 10px;
+}
+
+table.hor_table{
+    margin-bottom: 0 !important;
+}
+
+td.hor_table_title{
+    width: 150px;
+}
+
+.hor_table{
+    margin-bottom: 5px;
+}
+
+/*div.bookmakers_form_wrapper{*/
+    /*padding-top: 3px;*/
+    /*padding-bottom: 3px;*/
+/*}*/
+
+.vertical_middle{
+    vertical-align: middle !important;
+}
+
+/*#bookmakers_form{*/
+    /*padding-top: 3px;*/
+/*}*/
+
+.market_option{
+    /*width: 130px;*/
+    width: 100%;
+}
+
+.event_hour_wrapper{
+    padding-left: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+/*.offer_content_wrapper {*/
+  /*position: relative;*/
+/*}*/
+/*.event_hour_wrapper {*/
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*transform: translateY(-50%);*/
+/*}*/
+
+/*.event_hour_wrapper, .winner_market, .additional_markets_wrapper {*/
+    /*display: inline-block;*/
+    /*vertical-align: middle*/
+/*}*/
+
+/* All Markets Template */
+.all_markets_list li.event_list_item {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#date_range_picker{
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    /*border: 1px solid #ccc;*/
+    border: none;
+    width: 100%;
+}
+
+.daterangepicker .ranges li.active{
+    background: rgba(54, 66, 79, 1) !important;
+}
+.daterangepicker .applyBtn{
+    background-color: rgba(232,126,4,1);
+    border-color: rgb(158, 80, 4);
+}
+.daterangepicker .applyBtn:hover{
+    background-color: rgb(185, 93, 4);
+}
+.daterangepicker .applyBtn:focus{
+    background-color: rgb(158, 80, 4);
+}
+
+/* hides the custom_range item of the datepicker since it is has currently no importance */
+.daterangepicker .ranges li:last-child{
+    display: none;
+}
+.daterangepicker .ranges .range_inputs{
+    display: none;
+}
+
+.all_markets_competition_link{
+    background-color: rgba(54, 66, 79, 1);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.other_bookmaker > span{
+    color: rgb(33, 40, 46);
+}

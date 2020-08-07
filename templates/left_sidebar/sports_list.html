@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+
+<div class="sports_list">
+<ul class="page-sidebar-menu  page-header-fixed {% if not user.is_authenticated %}page-sidebar-menu-closed{% endif %}" data-keep-expanded="false" data-auto-scroll="false" data-slide-speed="200" style="padding-top: 20px">
+    <li class="sidebar-toggler-wrapper hide">
+        <div class="sidebar-toggler">
+            <span></span>
+        </div>
+    </li>
+
+    <li class="heading">
+        <h3 class="uppercase">Sports</h3>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link nav-toggle">
+<!--{#            <i class="fa fa-futbol-o" style="color: black;"></i>#}-->
+<!--{#            <i class="fa fa-soccer-ball-o"></i>#}-->
+            <!--<img src="{% static 'img/soccer_20px.png' %}" class="fa left_sidebar_icon football">-->
+
+            <span class="title">Football</span>
+            <span class="arrow open"></span>
+            <ul class="sub-menu always-open">
+                {% if competitions_by_country %}
+                    {% for country, competitions in competitions_by_country.items %}
+                        {% if forloop.counter0 == 0 %}
+{#                            A dummy first list item. Needed because there is a bug with the first item.#}
+{#                            It dissapeared when it is not open. So I add a dummy as first item#}
+                            <li class="nav-item hidden"><a href="javascript:;" class="nav-link nav-toggle"></a></li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link nav-toggle">
+{#                                <i class="icon-diamond"></i>#}
+{#                                {% with 'img/flags/'|add:country|add:'.svg' as image_static %}#}
+{#                                    <img  width="24" alt="" src="{% static image_static %}">#}
+{#                                {% endwith %}#}
+                                <span class="title" style="padding-left: 5px;">{{ country }}</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                {% for competition in competitions %}
+                                    {% if forloop.counter0 != 0%}
+                                    <li class="nav-item">
+                                        <a class="nav-link competition_link pjax_call bookmaker_param"
+                                           href="{% url 'games:planned_competition_events' competition_gnames=competition.generic_name.strip competition_ids=competition.id %}?bookmaker={{ selected_bookmaker_name }}">
+                                            {{ competition.generic_name }}
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+
+                    {% endfor %}
+                {% else %}
+                    <li class="nav-item">Oops!! competitions_by_country variable doesn't exist</li>
+                {% endif %}
+            </ul>
+        </a>
+    </li>
+
+</ul>
+</div>

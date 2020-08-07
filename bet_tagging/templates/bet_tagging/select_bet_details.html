@@ -1,0 +1,80 @@
+<div class="row bet_details_wrapper" xmlns="http://www.w3.org/1999/html">
+{% if bet_tags %}
+
+    <div class="col-sm-12">
+        <form role="form">
+
+        <div class="" id="select_bet_tags_wrapper">
+            <div class="panel panel-default">
+            <div class="panel-heading toggle_body bg_zak_dark">
+                <div>Select Bet Group</div>
+            </div>
+            <div class="panel-body">
+
+            <ul class="list-group checked-list-box">
+
+            {% for bet_tag in bet_tags %}
+                <li class="list-group-item bet_tag_li_item">
+                    <div class="radio row">
+                      <div class="name">
+                          <label class="">
+    <input type="radio" id="{{ bet_tag.id }}" data-id="{{ bet_tag.id }}" data-balance="{{ bet_tag.balance }}" data-name="{{ bet_tag.name }}" name="available_bet_tag"
+         {% if request.session.active_bet_tag_id  %}
+            {% if bet_tag.id == request.session.active_bet_tag_id  %}checked{% endif %}
+         {% else %}
+            {% if bet_tag.is_default %}checked{% endif %}
+         {% endif %}
+    >
+                          <span class="label label-sm bg_zak_dark">{{ bet_tag.name }}</span>
+                          </label>
+                      </div>
+                        <div class="balance">
+                        <span class="label label-sm bg_zak_orange">{{ bet_tag.balance }}</span>
+                        </div>
+                        <div class="">
+                            {% if bet_tag.is_default %}<h6>default</h6>{% endif %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+
+            </ul>
+
+            </div></div>
+        </div>
+
+        <div id="bet_description_wrapper">
+            <div class="panel panel-default">
+            <div class="panel-heading toggle_body bg_zak_dark">Bet Analysis (optional)</div>
+            <div class="panel-body">
+
+            <textarea id="bet_description" class="form-control" name="analysis" maxlength="1500" placeholder="A few words about your bet..."></textarea>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group block" id="bet_description_url_wrapper">
+                    <label for="bet_description_url_input" class="control-label"></label>
+                    <span class="glyphicon glyphicon-link" ></span>
+                    <input type="url" id="bet_description_url_input" class="form-control" name="analysis_url" placeholder="Link to your analysis page">
+                    </div>
+                </div>
+            </div>
+
+            </div></div>
+        </div>
+
+        </form>
+    </div>
+
+    <div class="col-sm-12">
+
+    </div>
+
+{% else %}
+    {% if not request.user.is_authenticated %}
+        <div class="col-sm-12"> Login or Sign Up to submit bets </div>
+    {% else %}
+        <div class="col-sm-12"> {{ request.user }} you have no Bet Tags yet </div>
+    {% endif %}
+{% endif %}
+</div>

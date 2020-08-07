@@ -1,0 +1,30 @@
+{% extends parent %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row contact_us">
+    <div class="col-sm-12">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    {% trans 'Contact Us' %}
+                </div>
+                <div class="actions">
+                </div>
+            </div>
+            <div class="portlet-body">
+                <p>{% trans 'Do you have any questions or remarks? Maybe some complaints or new ideas?' %}</p>
+                <p>{% trans 'Are you interested in Cooperating or Advertising with us?' %}</p>
+                <p>{% trans 'Just want to say hello?' %}</p>
+                <br><br>
+                <p>{% trans 'Find us at' %}</p>
+                <hr>
+                <p><a href="mailto:info@zakanda.com?">info@zakanda.com</a></p>
+                <hr>
+                <p>{% trans "We would be happy to hear from you!" %}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

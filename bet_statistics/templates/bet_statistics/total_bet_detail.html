@@ -1,0 +1,164 @@
+{% extends parent %}
+{% load avatar_tags %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="row tb_details_wrapper">
+
+<div class="col-sm-12">
+<div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                Bet
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+        <div class="portlet-body">
+    <div class="table-responsive">
+
+    <table class="display responsive" id="tb_detail_table">
+        <thead class="">
+            <tr class="">
+                <th></th>
+                <th data-priority="1" class="mobile tablet desktop">Tipster</th>
+                <th data-priority="2">Status</th>
+                <th data-priority="6">Date</th>
+                <th data-priority="3">Stake</th>
+                <th data-priority="4">Odd</th>
+                <th data-priority="5">Bank Growth</th>
+                <th data-priority="8">Bookmaker</th>
+                <th data-priority="7">Bet Group</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td class="bg_zak_dark align_center">
+                    <a href="{% url 'bet_statistics:profile_stats_template' user_pk=total_bet.user.pk %}" class="pjax_call bg_dark s13">
+                        <div class="row">
+                        <div class=""><span class="">{% avatar total_bet.user 30 class="img-circle" %}</span></div>
+                        <div class=""><span class="username username-hide-on-mobile">{{ total_bet.user }}</span></div>
+                        </div>
+                    </a>
+                </td>
+                <td>{% include 'entities/status.html' with status=total_bet.status %}</td>
+                <td class="" data-order="{{ raw_bev.event.date|date:"YmdHi"}}">{{ total_bet.date|date:"M d H:i" }}</td>
+                <td class="bg_zak_dark"><span class="label label-sm label-info bg_zak_dark">{% if not normalization_method %} {{ total_bet.amount|floatformat:"3" }} {% else %} {{ total_bet.amount }} {% endif %}</span></td>
+                <td class="bg_zak_orange"><span class="label label-sm label-info bg_zak_orange">{{ total_bet.odd|floatformat:"2" }}</span></td>
+                <td class="">{% if total_bet.bank_growth %}{{ total_bet.bank_growth }}{% else %} Waiting... {% endif %}</td>
+                <td>{{ total_bet.bookmaker.name }}</td>
+
+                <td>
+                    <a href="{% url 'bet_statistics:profile_stats_template' user_pk=total_bet.user.pk %}?{{ total_bet.bet_tag.name }}=On" class="pjax_call">
+                        <span class="badge badge-info label_zak_d1" >{{ total_bet.bet_tag.name }}</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+</div></div>
+</div>
+
+<div class="col-sm-12">
+<div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                Events
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+        <div class="portlet-body">
+
+    {% for bet, bet_events in bet_events_per_bet.iteritems %}
+        <div class="table-responsive">
+
+        <table class="display responsive" id="bev_detail_table">
+            <thead class="">
+                <tr class="">
+                    <th></th>
+                    <th data-priority="5">Status</th>
+                    <th data-priority="7">Date</th>
+                    <th data-priority="1" class="mobile tablet desktop">Event</th>
+                    <th data-priority="2">Choice</th>
+                    <th data-priority="3">Market</th>
+                    <th data-priority="6">Odd</th>
+                    <th data-priority="8">Competition</th>
+{#                    <th data-priority="9">Round</th>#}
+                    <th data-priority="4">Result</th>
+{#                    <th>Stats</th>#}
+                </tr>
+            </thead>
+            <tbody>
+            {% for bet_event in bet_events %}
+                <tr>
+                    <td></td>
+                    <td>{% include 'entities/status.html' with status=bet_event.selection.status %}</td>
+                    <td class="" data-order="{{ raw_bev.event.date|date:"YmdHi"}}">{{ bet_event.event.date|date:"M d H:i" }}</td>
+                    <td class="bg_zak_dark">
+                        <a class="pjax_call"
+                           href="{% if bet_event.selection.status == 'Open' %}{% url 'games:all_markets_for_event' event_id=bet_event.event.id %}{% else %}{% url 'games:pick_bets' %}{% endif %}">
+                        <span class="label label-sm label-info label_zak_d1">{{ bet_event.event.home_team.generic_name }} - {{ bet_event.event.away_team.generic_name }}</span>
+                        </a>
+                    </td>
+                    <td class="bg_zak_orange"><span class="label label-sm label-info label_zak_l1 choice">{{ bet_event.selection.choice }}</span></td>
+                    <td class="bg_zak_blue_black"><span class="label label-sm label-info bg_zak_blue_black">{{ bet_event.market_type }}</span></td>
+                    <td class="bg_zak_blue_black"><span class="label label-sm label-info bg_zak_blue_black">{{ bet_event.selection.selected_odd|floatformat:"2" }}</span></td>
+                    <td>{{ bet_event.event.competition_season.competition.generic_name }} {{ bet_event.event.competition_season.season.name }}</td>
+{#                    <td>{{ bet_event.event.round }}</td>#}
+                    {% if bet_event.event.results.all %}
+                        <td class="bg_zak_dark">
+                        {% for result in bet_event.event.results.all %}
+                            <span class="label label-sm label-info label_zak_d1">
+                            {% if result.type in decision_result_types or result.final %} {{ result }} {% endif %}
+                            </span>
+                        {% endfor %}
+                        </td>
+                    {% else %}  {# open events #}
+                        <td>Waiting...</td>
+                    {% endif %}
+{#                    <td><a href="{% url 'bet_statistics:bet_event_detail' bet_event.id %}" class="pjax_call">stats</a></td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        </div>
+    {% endfor %}
+
+</div></div>
+</div>
+
+<div class="col-sm-12">
+<div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                Bet Analysis
+            </div>
+            <div class="actions">
+            </div>
+        </div>
+        <div class="portlet-body">
+    {% if total_bet.description %}
+        <div class="row">
+        <div class="col-sm-2">Analysis: </div>
+        <div class="col-sm-10">{{ total_bet.description }}</div>
+        </div>
+    {% endif %}
+    <hr>
+    {% if total_bet.url %}
+        <div class="row">
+        <div class="col-sm-2">Analysis page: </div>
+        <div class="col-sm-10"><a href={{ total_bet.url|safe }}>{{ total_bet.url|safe }}</a></div>
+        </div>
+    {% endif %}
+</div></div>
+</div>
+</div>
+
+{% include 'comments.html' %}
+
+{% endblock %}

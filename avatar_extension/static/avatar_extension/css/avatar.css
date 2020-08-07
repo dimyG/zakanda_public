@@ -1,0 +1,12 @@
+.centered{
+    text-align: center;
+}
+
+.fileinput-preview{
+    width: 200px;
+    height: 150px;
+}
+
+.text_in_image_input{
+    color: grey;
+}

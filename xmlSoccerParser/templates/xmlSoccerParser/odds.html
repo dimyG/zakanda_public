@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if odds_by_market_type %}
+        {% for market_type, market_offer_odds_list in odds_by_market_type.iteritems %}
+            <h3>{{ market_type }}</h3>
+            {% for market_offer_odd in market_offer_odds_list %}
+                <h4>{{ market_offer_odd }}</h4>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <h3>Nothing returned from the view</h3>
+    {% endif %}
+
+{% endblock %}

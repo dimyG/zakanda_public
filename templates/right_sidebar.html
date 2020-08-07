@@ -1,0 +1,45 @@
+{% load i18n %}
+{#<h3 class="list-heading">Bet Slip</h3>#}
+<div class="portlet light bg-inverse bet_slip_wrapper">
+    {% if request.user.is_authenticated %}
+    <div class="row portlet light bet_slip_bet_tag"><span>{% trans "Bet Group"%}:</span><span class="label-sm label-warning label_zak_red active_bet_tag">
+        {% if request.session.active_bet_tag_id %}
+            {% for bet_tag in request.user.bet_tags.all %}
+                {% if bet_tag.id == request.session.active_bet_tag_id %} {{ bet_tag.name }} <span class="bt_balance">({{ bet_tag.balance }})</span> {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for bet_tag in request.user.bet_tags.all %}
+                {% if bet_tag.is_default %} {{ bet_tag.name }} <span class="bt_balance">({{ bet_tag.balance }})</span> {% endif %}
+            {% endfor %}
+        {% endif %}
+    </span></div>
+    {% endif %}
+
+    <ul class="media-list list-items" id="bet_slip_events_list"></ul>
+
+    <div id="keep_selections">
+        <label for="keep_selections">{% trans "Keep selections" %}</label>
+        <input type="checkbox" name="keep_selections">
+    </div>
+
+    <div class="row portlet light bg-inverse odd_amount_wrapper">
+        <div class="col-xs-4 " id="total_bet_odd_wrapper">{% trans "Odd" %} <div class="cl_orange" id="total_bet_odd">1.00</div></div>
+        <div class="col-xs-8 pull-right" id="place_bet_form_wrapper"> </div>
+    </div>
+
+    <div class="row portlet light bg-inverse details_submit_wrapper"><div class="col-sm-12">
+        <a href="{% url 'bet_tagging:select_bet_details' %}" data-remote="false" data-toggle="modal" data-target="#bet_tags_modal" class="btn btn-sm btn-danger btn_zak_blue_01">
+            {% trans "Bet Details" %}
+        </a>
+        <button class="btn btn-sm btn-warning btn_zak_orange_01 pull-right ladda-button" id="place_bet" type="submit"
+                form="bet_amount_form" value="Place Bet" data-style="expand-right" data-size="xs">{% trans "Submit Bet" %}</button>
+    </div></div>
+
+    <div class="row"><div class="col-sm-12">
+        {% include 'bet_tagging/bet_tags_modal.html' %}
+    </div></div>
+
+{#    <div class="text-danger" id="bet_slip_message"></div>#}
+
+</div>
+

@@ -1,0 +1,33 @@
+<div id="" class="">
+
+    <div class="portlet box blue-hoki">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-feed"></i>{{ title }}
+        </div>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="portlet-body">
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#open_user_total_bets_wrapper" role="tab" data-toggle="tab">Open Bets</a></li>
+        <li role="presentation"><a href="#closed_user_total_bets_wrapper" role="tab" data-toggle="tab">Closed Bets</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane active" id="open_user_total_bets_wrapper">
+            {% include 'entities/total_bets_datatable.html' with total_bets=open_tbs table_id=open_table_id open="True" %}
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="closed_user_total_bets_wrapper">
+            {% include 'entities/total_bets_datatable.html' with total_bets=closed_tbs table_id=closed_table_id open="False" %}
+        </div>
+
+    </div>
+
+    </div>
+    </div>
+
+</div>

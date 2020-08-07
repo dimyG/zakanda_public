@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if competition_seasons %}
+        <h3>Created Competition Seasons</h3>
+        <ul class="list-group">
+        {% for competition_season in competition_seasons %}
+            <li class="list-group-item">{{ forloop.counter }} - {{ competition_season }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No League names returned from xmlsoccer call</h3>
+    {% endif %}
+
+     {% if deleted_competition_seasons %}
+         <h3>Deleted Competition Seasons</h3>
+        <ul class="list-group">
+        {% for competition_season in deleted_competition_seasons %}
+            <li class="list-group-item">{{ forloop.counter }} - {{ competition_season }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No Special Competition Seasons were deleted</h3>
+    {% endif %}
+
+{% endblock %}

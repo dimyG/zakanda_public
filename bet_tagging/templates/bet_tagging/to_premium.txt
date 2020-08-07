@@ -1,0 +1,12 @@
+Your tipster {{ bet_group.owner.username }} offers a new Premium service!
+
+
+Hi %recipient.username%!
+
+Your tipster {{ bet_group.owner.username }} has created the new Premium Bet Group: {{ bet_group.name }}.
+You will continue to receive his Free tips but if you want access to his premium tips you have to subscribe
+to his service.
+
+
+All the best
+zakanda

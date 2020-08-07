@@ -1,0 +1,401 @@
+{% extends parent %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block content %}
+
+
+    <div class="row margin-bottom-40 about-header" xmlns="http://www.w3.org/1999/html">
+        <div class="col-md-12">
+            <h1></h1>
+            <div class="logo_img_wrapper">
+                <img src="{% static 'img/logo_01_280px_demo_3.png' %}" class="index_logo responsive" alt="zakanda demo">
+            </div>
+            <h1 style="margin-top: 60px;">{% trans "Your Sports Betting Community" %}</h1>
+{#            <h2>Gain audience, or guidance from the community, Have fun with your friends, Follow the experts, Become a tipster, Manage your bets, Monitor your performance,  Gain audience, </h2>#}
+            <h2>
+                {% comment %}Translators: Write without tones since they will be shown as CAPITAL letters {% endcomment %}
+                {% trans 'Bet with virtual money, Compete with your friends, Expand your audience, Earn extra income' %}
+            </h2>
+            <form class='login' method='GET' action='{% url 'account_signup' %}'>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn_zak_orange_01">{% trans "JOIN US TODAY..." %}</button>
+            </form>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-sm-12 what_is"><h2>{% trans 'So, what is zakanda?' %}</h2></div>
+
+            <div class="col-sm-12">
+        <div class="portlet box blue-hoki nested_parent carousel_wrapper">
+            <div class="portlet-body carousel_body">
+{#                <div class="row feature v_center_children">#}
+{#                    <div class="col-sm-12 col-xs-12 portlet light" id="">#}
+{#                        <div class="portlet-body">#}
+
+{#    <div class="card-title">#}
+{#        {% trans "Zakanda is a sports betting social tool in which you can place bets with virtual money." %}#}
+{#        {% trans "Zakanda is a sports betting social tool in which you can place bets with virtual money." %}#}
+{#    </div>#}
+
+    <div class="use_examples description_wrapper card-desc row">
+
+{#        <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">#}
+{#        {% trans "Zakanda is a sports betting social tool in which you can place bets with virtual money." %}#}
+{#        <br>#}
+{#        {% trans "Zakanda is a sports betting social tool in which you can place bets with virtual money." %}#}
+{#        <br><br>#}
+{#        </div>#}
+
+        <div id="carousel-example-generic" class="carousel slide col-sm-12" data-ride="carousel">  {# data-interval="3*1000" #}
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+
+            <div class="item active">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img src="{% static 'img/dice.jpg' %}" alt="..." class="carousel_img">
+                    </div>
+                  <div class="col-sm-6">  {# class="carousel-caption" #}
+                      <h2 class="card-title">{% trans "A virtual bookmaker" %}</h2>
+                        <div class="desc">
+                            {% blocktrans %} You can use zakanda as a virtual bookmaker, betting without risking
+                            real money while having a clear overview of your overall performance.
+                            Check how your friends or the other players are doing and compete with them,
+                            experiencing the excitement of betting enhanced with the fun of competition. If you later decide
+                            that you are good enough to try your luck with a traditional bookmaker, feel free to move on,
+                            putting in practice the skills you have acquired.{% endblocktrans %}
+                        </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="row">
+                <div class="col-sm-6 carousel_img_wrapper">
+                    <img src="{% static 'img/stats_01.png' %}" alt="..." class="carousel_img">
+                </div>
+                <div class="col-sm-6">
+                    <h2 class="card-title">{% trans "A performance monitoring and money management tool" %}</h2>
+                    <div class="desc">
+                        {% blocktrans %}Zakanda gives you a clear and complete picture of your overall loses or profits
+                        through a great variety of charts and indexes such as ROI and Yield. Apart from that, you have the
+                        possibility to split your balance to bet groups and manage each bet group separately.
+                            Traditional bookmakers
+                        don't offer you something similar, so if you are betting in one of them, you can begin registering your
+                        bets in zakanda too and take advantage of its related functionality and tools. {% endblocktrans %}
+                    </div>
+                </div>
+                </div>
+            </div>
+
+              <div class="item">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img src="{% static 'img/advice_grayscale.jpg' %}" alt="..." class="carousel_img">
+                    </div>
+                    <div class="col-sm-6">
+                        <h2 class="card-title">{% trans "A source of bet advices" %}</h2>
+                        <div class="desc">
+                        {% blocktrans %}Zakanda is an open betting community of players from all around the world.
+                        Select your favorite ones, follow them and receive their tips directly
+                        to your email inbox.{% endblocktrans %}
+                        <br><br><br><br><br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          <div class="item">
+              <div class="row">
+                  <div class="col-sm-6">
+                    <img src="{% static 'img/income_01.jpg' %}" alt="..." class="carousel_img">
+                  </div>
+              <div class="col-sm-6">
+                <h2 class="card-title">{% trans "A paid tipping service" %}</h2>
+                <div class="desc">
+                    {% blocktrans %}Set a price to your tips and sell them. If you are a professional in the industry
+                    like a betting journalist, a professional tipster,
+                    or if you feel that you are good enough so that other people would pay for your tips then
+                    take advantage of your skills and earn an additional income. You can set up a monthly subscription
+                    service to which people would need to subscribe, in order to have access to your tips. {% endblocktrans %} <br>
+{#                            {% blocktrans %}* This feature will be available soon.#}
+{#                    Despite this, it would be better to start registering your bets now in order to start building your#}
+{#                        fame and gathering your audience.{% endblocktrans %}#}
+                </div>
+              </div>
+              </div>
+        </div>
+
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+{#        <div class="col-sm-12">#}
+{#        {% trans "You can start by visiting the" %} <a href="{% url 'user_accounts:leader_board' %}"#}
+{#                                         class='main_menu pjax_call zak_color'>{% trans "Leaderboard" context "αιτιατική" %}</a>#}
+{#        {% trans "page to have a look on other players bets and" %} <a href="{% url 'bet_statistics:profile_stats_template' user_pk=1 %}"#}
+{#                     class="pjax_call zak_color">{% trans "profiles" %}</a> {% trans "." %}#}
+{#        {% trans "Visit the" %} <a href="{% url 'games:pick_bets' %}?bookmaker={{ selected_bookmaker_name }}"#}
+{#                     class='main_menu pjax_call bookmaker_param zak_color' id="pick_bets">{% trans "Pick Bets" %}</a>#}
+{#        {% trans "page to begin picking your own bets, start building your own betting identity and rise within the community." %}#}
+{#        </div>#}
+
+    </div>
+
+{#                            <div class="use_examples description_wrapper card-desc row">#}
+{#                                <div class="col-sm-12" style="text-align: center; padding-bottom: 10px;">#}
+{#                                {% trans "Zakanda is a sports betting social tool in which you can place bets with virtual money." %}#}
+{#                                <br>#}
+{#                                {% trans "It is addressed to both hobbyists and professionals so it's up to you on how you want to use it." %}#}
+{#                                <br><br>#}
+{#                                </div>#}
+{##}
+{#                                <div class="col-lg-3">#}
+{#                                    <div class="card-title">{% trans "A virtual bookmaker" %}</div>#}
+{#                                    <div class="desc">#}
+{#                                {% blocktrans %} You can use zakanda as a virtual bookmaker, betting without risking#}
+{#                                    real money while having a clear overview of your overall performance.#}
+{#                                    Check how your friends or the other players are doing and compete with them,#}
+{#                                experiencing the excitement of betting enhanced with the fun of competition. If you later decide#}
+{#                                that you are good enough to try your luck with a traditional bookmaker, feel free to move on,#}
+{#                                putting in practice the skills you have acquired.{% endblocktrans %}</div>#}
+{##}
+{#                                </div>#}
+{##}
+{#                                <div class="col-lg-3">#}
+{#                                    <div class="card-title">{% trans "A source of bet advices" %}</div>#}
+{#                                    <div class="desc">#}
+{#                                    {% blocktrans %}Zakanda is an open betting community of players from all around the world.#}
+{#                                    Select your favorite ones, follow them and receive their tips directly#}
+{#                                    to your email inbox.{% endblocktrans %}#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                                <div class="col-lg-3">#}
+{#                                    <div class="card-title">{% trans "A performance monitoring and money management tool" %}</div>#}
+{#                                    <div class="desc">#}
+{#                                {% blocktrans %}Zakanda gives you a clear and complete picture of your overall loses or profits#}
+{#                                through a great variety of charts and indexes such as ROI and Yield. Apart from that, you have the#}
+{#                                possibility to split your balance to bet groups and manage each bet group separately.#}
+{#                                    Traditional bookmakers#}
+{#                                don't offer you something similar, so if you are betting in one of them, you can begin registering your#}
+{#                                bets in zakanda too and take advantage of its related functionality and tools. {% endblocktrans %}#}
+{#                                </div>#}
+{#                                </div>#}
+{##}
+{#                                <div class="col-lg-3">#}
+{#                                    <div class="card-title">{% trans "* A paid tipping service" %}</div> {# Use it to earn extra income for your tips.#}
+{#                                    <div class="desc">#}
+{#                                {% blocktrans %}Set a price to your tips and sell them. If you are a professional in the industry#}
+{#                                like a betting journalist, a professional tipster,#}
+{#                                or if you feel that you are good enough so that other people would pay for your tips then#}
+{#                                take advantage of your skills and earn an additional income. You can set up a monthly subscription#}
+{#                                service to which people would need to subscribe, in order to have access to your tips. {% endblocktrans %} <br>#}
+{#                                        {% blocktrans %}* This feature will be available soon.#}
+{#                                Despite this, it would be better to start registering your bets now in order to start building your#}
+{#                                    fame and gathering your audience.{% endblocktrans %}#}
+{#                                </div>#}
+{#                                </div>#}
+{##}
+{#                                <div class="col-sm-12">#}
+{#                                {% trans "You can start by visiting the" %} <a href="{% url 'user_accounts:leader_board' %}"#}
+{#                                                                 class='main_menu pjax_call zak_color'>{% trans "Leaderboard" context "αιτιατική" %}</a>#}
+{#                                {% trans "page to have a look on other players bets and" %} <a href="{% url 'bet_statistics:profile_stats_template' user_pk=1 %}"#}
+{#                                             class="pjax_call zak_color">{% trans "profiles" %}</a> {% trans "." %}#}
+{#                                {% trans "Visit the" %} <a href="{% url 'games:pick_bets' %}?bookmaker={{ selected_bookmaker_name }}"#}
+{#                                             class='main_menu pjax_call bookmaker_param zak_color' id="pick_bets">{% trans "Pick Bets" %}</a>#}
+{#                                {% trans "page to begin picking your own bets, start building your own betting identity and rise within the community." %}#}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+        </div>
+    </div></div>
+
+    <div class="row margin-bottom-20 feature_cards">
+        <div class=" col-lg-6 col-md-6 col-sm-12">
+            <div class="portlet light zoom">
+            <table class="desc_container"><tr><td valign="top">
+                <div class="card-icon">
+                    <i class="fa fa-globe font-blue-steel theme-font"></i>
+                </div>
+                <div class="card-title" >
+                    <span> {% trans "Sports Betting" %}  </span>  {# style="color: #4b77be" #}
+                </div>
+                <div class="card-desc">
+                    <span> {% blocktrans %}Submit, manage and share bets
+                        on any football competition of the planet
+                        using the latest odds from the most famous bookmakers{% endblocktrans %}
+                        </span>
+                </div>
+            </td></tr>
+            <tr><td valign="bottom">
+                <div class="learn_more"><a class="pjax_call zak_color" href="{% url "gutils:features_details" %}#global_coverage">{% trans "Learn more..." %}</a></div>
+            </td></tr></table>
+            </div>
+        </div>
+
+        <div class=" col-lg-6 col-md-6 col-sm-12">
+            <div class="portlet light zoom">
+            <table class="desc_container"><tr><td valign="top">
+                <div class="card-icon" >
+{#                    class="fa fa-sitemap  fa-puzzle-piece #}
+                    <i class="fa fa-sitemap  font-green-haze theme-font"></i>
+                </div>
+                <div class="card-title">
+                    <span> {% trans "Bet Groups" %} </span>  {# style="color:#44b6ae;" #}
+                </div>
+                <div class="card-desc">
+                    <span> {% blocktrans %}Split your balance to bet groups
+                        and manage them separately{% endblocktrans %}</span>
+                </div>
+            </td></tr>
+            <tr><td valign="bottom">
+                <div class="learn_more"><a class="pjax_call zak_color" href="{% url "gutils:features_details" %}#bet_group_management">{% trans "Learn more..." %}</a></div>
+            </td></tr></table>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="portlet light zoom">
+            <table class="desc_container"><tr><td valign="top">
+                <div class="card-icon">
+                    <i class="fa fa-pie-chart font-red-sunglo theme-font"></i>
+                </div>
+                <div class="card-title" >
+                    <span> {% trans "Interactive Charts" %} </span>  {# style="color: #e26a6a" #}
+                </div>
+                <div class="card-desc">
+                    <span> {% blocktrans %}Explore betting histories in a unique
+                        way using powerful interactive charts {% endblocktrans %}</span>
+                </div>
+            </td></tr>
+            <tr><td valign="bottom">
+                <div class="learn_more"><a class="pjax_call zak_color" href="{% url "gutils:features_details" %}#interactive_statistics">{% trans "Learn more..." %}</a></div>
+            </td></tr></table>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="portlet light zoom">
+            <table class="desc_container"><tr><td valign="top">
+                <div class="card-icon">
+                    <i class="fa fa-eye-slash font-purple-wisteria theme-font"></i>
+                </div>
+                <div class="card-title" >
+                    <span> {% trans "Private Bet Amounts" %} </span>  {# style="color: #9b59b6" #}
+                </div>
+                <div class="card-desc">
+                    <span> {% blocktrans %} Submit bets using your real bet amounts.
+                        Others see them as percentage of your balance {% endblocktrans %}</span>
+                </div>
+            </td></tr>
+            <tr><td valign="bottom">
+                <div class="learn_more"><a class="pjax_call zak_color" href="{% url "gutils:features_details" %}#private_amounts">{% trans "Learn more..." %}</a></div>
+            </td></tr></table>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="portlet light zoom">
+            <table class="desc_container"><tr><td valign="top">
+                <div class="card-icon">
+                    <i class="fa fa-users font-blue theme-font"></i>
+                </div>
+                <div class="card-title">
+                    <span> {% trans "Betting Community" %} </span>  {# style="color: #3598dc" #}
+                </div>
+                <div class="card-desc">
+                    <span> {% blocktrans %}We are a welcoming community for both Hobbyists and Professionals.{% endblocktrans %}
+                        <a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a> {% trans "and become part of it" %}</span>
+                </div>
+            </td></tr>
+            <tr><td valign="bottom">
+                <div class="learn_more"><a class="pjax_call zak_color" href="{% url "gutils:features_details" %}#betting_community">{% trans "Learn more..." %}</a></div>
+            </td></tr></table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row margin-bottom-20 feature_cards_2">
+
+        <div class="col-lg-6 col-sm-12">
+            <div class="portlet light">
+                <div class="card-title">
+                    <span> {% trans "Do you bet just for Fun?" %} </span>
+                </div>
+{#                <div class="portlet-body">#}
+                    <div class="row feature ">
+                        <div class="col-lg-5 col-md-4 col-sm-12 portlet light" id="">
+{#                            <div class="portlet-body">#}
+                                <div class="card-icon target_audience_icon">
+                                    <i class="fa fa-child theme-font" style="color: #c49f47"></i>
+                                </div>
+{#                            </div>#}
+                        </div>
+                        <div class="col-lg-7 col-md-8 col-sm-12 portlet light" id="">
+{#                            <div class="portlet-body">#}
+                                <div class="description_wrapper card-desc"><span>
+                                    {% blocktrans %} Then you can improve your betting experience through
+                                        the interaction with our betting community enjoying the competition with the other players
+                                        and benefiting from the advices of the experienced ones. Manage your money in a more
+                                        professional way, see how you perform over time and have fun becoming a better player along the way.
+                                    {% endblocktrans %}
+                                </span></div>
+{#                            </div>#}
+                        </div>
+                    </div>
+{#                </div>#}
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-12">
+            <div class="portlet light">
+                <div class="card-title">
+                    <span> {% trans "Are you more like a Pro?" %} </span>
+                </div>
+                    <div class="row feature">
+                        <div class="col-lg-5 col-md-4 col-sm-12 portlet light" id="">
+                            <div class="card-icon target_audience_icon">
+                                <i class="fa fa-graduation-cap theme-font" style="color: rgba(33, 40, 46, 1)"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-8 col-sm-12 portlet light" id="">
+                            <div class="description_wrapper card-desc"><span>
+                                {% blocktrans %}Then use our tools to manage your money
+                                and monitor your performance, expand your audience, keep your followers up to date
+                                with your tips, use zakanda as a proofing service for your personal blog or website or
+                                    create a subscription service and start earning an additional income.{% endblocktrans %}
+                            <br>
+                            {% blocktrans %}* The payments service will be available soon{% endblocktrans %}
+                            </span></div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

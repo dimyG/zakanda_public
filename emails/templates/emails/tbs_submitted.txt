@@ -1,0 +1,29 @@
+Hi %recipient.username%! You have {{ num_tbs_to_send }} new tips.
+
+{% with num_tipsters=tipsters|length %}
+{{ tipsters|length }} of your tipsters {% if tipsters|length > 1 %}have{% else %}has{% endif %} submitted {{ num_tbs_to_send }} new bet{{ num_tbs_to_send|pluralize }}
+{% endwith %}
+
+{% for tipster in tipsters %}
+    --> User <strong>{{ tipster }}</strong> betted: <--
+            {% for total_bet in tipster.tbs_to_send %}
+                {{ total_bet.amount_per_cent|floatformat:"1" }}% of {{ total_bet.bet_tag.name }} Bet Group in {{ total_bet.bookmaker.name }}, odd {{ total_bet.odd }} on "{{ total_bet.date }}"
+
+                {% if total_bet.bet_events %}
+                    |   Event   |   Competition   |   Market   |   Choice  |   Odd |
+
+                {% endif %}
+                {% for bet_event in total_bet.bet_events %}
+                    * {{ bet_event.event.home_team }} - {{ bet_event.event.away_team }} {{ bet_event.event.competition_season.competition.generic_name }} [{{ bet_event.market_type.name }}] >>> {{ bet_event.selection.choice }} <<<  {{ bet_event.selection.selected_odd }}
+
+                {% endfor %}
+
+            {% endfor %}
+
+{% endfor %}
+
+
+All the best!
+Zakanda
+
+Stop following or unsubscribe from these users by visiting zakanda

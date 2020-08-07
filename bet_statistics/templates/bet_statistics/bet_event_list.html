@@ -1,0 +1,18 @@
+{% extends parent %}
+{% load games_template_filters %}
+
+{% block content %}
+    <ul>
+    {% for bet_event in bet_events %}
+        <li class="well-sm"><a href="{% url 'bet_statistics:bet_event_detail' bet_event.id %}" class="pjax_call">
+{#            {% with frequency_dict|get_item:bet_event.id as freq %}#}
+            <span class="well-sm"> {{ bet_event.frequency }} </span>
+            [{{ bet_event.event.date }}] {{bet_event.id }} {{ bet_event.event.home_team.generic_name }} - {{ bet_event.event.away_team.generic_name }} <strong>{{ bet_event.selection.choice }}</strong>
+{#            {% endwith %}#}
+        </a></li>
+    {% endfor %}
+    </ul>
+
+{% include "generic_pagination.html" %}
+
+{% endblock %}

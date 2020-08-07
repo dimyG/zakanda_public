@@ -1,0 +1,21 @@
+{% load mathfilters %}
+<div class="input-group spinner row">
+    <div class="odd_input_wrapper">
+        {% if odd_exists == 'True' %}
+            <label class="">
+{#                {{ init_odd }}#}
+                <input type="number" step="0.01" class="form-control odd_input input_zak_def_01" value={{ init_odd }}
+                min={{ init_odd|mul:1|floatformat:"2" }} max={{ init_odd|mul:1|floatformat:"2" }} readonly>
+            </label>
+        {% else %}
+            <label class="">
+{#                {{ init_odd }}#}
+                <input type="number" step="0.01" class="form-control odd_input input_zak_def_01" min=1 max=99 value={{ init_odd }} readonly>
+            </label>
+        {% endif %}
+    </div>
+{#    <div class="input-group-btn-vertical">#}
+{#      <button class="btn btn-warning btn_zak_blue_01" type="button"><i class="fa fa-caret-up"></i></button>#}
+{#      <button class="btn btn-warning btn_zak_blue_01" type="button"><i class="fa fa-caret-down"></i></button>#}
+{#    </div>#}
+</div>

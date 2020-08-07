@@ -1,0 +1,30 @@
+{% load crispy_forms_filters %}
+
+<div class="hidden" id="total_bet_saved_successfully" data-saved_successully="{{ saved_successfully }}"></div>
+
+<form action='/PlaceBet/' method="POST" id="bet_amount_form">
+    {% csrf_token %}
+    {# Notice: The default ids that django creates for the input fields of its forms are being used in bet_slip.js #}
+    {{ bet_amount_form|crispy }}
+{#    {{ bet_amount_form }}#}
+
+    {% include 'messages.html' %}
+
+{#    {% for field in bet_amount_form %}#}
+{#            {% if field.errors %}#}
+{#                <div class="form-group has-error">#}
+{#                {% for error in field.errors %}#}
+{#                    <div class=""><strong>{{ error|escape }}</strong></div>#}
+{#                {% endfor %}#}
+{#                </div>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+
+
+{#    <div class="panel-body hidden" id="form_messages">#}
+{#        {% if form_message %}#}
+{#            <div class="text-danger message">{{ form_message }}</div>#}
+{#        {% endif %}#}
+{#    </div>#}
+
+</form>

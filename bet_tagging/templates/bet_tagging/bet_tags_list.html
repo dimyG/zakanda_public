@@ -1,0 +1,177 @@
+{% extends parent %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-sm-12">
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-object-ungroup"></i>{% trans 'Bet Groups' %} ({{ target_user }})
+                    </div>
+                    <div class="actions">
+                        {% if request.user == target_user %}
+                            <a href="{% url 'bet_tagging:bet_tag_create' %}" class="pjax_call btn btn-warning btn_zak_orange_01"><i class="fa fa-plus"></i> Create</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+    <div class="row bet_tags_list_wrapper">
+    {% if bet_tags %}
+    {% for bet_group in bet_tags %}
+
+        <div class="col-sm-6 col-md-3 col-lg-2" data-id="{{ bet_group.id }}">
+        <div class="mt-widget-3">
+            <div class="mt-head bg-blue-hoki mt-element-ribbon">
+                {% if bet_group.type == bet_group.free %}
+                    <div class="ribbon ribbon-clip ribbon-color-default">
+                        <div class="ribbon-sub ribbon-clip"></div>
+                        <span>{% trans bet_group.type %}</span>
+                    </div>
+                {% elif bet_group.type == bet_group.private %}
+                    <div class="ribbon ribbon-clip ribbon-color-danger">
+                        <div class="ribbon-sub ribbon-clip private"></div>
+                        <span class="priv_color">{% trans bet_group.type %}</span>
+                    </div>
+                {% elif bet_group.type == bet_group.premium %}
+                    <div class="ribbon ribbon-clip ribbon-color-danger">
+                        <div class="ribbon-sub ribbon-clip premium"></div>
+                        <span class="prem_color">{% trans bet_group.type %}</span>
+                    </div>
+                {% elif bet_group.type == bet_group.archived %}
+                    <div class="ribbon ribbon-clip ribbon-color-default">
+                        <div class="ribbon-sub ribbon-clip"></div>
+                        <span class="">{{ bet_group.type }}</span>
+                    </div>
+                {% endif %}
+                {% if bet_group.is_default %}
+{#                    <div class="ribbon orange_zak_bg ">{% trans "Default" %}</div>#}
+                    <div class="ribbon ribbon-right ribbon-color-danger">
+                        <div class="ribbon-sub ribbon-right default_banner"></div>
+                        <i class="fa fa-star"></i>  {# Default #}
+                    </div>
+
+{#                    <div class="ribbon ribbon-vertical-left ribbon-color-warning uppercase">#}
+{#                        <div class="ribbon-sub ribbon-bookmark"></div>#}
+{#                        <i class="fa fa-star"></i>#}
+{#                    </div>#}
+
+                {% endif %}
+            <div class="ribbon-content">
+                <div class="mt-head-icon">
+                    {# <i class=" icon-social-twitter"></i> #}
+                    {# if a querystring parameter (normalized=On) already exists then it must be added since here you create a new url #}
+                    <a href="{% url 'bet_statistics:profile_stats_template' user_pk=target_user.id %}?{% if not request.session.money_mode %}{{ qs_normalized }}{% endif %}&{{ bet_group.name }}=On" class="pjax_call bg_dark ">{{ bet_group.name }}</a>
+                    {# {% if bet_tag.is_default %}<h6><label class="badge warning">default</label></h6>{% endif %}#}
+                </div>
+                <div class="mt-head-desc" data-toggle="tooltip" title="{{ bet_group.description }}" style="height: 20px">
+                    {% if not bet_group.description %}<br>{% endif %}{{ bet_group.description|truncatechars:18 }}
+                </div>
+                <span class="mt-head-date"> {% trans 'Balance' %}: <span class="cl_orange">{{ bet_group.balance|floatformat:1 }} </span>{% if normalization_method == 'Unit' %}units{% endif %} </span>
+{#                <div class="mt-head-button">#}
+{#                    <button type="button" class="btn btn-circle btn-outline white btn-sm">Add</button>#}
+{#                </div>#}
+            </div>
+            </div>
+            {% if request.user == target_user %}
+            <div class="mt-body-actions-icons">
+                <div class="btn-group btn-group btn-group-justified">
+                    <a href="{% url 'bet_tagging:deposit_create' %}?bet_tag={{ bet_group.id }}" class="pjax_call btn dark " id="tag_deposit">
+                        <span class="mt-icon" data-toggle="tooltip" data-placement="top" title="{% trans 'Deposit' %}">
+                            <i class="fa fa-upload"></i>
+                        </span>
+                    </a>
+                    <a href="{% url 'bet_tagging:withdrawal_create' %}?bet_tag={{ bet_group.id }}" class="pjax_call btn dark" id="tag_withraw">
+                        <span class="mt-icon" data-toggle="tooltip" data-placement="top" title="{% trans 'Withdraw' %}">
+                            <i class="fa fa-download"></i>
+                        </span>
+                    </a>
+                    <a href="{% url 'bet_tagging:make_default' bet_group_id=bet_group.pk %}" class="pjax_call btn dark">
+                        <span class="mt-icon" data-toggle="tooltip" data-placement="top" title="{% trans 'Make Default' %}">
+                            <i class="glyphicon glyphicon-star"></i>
+                        </span>
+                    </a>
+                    <a href="{% url 'bet_tagging:bet_tag_edit' pk=bet_group.pk %}" class="pjax_call btn dark">
+                        <span class="mt-icon" data-toggle="tooltip" data-placement="top" title="{% trans 'Edit' %}">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </span>
+                    </a>
+{#                    <a href="javascript:;" class="btn delete_bet_tag dark">#}
+{#                        <form class="hidden delete_bet_tag" method="post" action="{% url 'bet_tagging:bet_tag_delete' pk=bet_tag.pk %}" data-pjax data-pjax_container="#main_container">#}
+{#                            {% csrf_token %}#}
+{#                        </form>#}
+{#                        <span class="mt-icon">#}
+{#                            <i class="glyphicon glyphicon-trash"></i>#}
+{#                    </span>Delete </a>#}
+                </div>
+            </div>
+            {% else %}
+{#                {% if bet_group.type == bet_group.premium %}#}
+{#                    <div class="mt-body-actions-icons">#}
+{#                        <div class="btn-group btn-group btn-group-justified">#}
+{#                            <div class="profile-userbuttons row" style="padding-bottom: 20px">#}
+{#                                <div class="col-sm-12">#}
+{#                                    {% include 'user_accounts/subscribe.html' with bet_group=bet_group %}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endif %}#}
+                <div class="mt-body-actions-icons">
+                <div class="btn-group btn-group btn-group-justified">
+                    {% if bet_group.type == bet_group.premium and not bet_group.subscribed %}
+                        <a href="{% url 'bet_tagging:service_list' bet_group_id=bet_group.id %}" class="pjax_call btn dark">
+                            <span class="mt-icon" data-toggle="tooltip" data-placement="top" title="{% trans 'Buy a subscription to this Bet Group' %}">
+                                <i class="glyphicon glyphicon-shopping-cart"></i>
+                            </span>
+{#                            {% trans 'Subscribe' %}#}
+                            {{ bet_group.services.all.0.monthly_price|floatformat:0 }}€ / {% trans 'month' %}
+                        </a>
+                    {% elif bet_group.type == bet_group.premium and bet_group.subscribed %}
+                        <div class="btn dark disabled">
+                            <span class="mt-icon subscribed_color">
+                                <i class="glyphicon glyphicon-check"></i>
+                            </span>
+                            <span class="subscribed_color">{% trans 'Subscribed' %}</span>
+                        </div>
+                    {% endif %}
+                    {% if bet_group.user_notification_subscription %}
+                        <a href="{% url 'bet_tagging:notifications_edit' pk=bet_group.user_notification_subscription.id %}" class="pjax_call btn dark">
+                            <span class="mt-icon" data-toggle="tooltip" data-placement="top" title="{% trans 'Select what Notifications you get for this Bet Group' %}">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            </span>
+                            {% trans 'Notifications' %}
+                        </a>
+                    {% else %}
+                        <div class="pjax_call btn dark" style="color: #2f353b">
+                        <span class="mt-icon">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                        </span>
+                        {% trans 'Notifications' %}
+                        </div>
+                    {% endif %}
+                </div>
+                </div>
+            {% endif %}
+        </div>
+        </div>
+
+    {% endfor %}
+
+    {% else %}
+        <div class="col-sm-12">
+        {% if request.user == target_user %} You have no Bet Tags {% else %} {{ target_user }} has no Bet Tags {% endif %}
+        </div>
+    {% endif %}
+
+    </div>
+
+{#    {% include "generic_pagination.html" %}#}
+
+                </div>
+            </div>
+    </div>
+    </div>
+
+{% endblock %}

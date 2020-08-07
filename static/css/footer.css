@@ -1,0 +1,120 @@
+
+.page-footer{
+    position: absolute;
+    background-color: transparent !important;
+    /*background-color: #1f1f1fa6 !important;*/
+    /*display:block !important;*/
+    /*overflow:auto !important;*/
+    /*height: 100% !important;*/
+    padding: 0 !important;
+}
+
+
+@media (min-width: 992px) {
+    /* overrides the default.css style for this specific case */
+    .page-sidebar-fixed:not(.page-footer-fixed) .page-footer {
+        /*background-color: #fff*/
+        /*background-color: #21282e;*/
+    }
+
+    .page-sidebar-fixed:not(.page-footer-fixed) .page-footer .page-footer-inner {
+        /*color: #333;*/
+        color: #a3a3a3
+    }
+}
+
+.main_footer{
+    background-color: #202a33;
+    padding: 30px;
+    clear: both;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.page-footer .social{
+    text-align: center;
+}
+.page-footer .social a{
+    font-size: large;
+}
+.page-footer .social a:hover{
+    background-color: #2e373e91;
+}
+
+.page-footer-inner{
+    margin-top: 40px;
+}
+
+.pre_footer{
+    background-color: #182027;
+}
+
+.pre_footer, .post_footer{
+    padding: 10px 30px;
+    margin: 0;
+}
+
+.post_footer > div{
+    text-align: center;
+}
+
+.post_footer{
+    background-color: #21282e;
+}
+
+.page-footer span.input-group-addon{
+    background: #2f353b !important;
+    border: 1px solid #36424f !important;
+}
+.page-footer span.input-group-addon>i{
+    color: #e87e04 !important;
+}
+
+/* FOOTER */
+
+/*footer{*/
+    /*display: block;*/
+/*}*/
+/*.page-prefooter {*/
+    /*background: #48525e;*/
+    /*color: #a2abb7;*/
+/*}*/
+
+/*.page-prefooter {*/
+    /*padding: 30px 0;*/
+    /*clear: both;*/
+/*}*/
+
+/*.page-footer {*/
+    /*background: #3b434c;*/
+    /*color: #a2abb7;*/
+/*}*/
+
+/*.page-footer {*/
+    /*font-size: 13px;*/
+    /*font-weight: 300;*/
+    /*padding: 17px 0;*/
+/*}*/
+
+/*.footer-bg {*/
+    /*background-color: #1E2A36;*/
+/*}*/
+
+/*.prefooter-bg {*/
+    /*!*background: -webkit-radial-gradient(circle,rgba(0,0,0,0) 0,rgba(10,14,18,.85) 75%),url(../media/main/footer-bg.jpg) center fixed;*!*/
+    /*!*background: -o-radial-gradient(circle,rgba(0,0,0,0) 0,rgba(10,14,18,.85) 75%),url(../media/main/footer-bg.jpg) center fixed;*!*/
+    /*!*background: -moz-radial-gradient(circle,rgba(0,0,0,0) 0,rgba(10,14,18,.85) 75%),url(../media/main/footer-bg.jpg) center fixed;*!*/
+    /*!*background: radial-gradient(circle,rgba(0,0,0,0) 0,rgba(10,14,18,.85) 75%),url(../media/main/footer-bg.jpg) center fixed;*!*/
+    /*background-size: 100% 100%*/
+/*}*/
+
+/* >>>>>>>>>>>>>>>>>>>>>> DARK THEME <<<<<<<<<<<<<<<<<<<<<<<<< */
+.post_footer {
+    background-color: rgba(31, 31, 31, 0.9);
+}
+.main_footer {
+    background-color: rgba(31, 31, 31, 0.9);
+}
+.pre_footer {
+    background-color: rgba(16, 16, 16, 0.86);
+}

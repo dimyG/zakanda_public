@@ -1,0 +1,544 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-01 17:15+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\account\account_inactive.html:5 .\account\account_inactive.html.py:13
+msgid "Account Inactive"
+msgstr ""
+
+#: .\account\account_inactive.html:23
+msgid "This account is inactive."
+msgstr ""
+
+#: .\account\email.html:5
+msgid "Account"
+msgstr ""
+
+#: .\account\email.html:14
+msgid "E-mail Address"
+msgstr ""
+
+#: .\account\email.html:25
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: .\account\email.html:40
+msgid "Verified"
+msgstr ""
+
+#: .\account\email.html:42
+msgid "Unverified"
+msgstr ""
+
+#: .\account\email.html:44
+msgid "Primary"
+msgstr ""
+
+#: .\account\email.html:50
+msgid "Make Primary"
+msgstr ""
+
+#: .\account\email.html:51
+msgid "Re-send Verification"
+msgstr ""
+
+#: .\account\email.html:52 .\comments\delete.html:24
+msgid "Remove"
+msgstr ""
+
+#: .\account\email.html:59
+msgid "Warning:"
+msgstr ""
+
+#: .\account\email.html:59
+msgid ""
+"You currently do not have any e-mail address set up. You should add an e-"
+"mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: .\account\email.html:64
+msgid "Add E-mail Address"
+msgstr ""
+
+#: .\account\email.html:70
+msgid "Add e-mail"
+msgstr ""
+
+#: .\account\email\email_confirmation_message.txt:1
+#, python-format
+msgid ""
+"Hello %(user_display)s and thanks for joining %(site_name)s!\n"
+"\n"
+"To continue using %(site_name)s please confirm your email address by "
+"visiting %(activate_url)s\n"
+"\n"
+"If you haven't signed up in %(site_name)s then ignore this email but have in "
+"mind that somebody has used your email to sign up!\n"
+"\n"
+msgstr ""
+
+#: .\account\email\email_confirmation_message.txt:8
+#, python-format
+msgid ""
+"All the best!\n"
+"%(site_name)s\n"
+"%(site_domain)s"
+msgstr ""
+
+#: .\account\email\email_confirmation_subject.html:3
+#: .\account\email\email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: .\account\email\password_reset_key_message.html:2
+#, python-format
+msgid ""
+"\n"
+"    Hello from %(site_name)s!\n"
+"\n"
+"    You're receiving this e-mail because you or someone else has requested a "
+"password for your user account at\n"
+"    <a href=\"%(site_domain)s\">%(site_name)s</a>\n"
+"    It can be safely ignored if you did not request a password reset. Click "
+"the link below to reset your password.\n"
+msgstr ""
+
+#: .\account\email\password_reset_key_message.html:13
+#, python-format
+msgid "In case you forgot, your username is %(username)s"
+msgstr ""
+
+#: .\account\email\password_reset_key_message.html:16
+#, python-format
+msgid ""
+"\n"
+"    All the best\n"
+"    <a href=\"%(site_domain)s\">%(site_name)s</a>!\n"
+msgstr ""
+
+#: .\account\email\password_reset_key_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account at %(site_domain)s.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+
+#: .\account\email\password_reset_key_message.txt:8
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr ""
+
+#: .\account\email\password_reset_key_message.txt:10
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: .\account\email\password_reset_key_subject.html:3
+#: .\account\email\password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr ""
+
+#: .\account\email_confirm.html:6 .\account\email_confirm.html.py:15
+#: .\account\email_confirmed.html:6 .\account\email_confirmed.html.py:16
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: .\account\email_confirm.html:29
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: .\account\email_confirm.html:33
+msgid "Confirm"
+msgstr ""
+
+#: .\account\email_confirm.html:40
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: .\account\email_confirmed.html:28
+#, python-format
+msgid ""
+"You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-"
+"mail address for user %(user_display)s."
+msgstr ""
+
+#: .\account\login.html:7 .\account\login.html.py:16 .\account\login.html:59
+#: .\navbar.html:153
+msgid "Sign In"
+msgstr "Σύνδεση"
+
+#: .\account\login.html:29
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
+"up</a>\n"
+"for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: .\account\login.html:39
+msgid "or"
+msgstr ""
+
+#: .\account\login.html:46
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"    <a href=\"%(signup_url)s\">Sign Up</a> first"
+msgstr ""
+
+#: .\account\login.html:60 .\navbar.html:156
+msgid "Forgot Password?"
+msgstr "Ξέχασες τον Κωδικό?"
+
+#: .\account\logout.html:5 .\account\logout.html.py:13 .\account\logout.html:30
+msgid "Sign Out"
+msgstr "Αποσύνδεση"
+
+#: .\account\logout.html:23
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: .\account\messages\cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: .\account\messages\email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: .\account\messages\email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: .\account\messages\email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: .\account\messages\logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: .\account\messages\logged_out.txt:2
+msgid "You have signed out."
+msgstr ""
+
+#: .\account\messages\password_changed.txt:2
+msgid "Password successfully changed."
+msgstr ""
+
+#: .\account\messages\password_set.txt:2
+msgid "Password successfully set."
+msgstr ""
+
+#: .\account\messages\primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr ""
+
+#: .\account\messages\unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr ""
+
+#: .\account\password_change.html:5 .\account\password_change.html.py:13
+#: .\account\password_change.html:29 .\account\password_reset_from_key.html:4
+#: .\account\password_reset_from_key.html:12
+#: .\account\password_reset_from_key_done.html:4
+#: .\account\password_reset_from_key_done.html:12
+msgid "Change Password"
+msgstr ""
+
+#: .\account\password_reset.html:6 .\account\password_reset.html.py:15
+#: .\account\password_reset_done.html:6 .\account\password_reset_done.html:14
+msgid "Password Reset"
+msgstr ""
+
+#: .\account\password_reset.html:29
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail with instructions to reset it."
+msgstr ""
+
+#: .\account\password_reset.html:36
+msgid "*Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: .\account\password_reset.html:38
+msgid "Reset Password"
+msgstr ""
+
+#: .\account\password_reset_done.html:28
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: .\account\password_reset_from_key.html:12
+msgid "Bad Token"
+msgstr ""
+
+#: .\account\password_reset_from_key.html:24
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: .\account\password_reset_from_key.html:33
+msgid "Change password"
+msgstr "Άλλαξε κωδικό"
+
+#: .\account\password_reset_from_key.html:37
+#: .\account\password_reset_from_key_done.html:22
+msgid "Your password is now changed."
+msgstr "Ο κωδικός σου έχει αλλάξει επιτυχώς"
+
+#: .\account\password_set.html:5 .\account\password_set.html.py:13
+#: .\account\password_set.html:29
+msgid "Set Password"
+msgstr ""
+
+#: .\account\signup.html:5
+msgid "Signup"
+msgstr "Εγγραφή"
+
+#: .\account\signup.html:14 .\account\signup.html.py:35 .\navbar.html:157
+#: .\navbar.html.py:161
+msgid "Sign Up"
+msgstr "Εγγραφή"
+
+#: .\account\signup.html:24
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Sign in</a>"
+msgstr ""
+
+#: .\account\signup_closed.html:5 .\account\signup_closed.html.py:13
+msgid "Sign Up Closed"
+msgstr ""
+
+#: .\account\signup_closed.html:23
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: .\account\snippets\already_logged_in.html:5
+msgid "Note"
+msgstr ""
+
+#: .\account\snippets\already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: .\account\verification_sent.html:5 .\account\verification_sent.html.py:13
+#: .\account\verified_email_required.html:5
+#: .\account\verified_email_required.html:14
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: .\account\verification_sent.html:23
+msgid "We have sent an e-mail to you for verification."
+msgstr "Σου έχουμε στείλει ένα email επιβεβαίωσης."
+
+#: .\account\verification_sent.html:24
+msgid "Follow the link in the email to finalize the signup process."
+msgstr ""
+"Πάτησε το link το οποίο θα δεις στο email αυτό, ώστε να ολοκληρώσεις την "
+"διαδικασία εγγραφής."
+
+#: .\account\verification_sent.html:25
+msgid "Please contact us if you do not receive it within a few minutes."
+msgstr ""
+"Αν δεν λάβεις το email μέσα σε λίγα λεπτά, επικοινώσε μαζί μας στο "
+"info@zakanda.com."
+
+#: .\account\verification_sent.html:27
+msgid ""
+"* Check also in your Spam/Junk folder. If it is there, then mark our email "
+"as safe!"
+msgstr ""
+"Έλεγξε επίσης τον φάκελο 'Ανεπιθύμητα'. Αν το email μας βρίσκεται εκεί, θα "
+"ήταν καλύτερο να το επισημάνεις ώς ασφαλές και να το προσθέσεις στις επαφές "
+"σου. Με αυτόν τον τρόπο θα έχουμε πολύ καλύτερη επικοινωνία."
+
+#: .\account\verified_email_required.html:26
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: .\account\verified_email_required.html:30
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+"Σου έχει σταλεί ένα email επιβεβαίωσης. Πάτησε το link που θα δεις στο email "
+"αυτό  για να επιβεβαιώσεις την εγγραφή σου. Αν δεν λάβεις το email μέσα σε "
+"λίγα λεπτά, παρακαλώ επικοινώνισε μαζι μας."
+
+#: .\account\verified_email_required.html:34
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: .\avatar\add.html:51 .\avatar\change.html:90
+msgid "Upload it"
+msgstr "Ανέβασε την"
+
+#: .\avatar\change.html:55
+msgid "Use picture"
+msgstr "Χρησιμοποίησέ την"
+
+#: .\avatar\confirm_delete.html:20
+msgid "Select the pictures that you would like to delete."
+msgstr ""
+
+#: .\avatar\confirm_delete.html:23
+#, python-format
+msgid ""
+"You have no avatars to delete. <a href=\"%(avatar_change_url)s\">Upload one</"
+"a> now."
+msgstr ""
+
+#: .\avatar\confirm_delete.html:35
+msgid "Delete Selected"
+msgstr ""
+
+#: .\base.html:122
+msgid "Bet Slip"
+msgstr "Κουπονι"
+
+#: .\comments\delete.html:9
+msgid "Are you sure you want to remove this comment?"
+msgstr ""
+
+#: .\comments\flag.html:9
+msgid "Are you sure you want to flag this comment as inappropriate?"
+msgstr ""
+
+#: .\comments\flag.html:22
+msgid "Flag"
+msgstr ""
+
+#: .\left_sidebar\hor_menu_as_dropdown.html:18
+msgid "Menu"
+msgstr "Μενού"
+
+#: .\left_sidebar\hor_menu_as_dropdown.html:22 .\navbar.html:37
+#: .\navbar.html.py:39
+msgid "Home"
+msgstr "Αρχική"
+
+#: .\left_sidebar\hor_menu_as_dropdown.html:24
+#: .\left_sidebar\user_info_left_sidebar.html:76 .\navbar.html:43
+#: .\navbar.html.py:116
+msgid "Profile"
+msgstr "Προφίλ"
+
+#: .\left_sidebar\hor_menu_as_dropdown.html:26 .\navbar.html:45
+msgid "Pick Bets"
+msgstr ""
+
+#: .\left_sidebar\hor_menu_as_dropdown.html:27 .\navbar.html:47
+msgctxt "ονομαστική"
+msgid "Leaderboard"
+msgstr "Πίνακας Χρηστών"
+
+#: .\left_sidebar\user_info_left_sidebar.html:62
+msgid "Followers"
+msgstr "Ακόλουθοι"
+
+#: .\left_sidebar\user_info_left_sidebar.html:68
+msgid "Following"
+msgstr "Ακολουθούμενοι"
+
+#: .\left_sidebar\user_info_left_sidebar.html:79 .\navbar.html:118
+msgid "Bets"
+msgstr "Στοιχήματα"
+
+#: .\left_sidebar\user_info_left_sidebar.html:86 .\navbar.html:124
+msgid "My Tips"
+msgstr "Προτάσεις"
+
+#: .\left_sidebar\user_info_left_sidebar.html:90 .\navbar.html:120
+msgid "Bet Groups"
+msgstr "Μπάνκες"
+
+#: .\navbar.html:93
+msgid "Deposit"
+msgstr "Κατάθεση"
+
+#: .\navbar.html:94
+msgid "Withdraw"
+msgstr "Ανάληψη"
+
+#: .\navbar.html:130
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: .\navbar.html:131
+msgid "Logout"
+msgstr "Αποσύνδεση"
+
+#: .\navbar.html:167
+msgid "BET SLIP"
+msgstr "ΚΟΥΠΟΝΙ"
+
+#: .\right_sidebar.html:5
+msgid "Bet Group"
+msgstr "Μπάνκα"
+
+#: .\right_sidebar.html:21
+msgid "Keep selections"
+msgstr "Κράτα τις επιλογές"
+
+#: .\right_sidebar.html:26
+msgid "Odd"
+msgstr "Απόδοση"
+
+#: .\right_sidebar.html:32
+msgid "Bet Details"
+msgstr "Επιλογές"
+
+#: .\right_sidebar.html:35
+msgid "Submit Bet"
+msgstr "Στοιχημάτισε"
+
+#~ msgid "Charts"
+#~ msgstr "Στατιστικά"

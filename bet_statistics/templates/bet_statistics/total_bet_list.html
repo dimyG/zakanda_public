@@ -1,0 +1,13 @@
+{% extends parent %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="col-xs-12">
+            {% include 'bet_statistics/open_closed_tb_tables.html' with open_tbs=open_tbs closed_tbs=closed_tbs open_table_id=open_table_id closed_table_id=closed_table_id title=title %}
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends parent %}
+
+{% block content %}
+    <div>{{ bet_tag.name }}</div>
+    <div>{{ bet_tag.description }}</div>
+    <div><a href="{% url 'bet_statistics:profile_stats_template' user_pk=bet_tag.owner.id %}">stats</a></div>
+{% endblock %}

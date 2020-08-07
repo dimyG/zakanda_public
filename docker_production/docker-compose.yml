@@ -1,0 +1,102 @@
+# run docker-compose build from inside the directory docker-compose.yml is. build context is one dir up
+version: "3.7"
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: docker_production/Dockerfile
+    volumes:
+      # the from path is the path of the folder in the VM (so it has to be shared with windows first)
+      - /zakanda_src:/usr/src/zakanda_src
+      - /zakanda_src/static-files:/usr/src/zakanda_src/static-files
+      # we replace the settings folder with a new empty one so that local.py (and all the others) are not there.
+      # The necessary files will be copied and placed in the settings folder by the COPY command so they will be
+      # available. But the folder will not be shared with the host so not hot updates will be possible on its files
+      # In production you don't have such issues since you done have any docker volumes
+      - /usr/src/zakanda_src/zakanda/settings/
+    expose:
+      - 8000
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      POSTGRES_ZAKANDA_HOST: ${POSTGRES_ZAKANDA_HOST}
+      POSTGRES_ZAKANDA_PASSWORD: ${POSTGRES_ZAKANDA_PASSWORD}
+      ZAKANDA_DB_NAME: ${ZAKANDA_DB_NAME}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      XMLSOCCER_API_KEY: ${XMLSOCCER_API_KEY}
+      SPORTMONKS_API_KEY: ${SPORTMONKS_API_KEY}
+      MAILGUN_API_KEY: ${MAILGUN_API_KEY}
+      MAILGUN_SMTP_PASSWORD: ${MAILGUN_SMTP_PASSWORD}
+      STREAM_API_KEY: ${STREAM_API_KEY}
+      STREAM_API_SECRET: ${STREAM_API_SECRET}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      SKRILL_TEST_MERCHANT: ${SKRILL_TEST_MERCHANT}
+      SKRILL_TEST_MERCHANT_SECRET_WORD: ${SKRILL_TEST_MERCHANT_SECRET_WORD}
+      SKRILL_API_PASSWORD: ${SKRILL_API_PASSWORD}
+  worker:
+    build:
+      context: ..
+      dockerfile: docker_production/Dockerfile-worker
+    volumes:
+      - /zakanda_src:/usr/src/zakanda_src
+      - /usr/src/zakanda_src/zakanda/settings/
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      POSTGRES_ZAKANDA_HOST: ${POSTGRES_ZAKANDA_HOST}
+      POSTGRES_ZAKANDA_PASSWORD: ${POSTGRES_ZAKANDA_PASSWORD}
+      ZAKANDA_DB_NAME: ${ZAKANDA_DB_NAME}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      XMLSOCCER_API_KEY: ${XMLSOCCER_API_KEY}
+      SPORTMONKS_API_KEY: ${SPORTMONKS_API_KEY}
+      MAILGUN_API_KEY: ${MAILGUN_API_KEY}
+      MAILGUN_SMTP_PASSWORD: ${MAILGUN_SMTP_PASSWORD}
+      STREAM_API_KEY: ${STREAM_API_KEY}
+      STREAM_API_SECRET: ${STREAM_API_SECRET}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      SKRILL_TEST_MERCHANT: ${SKRILL_TEST_MERCHANT}
+      SKRILL_TEST_MERCHANT_SECRET_WORD: ${SKRILL_TEST_MERCHANT_SECRET_WORD}
+      SKRILL_API_PASSWORD: ${SKRILL_API_PASSWORD}
+  scheduler:
+    build:
+      context: ..
+      dockerfile: docker_production/Dockerfile-scheduler
+    volumes:
+      - /zakanda_src:/usr/src/zakanda_src
+      - /usr/src/zakanda_src/zakanda/settings/
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      POSTGRES_ZAKANDA_HOST: ${POSTGRES_ZAKANDA_HOST}
+      POSTGRES_ZAKANDA_PASSWORD: ${POSTGRES_ZAKANDA_PASSWORD}
+      ZAKANDA_DB_NAME: ${ZAKANDA_DB_NAME}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      XMLSOCCER_API_KEY: ${XMLSOCCER_API_KEY}
+      SPORTMONKS_API_KEY: ${SPORTMONKS_API_KEY}
+      MAILGUN_API_KEY: ${MAILGUN_API_KEY}
+      MAILGUN_SMTP_PASSWORD: ${MAILGUN_SMTP_PASSWORD}
+      STREAM_API_KEY: ${STREAM_API_KEY}
+      STREAM_API_SECRET: ${STREAM_API_SECRET}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      SKRILL_TEST_MERCHANT: ${SKRILL_TEST_MERCHANT}
+      SKRILL_TEST_MERCHANT_SECRET_WORD: ${SKRILL_TEST_MERCHANT_SECRET_WORD}
+      SKRILL_API_PASSWORD: ${SKRILL_API_PASSWORD}
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+    - "8000:80"
+    volumes:
+    - /zakanda_src/static-files:/usr/src/zakanda_src/static-files
+    depends_on:
+      - web

@@ -1,0 +1,48 @@
+{% load gutils_filters %}
+{% load games_template_filters %}
+{% load i18n %}
+
+{# errors raised from the clean method of the form are in the non_field_errors #}
+{% for error in form.non_field_errors %}<div class="form_error">{{ error|escape }}</div> {% endfor %}
+
+{% for field in form.visible_fields %}
+    {% for error in field.errors %}<div class="form_error"> {% trans error|escape %}</div>{% endfor %}
+    {% if help_text == True %}
+        <span class="help_text">{{ field.help_text }}</span>
+    {% endif %}
+    {# I use bootsrap style for checkbox and it applies a -20 margin left. I neutralize it by externally applying the opposite margin #}
+    <div class="form-group {% if field.errors %}has-error{% endif %} {% if field|fieldtype == "CheckboxInput" %}margin_left_20{% endif %}">
+
+        {% if field|fieldtype == "CheckboxInput" %}
+            {# {{ field|define_label_class:"mt-checkbox" }} #}
+            <div class="checkbox">
+                <label>
+                    {{ field|addclass:"checkbox" }}
+                    <span style="display: inline">
+
+                        {% if field.label == 'Email' %}
+                            <span class=""><i class="fa fa-envelope font-yellow-gold" style="font-size: large"></i></span>
+                            <span class="font-yellow-gold">{{ field.label }}</span>
+                        {% elif field.label == 'In app' %}
+                            <span class=""><i class="fa fa-bell font-blue-steel" style="font-size: large"></i></span>
+                            <span class="font-blue-steel">{{ field.label }}</span>
+                        {% else %}
+                            {% trans field.label %}
+                        {% endif %}
+                        <span>{{ field.help_text }}</span>
+
+                    </span>
+                </label>
+            </div>
+        {% else %}
+            {% trans field.label_tag %}
+            {{ field|addclass:"form-control" }}
+        {% endif %}
+    </div>
+{% endfor %}
+
+{% for hidden_field in form.hidden_fields %}
+    <div class="form-group {% if field.errors %}form_error{% endif %}">
+        {{ hidden_field }}
+    </div>
+{% endfor %}

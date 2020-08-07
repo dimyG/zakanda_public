@@ -1,0 +1,29 @@
+{# This html replaces the modal's modal-content div (done by bootstrap) #}
+
+{% load i18n %}
+
+<div class="delete_comment">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{% trans "Are you sure you want to flag this comment as inappropriate?" %}</h4>
+    </div>
+
+    <div class="modal-body">
+        <blockquote>{{ comment|linebreaks }}</blockquote>
+    </div>
+
+    <div class="modal-footer">
+        <form action="{% url "comments-flag" comment.id %}" method="post">{% csrf_token %}
+            {% with comment.get_absolute_url as next %}
+              <div><input type="hidden" name="next" value="{{ next }}" id="next"/></div>
+            {% endwith %}
+            <p class="submit">
+              <input type="submit" class="btn_zak_orange_01" name="submit" value="{% trans "Flag" %}"/>
+                {# or <a href="{{ comment.get_absolute_url }}">cancel</a>#}
+            </p>
+        </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    </div>
+
+</div>

@@ -1,0 +1,55 @@
+{% load activity_tags %}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>Hi %recipient.username%!</div>
+    {% with num_tipsters=tipsters|length %}
+    <div>{{ tipsters|length }} of your tipsters {% if tipsters|length > 1 %}have{% else %}has{% endif %} submitted {{ num_tbs_to_send }} new bet{{ num_tbs_to_send|pluralize }}</div>
+    {% endwith %}
+    <br>
+    <div>
+        {% for tipster in tipsters %}
+        <h4><strong>{{ tipster }}</strong></h4> {# <h6><a href="{% url 'bet_statistics:profile_stats_template' user_pk=tipster.id %}">Unfollow</a></h6> #}
+        {% for total_bet in tipster.tbs_to_send %}
+            <div>
+                <strong>{{ total_bet.amount_per_cent|floatformat:"1" }}%</strong> of <strong>{{ total_bet.bet_tag.name }}</strong> Bet Tag balance on {{ total_bet.bookmaker.name }}. Odd is <strong>{{ total_bet.odd }}</strong>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Competition</th>
+                        <th>Market</th>
+                        <th>Choice</th>
+                        <th>Odd</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {# TODO Bet systems #}
+                {% for bet_event in total_bet.bet_events %}
+                    <tr>
+                        <th>{{ bet_event.event.home_team }} - {{ bet_event.event.away_team }}</th>
+                        <td>{{ bet_event.event.competition_season.competition.generic_name }}</td>
+                        <td>{{ bet_event.market_type.name }}</td>
+                        <th>{{ bet_event.selection.choice }}</th>
+                        <td>{{ bet_event.selection.selected_odd }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+
+        <br>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h6>You see this email because you follow these users. To stop following them visit the website</h6>
+    </div>
+</body>
+</html>

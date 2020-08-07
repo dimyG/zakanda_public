@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% if events %}
+    {% if processed_events %}
+        <div>processed_events</div>
+        {% for processed_event in processed_events %}
+            {{ processed_event }}
+        {% endfor %}
+    {% else %}
+        <div>No events were processed </div>
+    {% endif %}
+
+    {% if ft_results %}
+        <div>Full time Results Used for bet events processing</div>
+        {% for ft_result in ft_results %}
+            {{ ft_result }}
+        {% endfor %}
+    {% else %}
+        <div>No Full time results</div>
+    {% endif %}
+{% else %}
+    <div>There are no matched events to get results for</div>
+{% endif %}
+
+{% endblock %}

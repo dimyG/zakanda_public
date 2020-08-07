@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>Hi <strong>{{ user.username }}</strong> and welcome!</div>
+    <div>
+        <p>I would like to personally thank you for taking the time to sign up in {{ site.name }}.
+            I hope you will find it fun and useful.</p>
+
+        <p>I founded {{ site.name }} because I wanted a better way to manage my bets and monitor my performance,
+            but as the time passed it became obvious that its value lies not only in the tools,
+            but also in the community which is created within it.
+
+        <p>We are still making our first steps and some things might not be as cool as we would like them to be,
+            but bare with us. We are excited for {{ site.name }} and we work every day to make it better.
+            Many new features are coming which we think you will like a lot, so stay tuned!</p>
+
+        <p>Feel free to check {{ site.name }} and if there is anything you
+            would like to ask or if you just want to make a comment, contact us at
+            <span>info@zakanda.com</span>. We will be happy to hear your thoughts.</p>
+    </div>
+    <div>
+        <p>All the best!</p>
+        <p>Dimitris</p>
+        <p><a href="https://{{ site.domain }}">{{ site.name }}</a> founder</p>
+    </div>
+</body>
+</html>
